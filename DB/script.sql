@@ -76,3 +76,21 @@ CREATE TABLE IF NOT EXISTS detalle_venta(
 	CONSTRAINT fk_id_venta_venta FOREIGN KEY(id_venta) references venta(id_venta),
 	CONSTRAINT fk_id_producto_productos FOREIGN KEY(id_producto) references productos(id_producto)
 );
+
+CREATE TABLE IF NOT EXISTS proveedores(
+	id_proveedor int PRIMARY KEY AUTO_INCREMENT,
+	nombre varchar(45),
+	fecha_alianza date,
+	estado tinyint(1),
+	ultima_fecha_compra date
+);
+
+CREATE TABLE IF NOT EXISTS telefonos_proveedores(
+	id_telefono int AUTO_INCREMENT,
+	id_proveedor int,
+	telefono varchar(45),
+	descripcion varchar(45),
+	CONSTRAINT pk_telefonos_proveedores PRIMARY KEY(id_telefono,id_proveedor),
+	CONSTRAINT fk_id_proveedor_proveedores FOREIGN KEY(id_proveedor) references proveedores(id_proveedor)
+);
+
