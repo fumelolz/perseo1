@@ -19,16 +19,6 @@
 
     <!-- Main content -->
     <section class="content">
-
-      <?php 
-
-      $item = null;
-      $valor = null;
-
-      $mostrarClientes = ControladorClientes::ctrMostrarClientes($item,$valor);
-      echo '<pre>'; print_r($mostrarClientes); echo '</pre>';
-
-      ?>
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -110,3 +100,41 @@
         <!-- /.content -->
       </div>
   <!-- /.content-wrapper -->
+
+<!-- Modal crear Cliente -->
+<div class="modal fade" id="modalAgregarCliente" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCliente" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <form role="form" method="Post" enctype="multipart/form-data">
+        <div class="modal-header bg-secondary" style="color: white;">
+          <h5 class="modal-title" id="modalAgregarCliente">Agregar Cliente</h5>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <!-- Entrada para el nombre del cliente -->
+            <div class="form-group">
+              <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input type="text"  class="form-control" placeholder="Nombre del cliente" id="nuevoNombre" name="nuevoNombre" required>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
