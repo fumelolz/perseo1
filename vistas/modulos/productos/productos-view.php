@@ -33,6 +33,7 @@
               </div>
             </div>
             <div class="card-body">
+              <!--Se empieza a trabajar los productos-->
               Rodrigo Es Dios
             </div>
             <!-- /.card-body -->
