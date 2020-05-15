@@ -34,7 +34,54 @@
             </div>
             <div class="card-body">
               <!--Se empieza a trabajar los productos-->
-              Rodrigo Es Dios
+              
+              <table class="table table-bordered table-striped tablas">
+                <thead>
+                  <tr>
+                    <th style="width: 10px;">#</th>
+                    <th>Descripcion</th>
+                    <th>Precio de compra</th>
+                    <th>Precio de venta</th>
+                    <th>Imagen</th>
+                    <th>estado</th>
+                    <th>Acciónes</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <?php 
+
+                  $item = null;
+                  $valor = null;
+
+                  $mostrarProductos= ControladorProductos::ctrMostrarProductos($item,$valor);
+
+                  foreach ($mostrarProductos as $key => $value) {
+
+                    $id_producto = $value["id_producto"];
+                    $descripcion = $value["descripcion"];
+                    $precio_compra = $value["precio_compra"];
+                    $precio_venta = $value["precio_venta"];
+                    $imagen = $value["ruta_imagen"];
+                    $estado = $value["estado"];
+
+                    echo '
+                    <tr>
+                    <td>'.$id_producto.'</td>
+                    <td>'.$descripcion.'</td>
+                    <td>'.$precio_compra.'</td>
+                    <td>'.$precio_venta.'</td>
+                    <td>'.$imagen.'</td>
+                    <td>'.$estado.'</td>
+                    <td>botones</td>
+                    </tr>';
+                  }
+
+
+                  ?>
+                  
+                </tbody>
+              </table>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
