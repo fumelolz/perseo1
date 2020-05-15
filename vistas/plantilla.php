@@ -33,11 +33,26 @@
 
     if (isset($_GET["ruta"])) {
       
-      if ($_GET["ruta"]=="home" || 
+      /*if ($_GET["ruta"]=="home" || 
         $_GET["ruta"]=="clientes") {
         
         include "modulos/".$_GET["ruta"]."/".$_GET["ruta"].".php";
 
+        }*/
+
+    switch ($_GET["ruta"]) {
+
+    case $_GET["ruta"]=="clientes":
+        include "modulos/".$_GET["ruta"]."/".$_GET["ruta"].".php";
+        break;
+
+    case $_GET["ruta"]=="productos":
+        include "modulos/".$_GET["ruta"]."/".$_GET["ruta"]."-view.php";
+        break;
+
+    case $_GET["ruta"]=="home":
+        include "modulos/".$_GET["ruta"]."/".$_GET["ruta"]."-view.php";
+        break;
     }
 
   }else{
