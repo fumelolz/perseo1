@@ -44,7 +44,7 @@
 
 
   }else{
-    include "modulos/home/home.php";
+    include "modulos/home/home-view.php";
   }
 
   include "modulos/footer.php";
