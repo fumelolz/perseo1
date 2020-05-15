@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS perseov1;
 USE perseov1;
 
 CREATE TABLE IF NOT EXISTS personas(
-	id_persona int PRIMARY KEY,
+	id_persona int PRIMARY KEY AUTO_INCREMENT,
 	nombre varchar(45) not null,
 	ap_Paterno varchar(45) not null,
 	ap_Materno varchar(45) not null,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS telefonos_personas(
 );
 
 CREATE TABLE IF NOT EXISTS clientes(
-	id_cliente int,
+	id_cliente int AUTO_INCREMENT,
 	id_persona int,
 	CONSTRAINT pk_clientes PRIMARY KEY(id_cliente,id_persona),
 	CONSTRAINT fk_id_persona_personas_clientes FOREIGN KEY(id_persona) references personas(id_persona)
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS clientes(
 
 #Crea la tabla de usuarios
 CREATE TABLE IF NOT EXISTS usuarios(
-	id_usuario int,
+	id_usuario int AUTO_INCREMENT,
 	id_persona int,
 	username varchar(45) NOT NULL,
 	password varchar(45) NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
 );
 
 CREATE TABLE IF NOT EXISTS productos(
-	id_producto int PRIMARY KEY,
+	id_producto int PRIMARY KEY AUTO_INCREMENT,
 	descripcion varchar(45),
 	precio_compra decimal(10,2),
 	precio_venta decimal(10,2),
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS productos(
 );
 
 CREATE TABLE IF NOT EXISTS venta(
-	id_venta int PRIMARY KEY,
+	id_venta int PRIMARY KEY AUTO_INCREMENT,
 	id_usuario int NOT NULL,
 	id_cliente int,
 	fecha date NOT NULL,
