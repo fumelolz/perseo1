@@ -16,7 +16,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
   
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -28,14 +28,15 @@ include "modulos/sidebar.php";
 
 if (isset($_GET["ruta"])) {
   
-  if ($_GET["ruta"]=="home") {
+  if ($_GET["ruta"]=="home" || 
+      $_GET["ruta"]=="clientes") {
     
-    include "modulos/".$_GET["ruta"].".php";
+    include "modulos/".$_GET["ruta"]."/".$_GET["ruta"].".php";
 
   }
 
 }else{
-  include "modulos/home.php";
+  include "modulos/home/home.php";
 }
 
 include "modulos/footer.php";

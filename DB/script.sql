@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS personas(
 	nombre varchar(45) not null,
 	ap_Paterno varchar(45) not null,
 	ap_Materno varchar(45) not null,
+	email varchar(40),
 	rfc varchar(13),
 	ine varchar(45),
 	direccion varchar(55),
