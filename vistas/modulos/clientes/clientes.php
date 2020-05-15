@@ -19,6 +19,16 @@
 
     <!-- Main content -->
     <section class="content">
+
+      <?php 
+
+      $item = null;
+      $valor = null;
+
+      $mostrarClientes = ControladorClientes::ctrMostrarClientes($item,$valor);
+      echo '<pre>'; print_r($mostrarClientes); echo '</pre>';
+
+      ?>
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
