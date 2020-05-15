@@ -35,7 +35,8 @@
 
       if ($_GET["ruta"]=="home" || 
           $_GET["ruta"]=="clientes" ||
-          $_GET["ruta"]=="productos") {
+          $_GET["ruta"]=="productos" ||
+          $_GET["ruta"]=="proveedores") {
 
         include "modulos/".$_GET["ruta"]."/".$_GET["ruta"]."-view.php";
 
