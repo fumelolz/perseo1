@@ -13,47 +13,62 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="vistas/dist/css/adminlte.min.css">
+  
+  <!-- DataTables -->
+  <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.css">
+
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
   
-<!-- Site wrapper -->
-<div class="wrapper">
+  <!-- Site wrapper -->
+  <div class="wrapper">
 
-<?php 
+    <?php 
 
-include "modulos/navbar.php";
-include "modulos/sidebar.php";
+    include "modulos/navbar.php";
+    include "modulos/sidebar.php";
 
-if (isset($_GET["ruta"])) {
-  
-  if ($_GET["ruta"]=="home" || 
-      $_GET["ruta"]=="clientes") {
-    
-    include "modulos/".$_GET["ruta"]."/".$_GET["ruta"].".php";
+    if (isset($_GET["ruta"])) {
+      
+      if ($_GET["ruta"]=="home" || 
+        $_GET["ruta"]=="clientes") {
+        
+        include "modulos/".$_GET["ruta"]."/".$_GET["ruta"].".php";
 
+    }
+
+  }else{
+    include "modulos/home/home.php";
   }
 
-}else{
-  include "modulos/home/home.php";
-}
-
-include "modulos/footer.php";
+  include "modulos/footer.php";
 
 
-?> 
+  ?> 
 
 </div>
 <!-- ./wrapper -->
 
-  <!-- jQuery -->
-  <script src="vistas/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="vistas/dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="vistas/dist/js/demo.js"></script>
+<!-- jQuery -->
+<script src="vistas/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="vistas/dist/js/adminlte.min.js"></script>
+
+<!-- DataTables -->
+<script src="vistas/plugins/datatables/jquery.dataTables.js"></script>
+<script src="vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="vistas/dist/js/demo.js"></script>
+
+<!-- Js Personalizado -->
+<script src="vistas/js/plantilla.js"></script>
+
 </body>
 </html>

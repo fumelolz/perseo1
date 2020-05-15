@@ -19,7 +19,6 @@
 
     <!-- Main content -->
     <section class="content">
-
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -38,6 +37,7 @@
                   <tr>
                     <th style="width: 10px;">#</th>
                     <th>Nombre</th>
+                    <th>Email</th>
                     <th>RFC</th>
                     <th>INE</th>
                     <th>Dirección</th>
@@ -45,13 +45,46 @@
                     <th>Estado</th>
                     <th>Ciudad</th>
                     <th>F.Nacimiento</th>
-                    <th>Email</th>
-                    <th>RFC</th>
                     <th>Acciónes</th>
                   </tr>
                 </thead>
                 <tbody>
 
+                  <?php 
+
+                  $item = null;
+                  $valor = null;
+
+                  $mostrarClientes = ControladorClientes::ctrMostrarClientes($item,$valor);
+
+                  foreach ($mostrarClientes as $key => $value) {
+
+                    $id_persona = $value["id_persona"];
+                    $nombre = $value["nombre"];
+                    $ap_Paterno = $value["ap_Paterno"];
+                    $ap_Materno = $value["ap_Materno"];
+                    
+
+
+                    echo '
+                    <tr>
+                    <td>'.$id_persona.'</td>
+                    <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
+                    <td>'.$value["email"].'</td>
+                    <td>'.$value["rfc"].'</td>
+                    <td>'.$value["ine"].'</td>
+                    <td>'.$value["direccion"].'</td>
+                    <td>'.$value["pais"].'</td>
+                    <td>'.$value["estado"].'</td>
+                    <td>'.$value["ciudad"].'</td>
+                    <td>'.$value["fecha_nacimiento"].'</td>
+                    <td>botones</td>
+                    </tr>';
+                  }
+
+
+                  ?>
+                  
                 </tbody>
               </table>
             </div>
