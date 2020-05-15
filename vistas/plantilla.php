@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
-  
+
   <!-- Site wrapper -->
   <div class="wrapper">
 
@@ -32,28 +32,15 @@
     include "modulos/sidebar.php";
 
     if (isset($_GET["ruta"])) {
-      
-      /*if ($_GET["ruta"]=="home" || 
-        $_GET["ruta"]=="clientes") {
-        
-        include "modulos/".$_GET["ruta"]."/".$_GET["ruta"].".php";
 
-        }*/
+      if ($_GET["ruta"]=="home" || 
+          $_GET["ruta"]=="clientes" ||
+          $_GET["ruta"]=="productos") {
 
-    switch ($_GET["ruta"]) {
-
-    case $_GET["ruta"]=="clientes":
-        include "modulos/".$_GET["ruta"]."/".$_GET["ruta"].".php";
-        break;
-
-    case $_GET["ruta"]=="productos":
         include "modulos/".$_GET["ruta"]."/".$_GET["ruta"]."-view.php";
-        break;
 
-    case $_GET["ruta"]=="home":
-        include "modulos/".$_GET["ruta"]."/".$_GET["ruta"]."-view.php";
-        break;
     }
+
 
   }else{
     include "modulos/home/home.php";
