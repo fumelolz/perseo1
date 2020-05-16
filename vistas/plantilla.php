@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.css">
 
+  <!--Estilos propios-->
   <link rel="stylesheet" href="vistas/css/estilos.css">
 
   <!-- Google Font: Source Sans Pro -->
