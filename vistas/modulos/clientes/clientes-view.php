@@ -69,7 +69,7 @@
                 <tr>
                 <td>'.$id_persona.'</td>
                 <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
-                <td><button class="copiarTexto">'.$value["email"].'</button></td>
+                <td>'.$value["email"].'</td>
                 <td>'.$value["rfc"].'</td>
                 <td>'.$value["ine"].'</td>
                 <td>'.$value["direccion"].'</td>

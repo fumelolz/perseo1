@@ -77,13 +77,3 @@ $(document).on('click', '.btnEliminarCliente', function(event) {
 	});
 
 });
-
-// Funcion para copiar texto
-$(document).on('click', '.copiarTexto', function(event) {
-	
-	var texto = $(this).html();
-	texto.select();
-	document.execCommand("copy");
-	alert("Texto en el portapapeles: " + texto.html);
-	
-});
