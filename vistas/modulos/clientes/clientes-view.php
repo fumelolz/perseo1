@@ -78,7 +78,16 @@
                     <td>'.$value["estado"].'</td>
                     <td>'.$value["ciudad"].'</td>
                     <td>'.$value["fecha_nacimiento"].'</td>
-                    <td>botones</td>
+                    <td>
+                    <center>
+                    <div class="btn-group-sm">
+
+                    <button class="btn btn-warning btnEditar" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-pencil-alt"></i></button>
+
+                    <button class="btn btn-danger btnEliminar"><i class="fas fa-times"></i></button>
+                    </div>
+                    </center>
+                    </td>
                     </tr>';
                   }
 
@@ -99,147 +108,147 @@
         </section>
         <!-- /.content -->
       </div>
-  <!-- /.content-wrapper -->
+      <!-- /.content-wrapper -->
 
-<!-- Modal crear Cliente -->
-<div class="modal fade" id="modalAgregarCliente" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCliente" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+      <!-- Modal crear Cliente -->
+      <div class="modal fade" id="modalAgregarCliente" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCliente" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
 
-      <form role="form" method="Post" enctype="multipart/form-data">
-        <div class="modal-header bg-secondary" style="color: white;">
-          <h5 class="modal-title" id="modalAgregarCliente">Agregar Cliente</h5>
-        </div>
-
-        <div class="modal-body">
-
-          <div class="box-body">
-
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Nombre del cliente" id="clienteNombre" name="clienteNombre" required>
+            <form role="form" method="Post" enctype="multipart/form-data">
+              <div class="modal-header bg-secondary" style="color: white;">
+                <h5 class="modal-title" id="modalAgregarCliente">Agregar Cliente</h5>
               </div>
-            </div>
 
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
+              <div class="modal-body">
+
+                <div class="box-body">
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Nombre del cliente" id="clienteNombre" name="clienteNombre" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Apellido paterno del cliente" id="clienteApPaterno" name="clienteApPaterno" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Apellido materno del cliente" id="clienteApMaterno" name="clienteApMaterno" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Email del cliente" id="clienteEmail" name="clienteEmail" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Rfc del cliente" id="clienteRfc" name="clienteRfc" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="INE del cliente" id="clienteIne" name="clienteIne" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Direccion del cliente" id="clienteDireccion" name="clienteDireccion" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Pais del cliente" id="clientePais" name="clientePais" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Estado del cliente" id="clienteEstado" name="clienteEstado" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Ciudad del cliente" id="clienteCiudad" name="clienteCiudad" required>
+                    </div>
+                  </div>
+
+                  <!-- Entrada para el nombre del cliente -->
+                  <div class="form-group">
+                    <div class="input-group mb-1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                      </div>
+                      <input type="text"  class="form-control" placeholder="Fecha de nacimiento del cliente" id="clienteFechaNacimiento" name="clienteFechaNacimiento" required>
+                    </div>
+                  </div>
+
                 </div>
-                <input type="text"  class="form-control" placeholder="Apellido paterno del cliente" id="clienteApPaterno" name="clienteApPaterno" required>
-              </div>
-            </div>
 
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Apellido materno del cliente" id="clienteApMaterno" name="clienteApMaterno" required>
               </div>
-            </div>
 
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Email del cliente" id="clienteEmail" name="clienteEmail" required>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
-            </div>
+              <?php 
 
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Rfc del cliente" id="clienteRfc" name="clienteRfc" required>
-              </div>
-            </div>
+              $crearCliente = new ControladorClientes();
+              $crearCliente -> ctrCrearCliente();
 
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="INE del cliente" id="clienteIne" name="clienteIne" required>
-              </div>
-            </div>
-
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Direccion del cliente" id="clienteDireccion" name="clienteDireccion" required>
-              </div>
-            </div>
-
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Pais del cliente" id="clientePais" name="clientePais" required>
-              </div>
-            </div>
-
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Estado del cliente" id="clienteEstado" name="clienteEstado" required>
-              </div>
-            </div>
-
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Ciudad del cliente" id="clienteCiudad" name="clienteCiudad" required>
-              </div>
-            </div>
-
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Fecha de nacimiento del cliente" id="clienteFechaNacimiento" name="clienteFechaNacimiento" required>
-              </div>
-            </div>
-
+              ?>
+            </form>
           </div>
-
         </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
-      <?php 
-
-      $crearCliente = new ControladorClientes();
-      $crearCliente -> ctrCrearCliente();
-
-       ?>
-      </form>
-    </div>
-  </div>
-</div>
+      </div>
