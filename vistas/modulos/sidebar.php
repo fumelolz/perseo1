@@ -6,7 +6,7 @@
     alt="AdminLTE Logo"
     class="brand-image img-circle elevation-3"
     style="opacity: .8">
-    <span class="brand-text font-weight-light">PerseoV1.0</span>
+    <span class="brand-text color-icono">PerseoV1.0</span>
   </a>
 
   <!-- Sidebar -->
@@ -17,7 +17,7 @@
         <img src="vistas/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Perseo el Semi Dios</a>
+        <a href="#" class="d-block color-icono">Perseo el Semi Dios</a>
       </div>
     </div>
 
@@ -30,8 +30,8 @@
            <!-- Inicia el modulo de productos -->
            <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
+              <i class="nav-icon fas fa-tachometer-alt color-icono"></i>
+              <p class="color-icono">
                 Productos
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -39,8 +39,8 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="productos" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lista de Productos</p>
+                  <i class="far fa-circle nav-icon color-icono"></i>
+                  <p class="color-icono">Lista de Productos</p>
                 </a>
               </li>
             </ul>
@@ -50,17 +50,17 @@
           <!-- Inicia modulo de clientes -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
+              <i class="nav-icon fas fa-users color-icono"></i>
+              <p class="color-icono">
                 Clientes
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left color-icono"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="clientes" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lista de Clientes</p>
+                  <i class="far fa-circle nav-icon color-icono"></i>
+                  <p class="color-icono">Lista de Clientes</p>
                 </a>
               </li>
             </ul>
@@ -70,8 +70,8 @@
            <!-- Inicia modulo de Proveedores -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="far fa-address-card nav-icon"></i>
-              <p>
+              <i class="far fa-address-card nav-icon color-icono"></i>
+              <p class="color-icono">
                 Proveedores
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -79,8 +79,8 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="proveedores" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lista de Proveedores</p>
+                  <i class="far fa-circle nav-icon color-icono"></i>
+                  <p class="color-icono">Lista de Proveedores</p>
                 </a>
               </li>
             </ul>
