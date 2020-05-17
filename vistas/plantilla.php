@@ -21,6 +21,11 @@
   <!--Estilos propios-->
   <link rel="stylesheet" href="vistas/css/estilos.css">
 
+  <!-- SweetAlert -->
+  <link rel="stylesheet" href="vistas/plugins/sweetalert2/sweetalert2.css">
+  <!-- SweetAlert -->
+  <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
+
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -75,6 +80,7 @@
 
 <!-- Js Personalizado -->
 <script src="vistas/js/plantilla.js"></script>
+<script src="vistas/js/clientes.js"></script>
 
 </body>
 </html>

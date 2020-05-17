@@ -84,4 +84,52 @@ class ModeloClientes{
 
 	}
 
+
+	// Funcion para editar un cliente por su id
+	static public function mdlEditarCliente($tabla,$datos){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, ap_Paterno=:ap_Paterno, ap_Materno=:ap_Materno, email=:email, rfc=:rfc, ine=:ine, direccion=:direccion, pais=:pais, estado=:estado, ciudad=:ciudad, fecha_nacimiento=:fecha_nacimiento WHERE id_persona=:id_persona");
+
+		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_INT);
+		$stmt -> bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
+		$stmt -> bindParam(":ap_Paterno",$datos["ap_Paterno"],PDO::PARAM_STR);
+		$stmt -> bindParam(":ap_Materno",$datos["ap_Materno"],PDO::PARAM_STR);
+		$stmt -> bindParam(":email",$datos["email"],PDO::PARAM_STR);
+		$stmt -> bindParam(":rfc",$datos["rfc"],PDO::PARAM_STR);
+		$stmt -> bindParam(":ine",$datos["ine"],PDO::PARAM_STR);
+		$stmt -> bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);
+		$stmt -> bindParam(":pais",$datos["pais"],PDO::PARAM_STR);
+		$stmt -> bindParam(":estado",$datos["estado"],PDO::PARAM_STR);
+		$stmt -> bindParam(":ciudad",$datos["ciudad"],PDO::PARAM_STR);
+		$stmt -> bindParam(":fecha_nacimiento",$datos["fecha_nacimiento"],PDO::PARAM_STR);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	// Funccion para eliminar un cliente por su id, no se leimina si no que cambia su estado a inhabilitado
+	static public function mdlEliminarCliente($tabla,$id_persona){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET estado_cliente=0 WHERE id_persona=:id_persona");
+
+		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
 }
