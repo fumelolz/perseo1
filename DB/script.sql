@@ -94,3 +94,36 @@ CREATE TABLE IF NOT EXISTS telefonos_proveedores(
 	CONSTRAINT fk_id_proveedor_proveedores FOREIGN KEY(id_proveedor) references proveedores(id_proveedor)
 );
 
+CREATE TABLE IF NOT EXISTS pedido_proveedor(
+	id_pedido int PRIMARY KEY AUTO_INCREMENT,
+	id_proveedor int,
+	id_usuario int,
+	fecha date NOT NULL,
+	CONSTRAINT fk_id_proveedor_proveedores_pedido FOREIGN KEY(id_proveedor) references proveedores(id_proveedor),
+	CONSTRAINT fk_id_usuarios_usuarios_pedido FOREIGN KEY(id_usuario) references usuarios(id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS detalle_pedido(
+	id_pedido int,
+	id_producto int,
+	cantidad int NOT NULL,
+	CONSTRAINT pk_detalle_pedido PRIMARY KEY(id_pedido,id_producto),
+	CONSTRAINT fk_id_producto_productos_detalle_pedido FOREIGN KEY(id_producto) references productos(id_producto),
+	CONSTRAINT fk_id_pedido_pedido_detalle_pedidos FOREIGN KEY(id_pedido) references pedido_proveedor(id_pedido)
+);
+
+CREATE TABLE IF NOT EXISTS transferencia_producto(
+	id_transferencia int PRIMARY KEY AUTO_INCREMENT,
+	fecha datetime NOT NULL,
+	clasificacion tinyint(1) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS detalle_transferencia_producto(
+	id_transferencia int,
+	id_producto int,
+	cantidad int NOT NULL,
+	CONSTRAINT pk_d_trans_prod PRIMARY KEY(id_transferencia,id_producto),
+	CONSTRAINT fk_id_transferencia_transferencia_detalle FOREIGN KEY(id_transferencia) references transferencia_producto(id_transferencia), 
+	CONSTRAINT fk_id_producto_productos_trans_detalle FOREIGN KEY(id_producto) references productos(id_producto)
+);
+
