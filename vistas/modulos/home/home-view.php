@@ -34,9 +34,7 @@
             </div>
             <div class="card-body">
               <?php
-              $mensaje1="hola";
-              $mensaje2="holw";
-              $alerta= AlertasPersonalizadas::alertaExito($mensaje1,$mensaje2);
+              $alerta= AlertasPersonalizadas::alertaExito("Titulo del Mensaje","Descripcion del mensaje");
               ?>
             </div>
             <!-- /.card-body -->

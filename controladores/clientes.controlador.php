@@ -71,6 +71,10 @@ class ControladorClientes{
 		    $respuesta = ModeloClientes::mdlEditarCliente($tabla,$datos);
 			echo '<pre>'; print_r($respuesta); echo '</pre>';
 
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","SE AGREGO CORRECTAMENTE");
+			}
+
 		}
 	}
 
