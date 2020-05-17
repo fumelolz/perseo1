@@ -17,6 +17,16 @@ class ControladorProductos{
 
 	}
 
+	// Esta funcion consulta el stock de cada producto por su id
+	static public function ctrMostrarStockProducto($id_producto){
+
+		$entrada = ModeloProductos::mdlMostrarStockProductoEntrada($id_producto);
+		$salida = ModeloProductos::mdlMostrarStockProductoSalida($id_producto);
+
+		return $entrada["total_entrada"]-$salida["total_salida"];
+
+	}
+
 	// Esta función crea los Productos !!!
 	static public function ctrCrearProducto(){
 

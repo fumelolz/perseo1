@@ -119,7 +119,7 @@ class ModeloClientes{
 
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET estado_cliente=0 WHERE id_persona=:id_persona");
 
-		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_INT);
+		$stmt -> bindParam(":id_persona",$id_persona,PDO::PARAM_INT);
 
 		if ($stmt -> execute()) {
 			return "ok";

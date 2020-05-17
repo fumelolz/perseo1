@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="card-body">
-          <table class="table table-bordered table-striped tablas">
+          <table class="table table-bordered table-striped tablas" width="100%">
             <thead>
               <tr>
                 <th style="width: 10px;">#</th>
@@ -44,7 +44,6 @@
                 <th>Pais</th>
                 <th>Estado</th>
                 <th>Ciudad</th>
-                <th>F.Nacimiento</th>
                 <th>Acciónes</th>
               </tr>
             </thead>
@@ -70,14 +69,13 @@
                 <tr>
                 <td>'.$id_persona.'</td>
                 <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
-                <td>'.$value["email"].'</td>
+                <td><button class="copiarTexto">'.$value["email"].'</button></td>
                 <td>'.$value["rfc"].'</td>
                 <td>'.$value["ine"].'</td>
                 <td>'.$value["direccion"].'</td>
                 <td>'.$value["pais"].'</td>
                 <td>'.$value["estado"].'</td>
                 <td>'.$value["ciudad"].'</td>
-                <td>'.$value["fecha_nacimiento"].'</td>
                 <td>
                 <center>
                 <div class="btn-group-sm">
@@ -397,3 +395,10 @@
     </div>
   </div>
 </div>
+
+<?php 
+
+  $eliminarCliente = new ControladorClientes();
+  $eliminarCliente -> ctrEliminarCliente();
+
+?>
