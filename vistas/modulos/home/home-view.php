@@ -33,7 +33,11 @@
               </div>
             </div>
             <div class="card-body">
-              Rodrigo Es puto
+              <?php
+              $mensaje1="hola";
+              $mensaje2="holw";
+              $alerta= AlertasPersonalizadas::alertaExito($mensaje1,$mensaje2);
+              ?>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
