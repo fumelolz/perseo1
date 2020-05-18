@@ -72,7 +72,7 @@ class ControladorClientes{
 			echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta=="ok") {
-				$alerta= AlertasPersonalizadas::alertaExito("EDITADO","SE EDITO CORRECTAMENTE");
+				$alerta = AlertasPersonalizadas::alertaExito("EDITADO","SE EDITO CORRECTAMENTE");
 			}
 
 		}
