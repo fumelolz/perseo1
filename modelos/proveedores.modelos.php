@@ -34,11 +34,11 @@ class ModeloProveedores{
 	// Función parar crear un Proveedor
 	static public function mdlCrearProveedor($tabla,$datos){
 		
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,fecha_alianza,estado,ultima_compra) VALUES(:nombre,:fecha_alianza,:estado,:ultima_compra)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,fecha_alianza,estado,ultima_fecha_compra) VALUES(:nombre,:fecha_alianza,:estado,:ultima_fecha_compra)");
 
 		$stmt -> bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
 		$stmt -> bindParam(":fecha_alianza",$datos["fecha_alianza"],PDO::PARAM_STR);
-		$stmt -> bindParam(":estado",$datos["estado"],PDO::PARAM_STR);
+		$stmt -> bindParam(":estado",$datos["estado"],PDO::PARAM_INT);
 		$stmt -> bindParam(":ultima_fecha_compra",$datos["ultima_fecha_compra"],PDO::PARAM_STR);
 
 		if($stmt -> execute()){
@@ -46,6 +46,7 @@ class ModeloProveedores{
 			return "ok";
 		}else{
 			//$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar proveedor",$datos);
+			return "error";
 		}
 
 		$stmt -> close();
