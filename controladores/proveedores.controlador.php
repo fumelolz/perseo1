@@ -15,13 +15,9 @@
 
 			$tabla = "proveedores";
 
-			$datos = array('nombre' => $_POST["proveedorNombre"],
-						   'fecha_alianza' => $_POST["proveedorFechaAlianza"],
-						   'estado' => $_POST["proveedorEstado"],
-						   'ultima_fecha_compra' => $_POST["proveedorUFC"]);
+			$datos = array('nombre' => $_POST["proveedorNombre"]);
 
 			$respuesta = ModeloProveedores::mdlCrearProveedor($tabla,$datos);
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 		}
 		}

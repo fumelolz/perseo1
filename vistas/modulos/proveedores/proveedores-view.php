@@ -117,38 +117,6 @@
               </div>
             </div>
 
-            <!-- Entrada para la fecha de alianza-->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Fecha de la alianza" id="proveedorFechaAlianza" name="proveedorFechaAlianza" required>
-              </div>
-            </div>
-
-            <!-- Entrada para el estado-->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Estado del proveedor" id="proveedorEstado" name="proveedorEstado" required>
-              </div>
-            </div>
-
-            <!-- Entrada para la ultima fecha de compra-->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Ultima fecha de compra" id="proveedorUFC" name="proveedorUFC" required>
-              </div>
-            </div>
-
-            
-
           </div>
 
         </div>

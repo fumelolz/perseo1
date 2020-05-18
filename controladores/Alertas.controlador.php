@@ -6,7 +6,7 @@
 
 class AlertasPersonalizadas{
 
-	static public function alertaExito($titulo, $descripcion){
+	static public function alertaExito($titulo, $descripcion,$redireccion){
 		$data='<script>
 		Swal.fire(
   		"'.$titulo.'",
@@ -14,7 +14,7 @@ class AlertasPersonalizadas{
         "success"
          ).then(function (result){
 				if(result.value){
-					window.location="clientes";
+					window.location="'.$redireccion.'";
 				}
          	});
          </script>';
