@@ -34,7 +34,7 @@
             </div>
             <div class="card-body">
               <?php
-              $alerta= AlertasPersonalizadas::alertaExito("Titulo del Mensaje","Descripcion del mensaje");
+              $alerta= AlertasPersonalizadas::alertaPregunta("Desea borrar?","se borrara","Borrar","Se borro","borrrado");
               ?>
             </div>
             <!-- /.card-body -->
