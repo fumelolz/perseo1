@@ -67,7 +67,7 @@
           </li>
           <!-- Finaliza modulo de clientes -->
 
-           <!-- Inicia modulo de Proveedores -->
+          <!-- Inicia modulo de Proveedores -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="far fa-address-card nav-icon color-icono"></i>
@@ -86,6 +86,26 @@
             </ul>
           </li>
           <!-- Finaliza modulo de Proveedores -->
+
+          <!-- Inicia modulo de Usuarios -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="far fa-address-card nav-icon color-icono"></i>
+              <p class="color-icono">
+                Usuarios
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="usuarios" class="nav-link">
+                  <i class="far fa-circle nav-icon color-icono"></i>
+                  <p class="color-icono">Lista de Usuarios</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- Finaliza modulo de Usuarios -->
 
         </ul>
       </nav>

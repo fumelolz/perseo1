@@ -34,7 +34,6 @@
             </div>
             <div class="card-body">
               <?php
-              $alerta= AlertasPersonalizadas::alertaPregunta("Desea borrar?","se borrara","Borrar","Se borro","borrrado");
               ?>
             </div>
             <!-- /.card-body -->
