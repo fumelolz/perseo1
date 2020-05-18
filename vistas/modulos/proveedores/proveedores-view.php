@@ -73,9 +73,9 @@
                           <center>
                           <div class="btn-group-sm">
 
-                          <button class="btn btn-warning btnEditarProveedor" data-toggle="modal" data-target="#modalEditarProveedor" id="'.$id_proveedor.'" ><i class="fas fa-pencil-alt"></i></button>
+                          <button class="btn btn-warning btnEditarProveedor" data-toggle="modal" data-target="#modalEditarProveedor" idProveedor="'.$id_proveedor.'" ><i class="fas fa-pencil-alt"></i></button>
 
-                          <button class="btn btn-danger btnEliminarProveedor" id="'.$id_proveedor.'"><i class="fas fa-times"></i></button>
+                          <button class="btn btn-danger btnEliminarProveedor" idProveedor="'.$id_proveedor.'"><i class="fas fa-times"></i></button>
 
                           </div>
                           </center>
