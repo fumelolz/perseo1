@@ -14,11 +14,41 @@
 			if (isset($_POST["proveedorNombre"])) {
 
 			$tabla = "proveedores";
-
 			$datos = array('nombre' => $_POST["proveedorNombre"]);
-
 			$respuesta = ModeloProveedores::mdlCrearProveedor($tabla,$datos);
+			if($respuesta=="ok"){
+				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","proveedores");
+			}
+			else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar proveedor","error");
+			}
+
+			}
+		}
+
+		static public function ctrEditarProveedor(){
+			if (isset($_POST["editarIdProveedor"])) {
+
+			$tabla = "proveedores";
+
+			$datos = array('id_proveedor' => $_POST["editarIdProveedor"],
+						   'nombre' => $_POST["editarProveedorNombre"],
+						   );
+
+			// Muestra los datos que trae el array 
+			 echo '<pre>'; print_r($datos); echo '</pre>';
+			 echo '<script>console.log($datos)</script>';
+
+		    $respuesta = ModeloProveedores::mdlEditarProvedor($tabla,$datos);
+
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("EDITADO","Se edito el proveedor correctamente","proveedores");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo Editar","A ocurrido un error al editar proveedor","error");
+			}
 
 		}
 		}
+
+
 	} 

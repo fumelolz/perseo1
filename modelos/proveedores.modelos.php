@@ -45,10 +45,27 @@ class ModeloProveedores{
 
 
 		if($stmt -> execute()){
-			 $alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","proveedores");
 			return "ok";
 		}else{
-			$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar proveedor","error");
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+		$stmtHora -> close();
+		$stmtHora=null;
+		$horaServidor=null;
+	}
+
+	static public function mdlEditarProveedor($tabla,$datos){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre WHERE id_proveedor=:id_proveedor");
+
+		$stmt -> bindParam(":id_proveedor",$datos["id_proveedor"],PDO::PARAM_INT);
+		$stmt -> bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
 			return "error";
 		}
 
