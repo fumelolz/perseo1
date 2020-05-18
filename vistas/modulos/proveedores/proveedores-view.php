@@ -23,7 +23,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Title</h3>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProveedor">Agregar Proveedor</button>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -33,7 +33,7 @@
               </div>
             </div>
             <div class="card-body">
-              <!--Se empieza a trabajar los productos-->
+              <!--Se empieza a trabajar los proveedores-->
               
               <table class="table table-bordered table-striped tablas">
                 <thead>
@@ -42,7 +42,6 @@
                     <th>Nombre</th>
                     <th>Fecha de Alianza</th>
                     <th>Ultima fecha de compra</th>
-                    <th>Estado</th>
                     <th>Acciónes</th>
                   </tr>
                 </thead>
@@ -57,21 +56,22 @@
 
                   foreach ($mostrarProveedores as $key => $value) {
 
-                    $id_proveedor = $value["id_proveedor"];
-                    $nombre = $value["nombre"];
-                    $fechaAlianza = $value["fecha_alianza"];
-                    $estado = $value["estado"];
-                    $ultimaFechaCompra = $value["ultima_fecha_compra"];
+                    if($value["estado"]!=0){
 
-                    echo '
-                    <tr>
-                    <td>'.$id_proveedor.'</td>
-                    <td>'.$nombre.'</td>
-                    <td>'.$fechaAlianza.'</td>
-                    <td>'.$ultimaFechaCompra.'</td>
-                    <td>'.$estado.'</td>
-                    <td>botones</td>
-                    </tr>';
+                      $id_proveedor = $value["id_proveedor"];
+                      $nombre = $value["nombre"];
+                      $fechaAlianza = $value["fecha_alianza"];
+                      $ultimaFechaCompra = $value["ultima_fecha_compra"];
+
+                      echo '
+                      <tr>
+                      <td>'.$id_proveedor.'</td>
+                      <td>'.$nombre.'</td>
+                      <td>'.$fechaAlianza.'</td>
+                      <td>'.$ultimaFechaCompra.'</td>
+                      <td>botones</td>
+                      </tr>';
+                    }
                   }
 
 
@@ -82,7 +82,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              Footer
+              <button class="btn btn-danger">Ver lista de proveedores eliminados</button>
             </div>
             <!-- /.card-footer-->
           </div>
@@ -92,3 +92,78 @@
         <!-- /.content -->
       </div>
   <!-- /.content-wrapper -->
+
+  <!-- Modal crear Cliente -->
+<div class="modal fade" id="modalAgregarProveedor" tabindex="-1" role="dialog" aria-labelledby="modalAgregarProveedor" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <form role="form" method="Post" enctype="multipart/form-data">
+        <div class="modal-header bg-secondary" style="color: white;">
+          <h5 class="modal-title" id="modalAgregarProveedor">Agregar Proveedor</h5>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <!-- Entrada para el nombre del Proveedor -->
+            <div class="form-group">
+              <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input type="text"  class="form-control" placeholder="Nombre del proveedor" id="proveedorNombre" name="proveedorNombre" required>
+              </div>
+            </div>
+
+            <!-- Entrada para la fecha de alianza-->
+            <div class="form-group">
+              <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input type="text"  class="form-control" placeholder="Fecha de la alianza" id="proveedorFechaAlianza" name="proveedorFechaAlianza" required>
+              </div>
+            </div>
+
+            <!-- Entrada para el estado-->
+            <div class="form-group">
+              <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input type="text"  class="form-control" placeholder="Estado del proveedor" id="proveedorEstado" name="proveedorEstado" required>
+              </div>
+            </div>
+
+            <!-- Entrada para la ultima fecha de compra-->
+            <div class="form-group">
+              <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input type="text"  class="form-control" placeholder="Ultima fecha de compra" id="proveedorUFC" name="proveedorUFC" required>
+              </div>
+            </div>
+
+            
+
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        <?php 
+
+        $crearProveedor = new ControladorProveedores();
+        $crearProveedor -> ctrCrearProveedor();
+
+        ?>
+      </form>
+    </div>
+  </div>
+</div>

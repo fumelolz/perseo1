@@ -9,4 +9,20 @@
 			$respuesta = ModeloProveedores::mdlMostrarProveedores($tabla,$item,$valor);
 			return $respuesta;
 		}
+
+		static public function ctrCrearProveedor(){
+			if (isset($_POST["proveedorNombre"])) {
+
+			$tabla = "proveedores";
+
+			$datos = array('nombre' => $_POST["proveedorNombre"],
+						   'fecha_alianza' => $_POST["proveedorFechaAlianza"],
+						   'estado' => $_POST["proveedorEstado"],
+						   'ultima_fecha_compra' => $_POST["proveedorUFC"],);
+
+			$respuesta = ModeloProveedores::mdlCrearProveedor($tabla,$datos);
+			echo '<pre>'; print_r($respuesta); echo '</pre>';
+
+		}
+		}
 	} 
