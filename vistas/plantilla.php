@@ -49,7 +49,9 @@
 
         include "modulos/".$_GET["ruta"]."/".$_GET["ruta"]."-view.php";
 
-    }
+      }elseif($_GET["ruta"]=="proveedores-eliminados"){
+        include "modulos/proveedores/".$_GET["ruta"]."-view.php";
+      }
 
 
   }else{

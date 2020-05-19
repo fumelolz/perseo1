@@ -157,9 +157,6 @@
                         <span class="input-group-text"><i class="far fa-user"></i></span>
                       </div>
                       <input type="text"  class="form-control" placeholder="Email del usuario" id="usuarioEmail" name="usuarioEmail" required>
-                      <small id="passwordHelpBlock" class="form-text text-muted">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                      </small>
                     </div>
                   </div>
                 </div>

@@ -71,6 +71,14 @@
 
 	}
 
+	static public function ctrActivarProveedor($item1,$valor1,$item2,$valor2){
 
+		$tabla = "proveedores";
 
-	} 
+		$respuesta = ModeloProveedores::mdlActivarProveedor($tabla,$item1,$valor1,$item2,$valor2);
+
+		return $respuesta;
+
+	}
+
+} 

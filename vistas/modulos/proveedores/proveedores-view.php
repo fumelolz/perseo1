@@ -92,7 +92,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <button class="btn btn-danger">Ver lista de proveedores eliminados</button>
+              <a href="proveedores-eliminados" class="btn btn-danger">Ver lista de proveedores eliminados</a>
             </div>
             <!-- /.card-footer-->
           </div>

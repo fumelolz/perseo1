@@ -50,3 +50,59 @@ $(document).on('click', '.btnEliminarProveedor', function(event) {
 	});
 
 });
+
+// Activar Proveedor
+$(document).on('click', '.btnActivarProveedor', function(event) {
+	
+	var idProveedor = $(this).attr('idProveedor');
+	var estado = $(this).attr('estado');
+
+	var data = new FormData();
+	data.append('idProveedorEstado', idProveedor);
+	data.append('estado', estado);
+
+	$.ajax({
+		url:"ajax/proveedores.ajax.php",
+		method:"POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(reply){
+
+			//console.log("reply", reply);
+
+			if (window.matchMedia("(max-width:767px)").matches) {
+
+				Swal.fire({
+					type: 'success',
+					title: 'El usuario ha sido actualizado',
+					showConfirmButton:true,
+					confirmButtonText: 'Cerrar',
+					closeOnConfirm: false
+				}).then(function(result){
+
+					if(result.value){
+
+						window.location = 'proveedores-eliminados';
+
+					}
+
+				});
+			}
+		}
+	});
+
+	if (estado == 0) {
+		$(this).removeClass('btn-success');
+		$(this).addClass('btn-danger');
+		$(this).html('Desactivado');
+		$(this).attr('estado', '1');
+	}else{
+		$(this).removeClass('btn-danger');
+		$(this).addClass('btn-success');
+		$(this).html('Activado');
+		$(this).attr('estado', '0');
+	}
+
+});

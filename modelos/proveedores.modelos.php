@@ -91,4 +91,23 @@ class ModeloProveedores{
 
 	}
 
+	static public function mdlActivarProveedor($tabla,$item1,$valor1,$item2,$valor2){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item2=:estado WHERE $item1=:id_proveedor");
+
+		$stmt -> bindParam(":id_proveedor",$valor1,PDO::PARAM_INT);
+		$stmt -> bindParam(":estado",$valor2,PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
 }
