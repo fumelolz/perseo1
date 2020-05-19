@@ -53,17 +53,19 @@
 	static public function ctrEliminarProveedor(){
 
 		if (isset($_GET["idProveedorEliminar"])) {
-			
+
 			$tabla = "proveedores";
 
 			$id_proveedor = $_GET["idProveedorEliminar"];
 
-			$respuesta = ModeloClientes::mdlEliminarCliente($tabla,$id_proveedor);
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
+			$respuesta = ModeloProveedores::mdlEliminarProveedor($tabla,$id_proveedor);
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
 
-			echo "<script>
-				console.log($respuesta);
-			</script>";
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("Proveedor eliminado","El proveedor se elimino correctamete","proveedores");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se puede eliminar","A ocurrido un error al editar proveedor","error");
+			}
 
 		}
 
