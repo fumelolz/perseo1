@@ -41,7 +41,7 @@ class AlertasPersonalizadas{
 	public static function alertaError($titulo, $descripcion,$footer){
 		$data='<script>
 					Swal.fire({
-					  icon: "error",
+					  type: "error",
 					  title: "'.$titulo.'",
 					  text: "'.$descripcion.'",
 					  footer: "'.$footer.'"

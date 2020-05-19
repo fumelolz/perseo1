@@ -12,7 +12,7 @@ class AjaxProveedores{
 		$item = "id_proveedor";
 		$valor = $this->idProveedor;
 
-		$respuesta = ControladorProveedores::ctrMostrarProveedor($item,$valor);
+		$respuesta = ControladorProveedores::ctrMostrarProveedores($item,$valor);
 
 		echo json_encode($respuesta);
 	}
@@ -20,7 +20,7 @@ class AjaxProveedores{
 }
 
 if (isset($_POST["mostrarProveedor"])) {
-	$mostrar = new AjaxClientes();
+	$mostrar = new AjaxProveedores();
 	$mostrar -> idProveedor = $_POST["mostrarProveedor"];
 	$mostrar -> ajaxMostrarProveedor();
 }

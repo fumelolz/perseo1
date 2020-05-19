@@ -35,11 +35,10 @@
 						   'nombre' => $_POST["editarProveedorNombre"],
 						   );
 
-			// Muestra los datos que trae el array 
-			 echo '<pre>'; print_r($datos); echo '</pre>';
-			 echo '<script>console.log($datos)</script>';
+		     // Muestra los datos que trae el array 
+			  //echo '<pre>'; print_r($datos); echo '</pre>';
 
-		    $respuesta = ModeloProveedores::mdlEditarProvedor($tabla,$datos);
+		   $respuesta = ModeloProveedores::mdlEditarProveedor($tabla,$datos);
 
 			if ($respuesta=="ok") {
 				$alerta= AlertasPersonalizadas::alertaExito("EDITADO","Se edito el proveedor correctamente","proveedores");

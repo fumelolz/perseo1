@@ -16,7 +16,9 @@ $(document).on('click', '.btnEditarProveedor', function(event) {
 		success: function(respuesta){
 
 			// Muestra lo que trae la respuesta
-			console.log("respuesta", respuesta);
+			//console.log("respuesta", respuesta);
+			$("#editarIdProveedor").attr('value',respuesta["id_proveedor"]);
+			$("#editarProveedorNombre").attr('value',respuesta["nombre"]);
 
 		}
 	});
