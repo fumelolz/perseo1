@@ -269,8 +269,8 @@
             </div>
             <?php 
 
-            $crearCliente = new ControladorClientes();
-            $crearCliente -> ctrCrearCliente();
+            $crearUsuario = new ControladorUsuarios();
+            $crearUsuario -> ctrCrearUsuario();
 
             ?>
           </form>

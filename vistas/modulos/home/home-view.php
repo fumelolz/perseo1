@@ -34,6 +34,19 @@
             </div>
             <div class="card-body">
               <?php
+
+              date_default_timezone_set('America/Mexico_City');
+
+              $date = date('Y-m-d');
+              $time = date('H:i:s');
+
+              $fecha_servidor = ControladorDB::ctrMostrarFecha();
+              $fecha_local = date('Y-m-d');
+
+              echo 'Fecha del gestor de base de datos: '; echo $fecha_servidor; 
+              echo '<br>';
+              echo 'Fecha local: '; echo $fecha_local; 
+
               ?>
             </div>
             <!-- /.card-body -->

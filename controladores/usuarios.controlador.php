@@ -15,6 +15,15 @@ class ControladorUsuarios{
 	}
 
 	static public function ctrCrearUsuario(){
+
+		if (isset($_POST["usuarioNombre"])) {
+			
+			$nombre = $_POST["usuarioNombre"];
+			$ap_Paterno = $_POST["usuarioApPaterno"];
+			$ap_Materno = $_POST["usuarioApMaterno"];
+			$email = $_POST["usuarioEmail"];
+
+		}
 		
 	}
 
