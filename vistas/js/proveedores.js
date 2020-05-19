@@ -24,3 +24,29 @@ $(document).on('click', '.btnEditarProveedor', function(event) {
 	});
 	
 });
+
+// Boton para elminar un cliente
+$(document).on('click', '.btnEliminarProveedor', function(event) {
+	
+	var idProveedor = $(this).attr('idProveedor');
+	
+	Swal.fire({
+		type: 'warning',
+		title: 'Estas seguro de eliminar al proveedor',
+		text:'Puedes cancelar, usando el boton Cancelar',
+		showCancelButton:true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor:'d33',
+		cancelButtonText:'Cancelar',
+		confirmButtonText: 'Si, eliminar proveedor!',
+	}).then(function(result){
+
+		if(result.value){
+
+			window.location = "index.php?ruta=proveedores&idProveedorEliminar="+idProveedor;
+
+		}
+
+	});
+
+});

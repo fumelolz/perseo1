@@ -49,5 +49,26 @@
 		}
 		}
 
+		// Funcion para borrar proveedores
+	static public function ctrEliminarProveedor(){
+
+		if (isset($_GET["idProveedorEliminar"])) {
+			
+			$tabla = "proveedores";
+
+			$id_proveedor = $_GET["idProveedorEliminar"];
+
+			$respuesta = ModeloClientes::mdlEliminarCliente($tabla,$id_proveedor);
+			echo '<pre>'; print_r($respuesta); echo '</pre>';
+
+			echo "<script>
+				console.log($respuesta);
+			</script>";
+
+		}
+
+	}
+
+
 
 	} 
