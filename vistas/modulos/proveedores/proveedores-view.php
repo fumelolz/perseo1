@@ -189,3 +189,10 @@
     </div>
   </div>
 </div>
+
+<?php 
+
+  $eliminarProveedor= new ControladorProveedores();
+  $eliminarProveedor-> ctrEliminarProveedor();
+
+?>

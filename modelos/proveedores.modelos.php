@@ -34,14 +34,14 @@ class ModeloProveedores{
 	// Función parar crear un Proveedor
 	static public function mdlCrearProveedor($tabla,$datos){
 		//Para saber la hora actual
-		$stmtHora=Conexion::conectar()->prepare("SELECT CURDATE()");
-		$stmtHora -> execute();
-		$horaServidor = $stmtHora -> fetch();
+		$stmtFecha=Conexion::conectar()->prepare("SELECT CURDATE()");
+		$stmtFecha -> execute();
+		$fechaServidor = $stmtFecha -> fetch();
 
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,fecha_alianza,estado) VALUES(:nombre,:fecha_alianza,'1')");
 
 		$stmt -> bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
-		$stmt -> bindParam(":fecha_alianza",$horaServidor[0],PDO::PARAM_STR);
+		$stmt -> bindParam(":fecha_alianza",$fechaServidor[0],PDO::PARAM_STR);
 
 
 		if($stmt -> execute()){
@@ -52,9 +52,9 @@ class ModeloProveedores{
 
 		$stmt -> close();
 		$stmt = null;
-		$stmtHora -> close();
-		$stmtHora=null;
-		$horaServidor=null;
+		$stmtFecha -> close();
+		$stmtFecha=null;
+		$fechaServidor=null;
 	}
 
 	static public function mdlEditarProveedor($tabla,$datos){
@@ -71,6 +71,24 @@ class ModeloProveedores{
 
 		$stmt -> close();
 		$stmt = null;
+	}
+
+	static public function mdlEliminarProveedor($tabla,$id_proveedor){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET estado=0 WHERE id_proveedor=:id_proveedor");
+
+		$stmt -> bindParam(":id_proveedor",$id_proveedor,PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
 	}
 
 }
