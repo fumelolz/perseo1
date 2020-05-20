@@ -84,7 +84,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            footer
+            <a href="proveedores" class="btn btn-success">Regresar a los proveedores activos</a>
           </div>
           <!-- /.card-footer-->
         </div>
