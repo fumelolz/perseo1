@@ -60,19 +60,24 @@
 
                 foreach ($mostrarUsuarios as $key => $value) {
 
+                  $id_usuario = $value["id_usuario"];
                   $id_persona = $value["id_persona"];
                   $nombre = $value["nombre"];
                   $ap_Paterno = $value["ap_Paterno"];
                   $ap_Materno = $value["ap_Materno"];
 
-
+                  if ($value["state"] == 1) {
+                    $btn = '<center><button class="btn btn-danger" estado="1" idUsuario="'.$id_usuario.'">Desactivado</button></center>';
+                  }else{
+                    $btn = '<center><button class="btn btn-success" estado="0" idUsuario="'.$id_usuario.'">Activado</button></center>';
+                  }
 
                   echo '
                   <tr>
-                  <td>'.$id_persona.'</td>
+                  <td>'.$id_usuario.'</td>
                   <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
                   <td>'.$value["username"].'</td>
-                  <td>'.$value["state"].'</td>
+                  <td>'.$btn.'</td>
                   <td>'.$value["email"].'</td>
                   <td>'.$value["rfc"].'</td>
                   <td>'.$value["ine"].'</td>
@@ -84,9 +89,9 @@
                   <center>
                   <div class="btn-group-sm">
 
-                  <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$id_persona.'" ><i class="fas fa-pencil-alt"></i></button>
+                  <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idUsuario="'.$id_persona.'" ><i class="fas fa-pencil-alt"></i></button>
 
-                  <button class="btn btn-danger btnEliminarCliente" idCliente="'.$id_persona.'"><i class="fas fa-times"></i></button>
+                  <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$id_persona.'"><i class="fas fa-times"></i></button>
 
                   </div>
                   </center>
@@ -248,11 +253,11 @@
                 </div>
 
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="usuarioNivel0" name="usuarioNivel" class="custom-control-input">
+                  <input type="radio" id="usuarioNivel0" name="usuarioNivel" class="custom-control-input" value="0">
                   <label class="custom-control-label" for="usuarioNivel0">Administrador</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="usuarioNivel1" name="usuarioNivel" class="custom-control-input">
+                  <input type="radio" id="usuarioNivel1" name="usuarioNivel" class="custom-control-input" value="1">
                   <label class="custom-control-label" for="usuarioNivel1">Vendedor</label>
                 </div>
 
