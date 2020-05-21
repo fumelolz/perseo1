@@ -10,7 +10,7 @@
         <div class="modal-body">
 
         <div id="idProveedorT" class="btn btn-danger"></div>
-        <div id="nombreProveedorT" class="btn btn-info"></div>
+        <div id="nombreProveedorT" class="btn btn-success"></div>
         <br><br>
           <div class="box-body">
 

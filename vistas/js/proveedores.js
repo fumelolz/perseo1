@@ -107,7 +107,7 @@ $(document).on('click', '.btnActivarProveedor', function(event) {
 
 });
 
-
+//Funcion para ver los telefonos
 $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	
 	var idProveedor = $(this).attr('idProveedor');
@@ -144,8 +144,22 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 		success: function(respuesta){
 			//console.log("respuesta", respuesta);
 			$(".addTelefonos").empty();
+
 			for (var i = 0; i < respuesta.length; i++) {
-				$(".addTelefonos").append('<tr><td>'+respuesta[i]["descripcion"]+'</td><td>'+respuesta[i]["telefono"]+'</td><td></td></tr>')
+				$(".addTelefonos").append('<tr><td>'+
+										respuesta[i]["descripcion"]+
+										'</td><td>'+respuesta[i]["telefono"]+
+										'</td><td>'+
+										'<center>'+
+										'<div class="btn-group-sm">'+
+										'<button class="btn btn-warning btnEditarProveedor" data-toggle="modal" data-target="#modalEditarProveedor" idProveedor="'.respuesta[i]["id_telefono"].'" >'+
+										'<i class="fas fa-pencil-alt"></i></button>'+
+										'<button class="btn btn-danger btnEliminarProveedor" idProveedor="'.respuesta[i]["id_telefono"].'">'+
+										'<i class="fas fa-times"></i>'+
+										'</button>'+
+										'</div>'+
+										'</center>'+
+										'</td></tr>')
 			}
 
 		}
