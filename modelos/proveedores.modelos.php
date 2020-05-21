@@ -31,6 +31,7 @@ class ModeloProveedores{
 			$stmt -> close();
 			$stmt = null;
 	}
+
 	// Función parar crear un Proveedor
 	static public function mdlCrearProveedor($tabla,$datos){
 		//Para saber la hora actual
@@ -108,6 +109,35 @@ class ModeloProveedores{
 		$stmt -> close();
 		$stmt = null;
 
+	}
+
+	static public function mdlMostrarTelefonos($tabla, $item, $valor){
+			if($item != null){ 
+				$stmt = Conexion::conectar()->prepare("
+				SELECT * 
+				FROM $tabla
+				WHERE $item = :$item
+				");
+
+				$stmt -> bindParam(":".$item,$valor,PDO::PARAM_INT);
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+			else{
+				$stmt = Conexion::conectar()->prepare("
+				SELECT * 
+				FROM $tabla
+				");
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+
+			$stmt -> close();
+			$stmt = null;
 	}
 
 }

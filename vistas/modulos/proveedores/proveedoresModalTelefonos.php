@@ -23,27 +23,7 @@
                     <th>Acciónes</th>
                   </tr>
                 </thead>
-                <tbody>
-
-                  <?php 
-                  $item=null;
-                  $valor=null;
-                  $mostrarTelefonos= ControladorProveedores::ctrMostrarTelefonos($item,$valor);
-
-                  foreach ($mostrarTelefonos as $key => $value) {
-
-                      $descripcion = $value["descripcion"];
-                      $telefono = $value["telefono"];
-                      echo '
-                      <tr>
-                      <td>'.$descripcion.'</td>
-                      <td>'.$telefono.'</td>
-                      <td>
-                      </td>
-                      </tr>
-                          ';
-                  }
-                  ?>
+                <tbody class="addTelefonos">
                   
                 </tbody>
               </table>

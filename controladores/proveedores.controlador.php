@@ -83,7 +83,7 @@
 
 	static public function ctrMostrarTelefonos($item,$valor){
 		$tabla = "telefonos_proveedores";
-		$respuesta = ModeloProveedores::mdlMostrarProveedores($tabla,$item,$valor);
+		$respuesta = ModeloProveedores::mdlMostrarTelefonos($tabla, $item, $valor);
 		return $respuesta;
 	}
 

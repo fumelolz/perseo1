@@ -107,6 +107,7 @@ $(document).on('click', '.btnActivarProveedor', function(event) {
 
 });
 
+
 $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	
 	var idProveedor = $(this).attr('idProveedor');
@@ -115,7 +116,7 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	data.append('mostrarProveedor',idProveedor);
 
 	var data1 = new FormData();
-	data1.append('IdTelefono',idProveedor);
+	data1.append('mostrarTelefonos',idProveedor);
 
 	$.ajax({
 		url:"ajax/proveedores.ajax.php",
@@ -135,13 +136,18 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	$.ajax({
 		url:"ajax/proveedores.ajax.php",
 		method:"POST",
-		data1: data,
+		data: data1,
 		cache: false,
 		contentType: false,
 		processData: false,
-		dataType: "html",
+		dataType: "json",
 		success: function(respuesta){
-			console.log("respuesta", respuesta);	
+			//console.log("respuesta", respuesta);
+			$(".addTelefonos").empty();
+			for (var i = 0; i < respuesta.length; i++) {
+				$(".addTelefonos").append('<tr><td>'+respuesta[i]["descripcion"]+'</td><td>'+respuesta[i]["telefono"]+'</td><td></td></tr>')
+			}
+
 		}
 	});
 	
