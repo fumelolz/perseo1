@@ -28,6 +28,16 @@ class AjaxProveedores{
 		$respuesta = ControladorProveedores::ctrActivarProveedor($item1,$valor1,$item2,$valor2);
 	}
 
+	public function ajaxMostrarTelefonosProveedor(){
+
+		$item = "id_proveedor";
+		$valor = 1;
+
+		$respuesta = ControladorProveedores::ctrMostrarTelefonoss($item,$valor);
+
+		echo json_encode($respuesta);
+	}
+
 }
 
 if (isset($_POST["mostrarProveedor"])) {
@@ -41,4 +51,10 @@ if (isset($_POST["idProveedorEstado"])) {
 	$cambiarEstado -> estado = $_POST["estado"];
 	$cambiarEstado -> idProveedor = $_POST["idProveedorEstado"];
 	$cambiarEstado -> ajaxActivarProveedor();
+}
+
+if (isset($_POST["IdTelefono"])) {
+	$mostrar = new AjaxProveedores();
+	$mostrar -> idProveedor = $_POST["IdTelefono"];
+	$mostrar -> ajaxMostrarTelefonosProveedor();
 }

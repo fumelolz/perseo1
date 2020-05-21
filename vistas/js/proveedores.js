@@ -114,6 +114,9 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	var data = new FormData();
 	data.append('mostrarProveedor',idProveedor);
 
+	var data1 = new FormData();
+	data1.append('IdTelefono',idProveedor);
+
 	$.ajax({
 		url:"ajax/proveedores.ajax.php",
 		method:"POST",
@@ -126,6 +129,19 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 			 $("#idProveedorT").text(respuesta["id_proveedor"]);
 			 $("#nombreProveedorT").text(respuesta["nombre"]);
 			// console.log(respuesta["id_proveedor"]);
+		}
+	});
+
+	$.ajax({
+		url:"ajax/proveedores.ajax.php",
+		method:"POST",
+		data1: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "html",
+		success: function(respuesta){
+			console.log("respuesta", respuesta);	
 		}
 	});
 	
