@@ -15,7 +15,7 @@
           <div class="box-body">
 
             <!-- Entrada para el nombre del Proveedor -->
-            <table class="table table-bordered table-striped tablas">
+            <table class="table table-bordered table-striped tablas" width=100%>
                 <thead>
                   <tr>
                     <th>Descripcion</th>
