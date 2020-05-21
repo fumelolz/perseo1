@@ -12,6 +12,9 @@
 
           <div class="box-body">
 
+            <h3 class="text-muted mb-3">Informacion Personal</h3>
+            <hr>
+
             <!-- Entrada para el nombre del cliente -->
             <div class="form-group">
               <div class="row">
@@ -112,6 +115,9 @@
               </div>
             </div>
 
+
+            <hr>
+            <h3 class="text-muted mb-3 mt-3">Informacion de usuario</h3>
             <hr>
 
             <!-- Entrada para el nombre del usuario -->
@@ -140,6 +146,7 @@
               <input type="radio" id="usuarioNivel1" name="usuarioNivel" class="custom-control-input" value="1">
               <label class="custom-control-label" for="usuarioNivel1">Vendedor</label>
             </div>
+            <hr>
 
           </div>
 
@@ -159,3 +166,4 @@
     </div>
   </div>
 </div>
+

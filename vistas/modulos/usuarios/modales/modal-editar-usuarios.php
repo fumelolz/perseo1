@@ -141,12 +141,14 @@
 
         <div class="custom-control custom-radio custom-control-inline">
           <input type="radio" id="editarUsuarioNivel0" name="editarUsuarioNivel" class="custom-control-input" value="0">
-          <label class="custom-control-label" for="usuarioNivel0">Administrador</label>
+          <label class="custom-control-label" for="editarUsuarioNivel0">Administrador</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
           <input type="radio" id="editarUsuarioNivel1" name="editarUsuarioNivel" class="custom-control-input" value="1">
-          <label class="custom-control-label" for="usuarioNivel1">Vendedor</label>
+          <label class="custom-control-label" for="editarUsuarioNivel1">Vendedor</label>
         </div>
+
+        <hr>
 
       </div>
 

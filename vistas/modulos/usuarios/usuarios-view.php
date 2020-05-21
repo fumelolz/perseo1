@@ -65,11 +65,16 @@
                   $nombre = $value["nombre"];
                   $ap_Paterno = $value["ap_Paterno"];
                   $ap_Materno = $value["ap_Materno"];
+                  $nivel = $value["nivel"];
 
                   if ($value["state"] == 1) {
                     $btn = '<center><button class="btn btn-danger" estado="1" idUsuario="'.$id_usuario.'">Desactivado</button></center>';
                   }else{
                     $btn = '<center><button class="btn btn-success" estado="0" idUsuario="'.$id_usuario.'">Activado</button></center>';
+                  }
+
+                  if () {
+                    # code...
                   }
 
                   echo '
@@ -123,7 +128,7 @@
     include "modales/modal-crear-usuarios.php";
     include "modales/modal-editar-usuarios.php";
 
-    $eliminarCliente = new ControladorClientes();
-    $eliminarCliente -> ctrEliminarCliente();
+    $eliminarUsuario = new ControladorUsuarios();
+    $eliminarUsuario -> ctrEliminarUsuario();
 
     ?>

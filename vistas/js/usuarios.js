@@ -33,11 +33,37 @@ $(document).on('click', '.btnEditarUsuario', function(event) {
 
 			if (reply["nivel"] == 0) {
 				$("#editarUsuarioNivel0").attr('checked', true);
-			}else{
+			}else if(reply["nivel"] == 1){
 				$("#editarUsuarioNivel1").attr('checked', true);
 			}
 
 		}
+	});
+
+});
+
+// Boton para elminar un usuario
+$(document).on('click', '.btnEliminarUsuario', function(event) {
+	
+	var idUsuario = $(this).attr('idUsuario');
+	
+	Swal.fire({
+		type: 'warning',
+		title: 'Estas seguro de eliminar al Usuario?',
+		text:'Puedes cancelar, usando el boton Cancelar',
+		showCancelButton:true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor:'d33',
+		cancelButtonText:'Cancelar',
+		confirmButtonText: 'Si, eliminar Usuario!',
+	}).then(function(result){
+
+		if(result.value){
+
+			window.location = "index.php?ruta=usuarios&idUsuarioEliminar="+idUsuario;
+
+		}
+
 	});
 
 });

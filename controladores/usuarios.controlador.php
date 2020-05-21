@@ -74,7 +74,8 @@ class ControladorUsuarios{
 
 			$tabla1 = "personas";
 			$tabla2 = "usuarios";
-			
+
+			$id_persona = $_POST["editarIdUsuario"];
 			$nombre = $_POST["editarUsuarioNombre"];
 			$ap_Paterno = $_POST["editarUsuarioApPaterno"];
 			$ap_Materno = $_POST["editarUsuarioApMaterno"];
@@ -92,7 +93,7 @@ class ControladorUsuarios{
 			$nivel = $_POST["editarUsuarioNivel"];
 			$fecha_alta  = ControladorDB::ctrMostrarFecha();
 			$password = "";
-			
+
 			if (isset($_POST["editarUsuarioPassword"]) && !empty($_POST["editarUsuarioPassword"])) {
 				$password = crypt($passwordNuevo, '$2a$07$hayvcesawdquesnwoasusdos$');
 			}else{
@@ -101,7 +102,8 @@ class ControladorUsuarios{
 
 			
 
-			$datos = array('nombre' => $nombre,
+			$datos = array('id_persona' => $id_persona,
+						   'nombre' => $nombre,
 						   'ap_Paterno' => $ap_Paterno,
 						   'ap_Materno' => $ap_Materno,
 						   'email' => $email,
@@ -120,16 +122,25 @@ class ControladorUsuarios{
 			// Mostrar los datos del array
 			echo '<pre>'; print_r($datos); echo '</pre>';
 
-			// $respuesta = ModeloUsuarios::mdlCrearUsuario($tabla1,$tabla2,$datos);
+		    $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla1,$tabla2,$datos);
+			echo '<pre>'; print_r($respuesta); echo '</pre>';
 
-			// if ($respuesta = "ok") {
-			// 	$alerta = AlertasPersonalizadas::alertaExito("Usuario Creado", "El usuario ha sido creado correctamente","usuarios");
-			// }else{
-			// 	$alerta = AlertasPersonalizadas::alertaBasica("Ha ocurrido un error");
-			// }
+			if ($respuesta = "ok") {
+				$alerta = AlertasPersonalizadas::alertaExito("Usuario Actualizado", "El usuario ha sido actualizado correctamente","usuarios");
+			}else{
+				$alerta = AlertasPersonalizadas::alertaBasica("Ha ocurrido un error");
+			}
 
 		}
 		
+	}
+
+	static public function ctrEliminarUsuario(){
+
+		if (isset($_GET["idUsuarioEliminar"])) {
+			echo '<script>alert("Si")</script>';
+		}
+
 	}
 
 }
