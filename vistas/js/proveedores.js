@@ -106,3 +106,27 @@ $(document).on('click', '.btnActivarProveedor', function(event) {
 	}
 
 });
+
+$(document).on('click', '.btnTelefonoProveedor', function(event) {
+	
+	var idProveedor = $(this).attr('idProveedor');
+
+	var data = new FormData();
+	data.append('mostrarProveedor',idProveedor);
+
+	$.ajax({
+		url:"ajax/proveedores.ajax.php",
+		method:"POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			 $("#idProveedorT").text(respuesta["id_proveedor"]);
+			 $("#nombreProveedorT").text(respuesta["nombre"]);
+			// console.log(respuesta["id_proveedor"]);
+		}
+	});
+	
+});

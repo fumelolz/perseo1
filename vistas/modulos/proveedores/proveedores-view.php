@@ -73,6 +73,10 @@
                           <center>
                           <div class="btn-group-sm">
 
+                          <button class="btn btn-info btnTelefonoProveedor" data-toggle="modal" data-target="#modalTelefonosProveedor" idProveedor="'.$id_proveedor.'">
+                            <i class="fas fa-phone-square-alt"></i>
+                          </button>
+
                           <button class="btn btn-warning btnEditarProveedor" data-toggle="modal" data-target="#modalEditarProveedor" idProveedor="'.$id_proveedor.'" ><i class="fas fa-pencil-alt"></i></button>
 
                           <button class="btn btn-danger btnEliminarProveedor" idProveedor="'.$id_proveedor.'"><i class="fas fa-times"></i></button>
@@ -189,7 +193,9 @@
     </div>
   </div>
 </div>
-
+<?php
+include "proveedoresModalTelefonos.php";
+?>
 <?php 
 
   $eliminarProveedor= new ControladorProveedores();
