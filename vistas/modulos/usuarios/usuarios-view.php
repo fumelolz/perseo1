@@ -120,8 +120,8 @@
 
     <?php 
 
-    include "modales/modal-crear-usuario.php";
-    include "modales/modal-editar-usuario.php";
+    include "modales/modal-crear-usuarios.php";
+    include "modales/modal-editar-usuarios.php";
 
     $eliminarCliente = new ControladorClientes();
     $eliminarCliente -> ctrEliminarCliente();
