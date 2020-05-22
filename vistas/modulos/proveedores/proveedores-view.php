@@ -195,6 +195,7 @@
 </div>
 <?php
 include "proveedoresModalTelefonos.php";
+include "modales/modal-editar-telefono-proveedor.php"
 ?>
 <?php 
 

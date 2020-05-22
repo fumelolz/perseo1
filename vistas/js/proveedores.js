@@ -152,9 +152,9 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 										'</td><td>'+
 										'<center>'+
 										'<div class="btn-group-sm">'+
-										'<button class="btn btn-warning btnEditarProveedor" data-toggle="modal" data-target="#modalEditarProveedor" idProveedor="'.respuesta[i]["id_telefono"].'" >'+
+										'<button class="btn btn-warning btnEditarTelefonoProveedor" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idProveedor="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
 										'<i class="fas fa-pencil-alt"></i></button>'+
-										'<button class="btn btn-danger btnEliminarProveedor" idProveedor="'.respuesta[i]["id_telefono"].'">'+
+										'<button class="btn btn-danger btnEliminarProveedor" idProveedor="'+respuesta[i]["id_telefono"]+'">'+
 										'<i class="fas fa-times"></i>'+
 										'</button>'+
 										'</div>'+
@@ -166,3 +166,38 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	});
 	
 });
+
+//Funcion para editar los telefonos
+$(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
+	
+	var idProveedor = $(this).attr('idProveedor');
+
+	var data = new FormData();
+	data.append('mostrarTelefonos',idProveedor);
+
+	$.ajax({
+		url:"ajax/proveedores.ajax.php",
+		method:"POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			$("#editTelefonos").empty();
+			$("#EditnombreProvedor").text(respuesta[0]["id_proveedor"]);
+
+			// for (var i = 0; i < respuesta.length; i++) {
+			//  $("#editTelefonos").append('<input type="hidden" id="editarIdProveedorT" name="editarIdProveedorT" value='+respuesta[i]["id_telefono"]+'>'+
+			//  	'Descripcion: '+
+			//  	'<input type="text"  class="form-control" placeholder="Descripcion" id="editarDescripcionT" name="editarDescripcionT" value='+respuesta[i]["descripcion"]+' required>'+
+			//  	'No. Telefono'+
+			//  	'<input type="text"  class="form-control" placeholder="Telefono" id="editarTelefonoT" name="editarTelefonoT" value='+respuesta[i]["telefono"]+' required>');
+			// }
+	
+		}
+	});
+
+	
+});
+

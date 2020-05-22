@@ -33,7 +33,6 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Actualizar</button>
         </div>
         <!---->
       </form>
