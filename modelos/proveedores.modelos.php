@@ -139,5 +139,40 @@ class ModeloProveedores{
 			$stmt -> close();
 			$stmt = null;
 	}
+//metodo para editar los telefonos de proveedores
+	static public function mdlEditarTelefonos($tabla,$datos){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET telefono=:telefono, descripcion=:descripcion WHERE id_telefono=:id_telefono");
+
+		$stmt -> bindParam(":id_telefono",$datos["id_telefono"],PDO::PARAM_INT);
+		$stmt -> bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
+		$stmt -> bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+//Metodo para eliminar telefono de proveedores
+	static public function mdlEliminarTelefonoProveedor($tabla,$id_telefono){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM  $tabla WHERE id_telefono=:id_telefono");
+
+		$stmt -> bindParam(":id_telefono",$id_telefono,PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
 
 }

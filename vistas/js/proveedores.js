@@ -107,7 +107,7 @@ $(document).on('click', '.btnActivarProveedor', function(event) {
 
 });
 
-//Funcion para ver los telefonos
+//Funcion para ver todos los telefonos del usuario
 $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	
 	var idProveedor = $(this).attr('idProveedor');
@@ -152,9 +152,9 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 										'</td><td>'+
 										'<center>'+
 										'<div class="btn-group-sm">'+
-										'<button class="btn btn-warning btnEditarTelefonoProveedor" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idProveedor="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
+										'<button class="btn btn-warning btnEditarTelefonoProveedor" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
 										'<i class="fas fa-pencil-alt"></i></button>'+
-										'<button class="btn btn-danger btnEliminarProveedor" idProveedor="'+respuesta[i]["id_telefono"]+'">'+
+										'<button class="btn btn-danger btnEliminarTelefonoProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" >'+
 										'<i class="fas fa-times"></i>'+
 										'</button>'+
 										'</div>'+
@@ -167,13 +167,13 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	
 });
 
-//Funcion para editar los telefonos
+//Funcion para ver los telefonos por id
 $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
 	
-	var idProveedor = $(this).attr('idProveedor');
+	var idTelefono = $(this).attr('idTelefono');
 
 	var data = new FormData();
-	data.append('mostrarTelefonos',idProveedor);
+	data.append('mostrarIdTelefono',idTelefono);
 
 	$.ajax({
 		url:"ajax/proveedores.ajax.php",
@@ -184,18 +184,13 @@ $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
+			console.log(idTelefono);
 			$("#editarDescripcion").empty();
+			$("#editaTelefonos").empty();
 			$("#EditnombreProvedor").text(respuesta[0]["id_proveedor"]);
 
-			// for (var i = 0; i < respuesta.length; i++) {
-			//  $("#editTelefonos").append('<input type="hidden" id="editarIdProveedorT" name="editarIdProveedorT" value='+respuesta[i]["id_telefono"]+'>'+
-			//  	'Descripcion: '+
-			//  	'<input type="text"  class="form-control" placeholder="Descripcion" id="editarDescripcionT" name="editarDescripcionT" value='+respuesta[i]["descripcion"]+' required>'+
-			//  	'No. Telefono'+
-			//  	'<input type="text"  class="form-control" placeholder="Telefono" id="editarTelefonoT" name="editarTelefonoT" value='+respuesta[i]["telefono"]+' required>');
-			// }
 			for(var i = 0; i < respuesta.length; i++){
-				$("#editarDescripcion").append('<input type="hiden" id="idProveedorT" name="idProveedorT" value='+respuesta[i]["id_telefono"]+'>'+
+				$("#editarDescripcion").append('<input type="hidden" id="idTelefono" name="idTelefono" value='+respuesta[i]["id_telefono"]+'>'+
 					'Descripcion: '+
 					'<input type="text"  class="form-control" placeholder="Descripcion" id="editarDescripcionT" name="editarDescripcionT" value='+respuesta[i]["descripcion"]+' required>'
 					);
@@ -207,5 +202,31 @@ $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
 	});
 
 	
+});
+
+//Boton para eliminar telefono
+$(document).on('click', '.btnEliminarTelefonoProveedor', function(event) {
+	
+	var idTelefono = $(this).attr('idTelefono');
+	
+	Swal.fire({
+		type: 'warning',
+		title: '¿Estas seguro de eliminar este telefono?',
+		text:'Se eliminara el telefono y no podras revertir el cambio.',
+		showCancelButton:true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor:'d33',
+		cancelButtonText:'Cancelar',
+		confirmButtonText: 'Si, eliminar Telefono!',
+	}).then(function(result){
+
+		if(result.value){
+
+			// window.location = "index.php?ruta=proveedores&idProveedorEliminar="+idProveedor;
+
+		}
+
+	});
+
 });
 
