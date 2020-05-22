@@ -184,7 +184,7 @@ $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-			$("#editTelefonos").empty();
+			$("#editarDescripcion").empty();
 			$("#EditnombreProvedor").text(respuesta[0]["id_proveedor"]);
 
 			// for (var i = 0; i < respuesta.length; i++) {
@@ -194,6 +194,14 @@ $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
 			//  	'No. Telefono'+
 			//  	'<input type="text"  class="form-control" placeholder="Telefono" id="editarTelefonoT" name="editarTelefonoT" value='+respuesta[i]["telefono"]+' required>');
 			// }
+			for(var i = 0; i < respuesta.length; i++){
+				$("#editarDescripcion").append('<input type="hiden" id="idProveedorT" name="idProveedorT" value='+respuesta[i]["id_telefono"]+'>'+
+					'Descripcion: '+
+					'<input type="text"  class="form-control" placeholder="Descripcion" id="editarDescripcionT" name="editarDescripcionT" value='+respuesta[i]["descripcion"]+' required>'
+					);
+				$("#editaTelefonos").append('No. Telefono'+
+			  	'<input type="text"  class="form-control" placeholder="Telefono" id="editarTelefonoT" name="editarTelefonoT" value='+respuesta[i]["telefono"]+' required>');
+			}
 	
 		}
 	});

@@ -16,8 +16,8 @@
 
               <div class="container">
                 <div class="row">
-                  <div class="col-6"></div>
-                  <div class="col-6"></div>
+                  <div id="editarDescripcion" class="col-6"></div>
+                  <div id="editaTelefonos"class="col-6"></div>
                 </div>
               </div>
 
