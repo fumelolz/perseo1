@@ -39,6 +39,7 @@
                   <th>Nombre</th>
                   <th>Usuario</th>
                   <th>Estado_Usuario</th>
+                  <th>Nivel</th>
                   <th>Email</th>
                   <th>RFC</th>
                   <th>INE</th>
@@ -65,17 +66,18 @@
                   $nombre = $value["nombre"];
                   $ap_Paterno = $value["ap_Paterno"];
                   $ap_Materno = $value["ap_Materno"];
-                  $nivel = $value["nivel"];
 
-                  if ($value["state"] == 1) {
-                    $btn = '<center><button class="btn btn-danger" estado="1" idUsuario="'.$id_usuario.'">Desactivado</button></center>';
+                  if ($value["state"] == 0) {
+                    $btn = '<center><button class="btn btn-danger btnActivarUsuario" estado="1" idUsuario="'.$id_usuario.'">Desactivado</button></center>';
                   }else{
-                    $btn = '<center><button class="btn btn-success" estado="0" idUsuario="'.$id_usuario.'">Activado</button></center>';
+                    $btn = '<center><button class="btn btn-success btnActivarUsuario" estado="0" idUsuario="'.$id_usuario.'">Activado</button></center>';
                   }
 
-                  if () {
-                    # code...
-                  }
+                  if ($value["nivel"]==1) {
+                    $nivel = "Administrador";
+                  }else if($value["nivel"]==0){
+                    $nivel = "Vendedor";
+                  }        
 
                   echo '
                   <tr>
@@ -83,6 +85,7 @@
                   <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
                   <td>'.$value["username"].'</td>
                   <td>'.$btn.'</td>
+                  <td>'.$nivel.'</td>
                   <td>'.$value["email"].'</td>
                   <td>'.$value["rfc"].'</td>
                   <td>'.$value["ine"].'</td>

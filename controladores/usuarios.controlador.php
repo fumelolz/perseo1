@@ -143,4 +143,14 @@ class ControladorUsuarios{
 
 	}
 
+	static public function ctrActivarUsuario($item1,$valor1,$item2,$valor2){
+
+		$tabla = "usuarios";
+
+		$respuesta = ModeloUsuarios::mdlActivarUsuario($tabla,$item1,$valor1,$item2,$valor2);
+
+		return $respuesta;
+
+	}
+
 }

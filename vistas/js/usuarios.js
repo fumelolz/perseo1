@@ -67,3 +67,58 @@ $(document).on('click', '.btnEliminarUsuario', function(event) {
 	});
 
 });
+
+// Click para activar un usuario 
+$(document).on('click', '.btnActivarUsuario', function(event) {
+
+	var idUsuario = $(this).attr('idUsuario');
+	var estado = $(this).attr('estado');
+	
+	var data = new FormData();
+	data.append('idActivarUsuario',idUsuario);
+	data.append('estado',estado);
+
+	$.ajax({
+		url:"ajax/usuarios.ajax.php",
+		method:"POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(reply){
+
+			if (window.matchMedia("(max-width:767px)").matches) {
+
+				Swal.fire({
+					type: 'success',
+					title: 'El usuario ha sido actualizado',
+					showConfirmButton:true,
+					confirmButtonText: 'Cerrar',
+					closeOnConfirm: false
+				}).then(function(result){
+
+					if(result.value){
+
+						window.location = 'usuarios';
+
+					}
+
+				});
+			}
+		}
+	});
+
+	if (estado == 0) {
+		$(this).removeClass('btn-success');
+		$(this).addClass('btn-danger');
+		$(this).html('Desactivado');
+		$(this).attr('estado', '1');
+	}else{
+		$(this).removeClass('btn-danger');
+		$(this).addClass('btn-success');
+		$(this).html('Activado');
+		$(this).attr('estado', '0');
+	}
+
+
+});
