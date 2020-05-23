@@ -86,6 +86,7 @@
 <script src="vistas/js/clientes.js"></script>
 <script src="vistas/js/proveedores.js"></script>
 <script src="vistas/js/usuarios.js"></script>
+<script src="vistas/js/productos.js"></script>
 
 </body>
 </html>

@@ -29,7 +29,21 @@ class ControladorProductos{
 
 	// Esta función crea los Productos !!!
 	static public function ctrCrearProducto(){
+		if (isset($_POST["productoDescripcion"])) {
+			
+			$descripcion = $_POST["productoDescripcion"];
+			$precio_compra = $_POST["productoCompra"];
+			$precio_venta = $_POST["productoVenta"];
+			$foto = $_FILES["productoFoto"]["tmp_name"];
 
+			$datos = array('descripcion' => $descripcion,
+			 			   'precio_compra' => $precio_compra,
+			 			   'precio_venta' => $precio_venta,
+			 			   'imagen' => $foto);
+
+			echo '<pre>'; print_r($datos); echo '</pre>';
+
+		}
 	}
 
 }
