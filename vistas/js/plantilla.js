@@ -28,3 +28,7 @@ $(".tablas").DataTable({
 
 	}
 });
+
+var dateVar = new Date()
+var offset = dateVar.getTimezoneOffset();
+console.log("offset", offset);

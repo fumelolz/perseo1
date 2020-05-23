@@ -35,17 +35,29 @@
             <div class="card-body">
               <?php
 
-              date_default_timezone_set('America/Mexico_City');
+              // This is just an example. In application this will come from Javascript (via an AJAX or something)
+              $timezone_offset_minutes = 330;  // $_GET['timezone_offset_minutes']
+
+              // Convert minutes to seconds
+              $timezone_name = timezone_name_from_abbr("", $timezone_offset_minutes*60, 0);
+              echo '<pre>'; print_r($timezone_name); echo '</pre>';
+
+              date_default_timezone_set($timezone_name);
 
               $date = date('Y-m-d');
               $time = date('H:i:s');
 
               $fecha_servidor = ControladorDB::ctrMostrarFecha();
               $fecha_local = date('Y-m-d');
+              $hora_local = date('H:i:s');
 
-              echo 'Fecha del gestor de base de datos: '; echo $fecha_servidor; 
+              echo 'Fecha del gestor de base de datos: '; echo $fecha_servidor["fecha"];
+              echo '<br>'; 
+              echo 'Hora del gestor de base de datos: '; echo $fecha_servidor["hora"];
               echo '<br>';
               echo 'Fecha local: '; echo $fecha_local; 
+              echo '<br>';
+              echo 'Hora local: '; echo $hora_local; 
 
               ?>
             </div>

@@ -6,14 +6,14 @@ class ModeloDB{
 
 	static public function mdlMostrarFecha(){
 
-		$stmt = Conexion::conectar()->prepare("SELECT CURDATE();");
+		$stmt = Conexion::conectar()->prepare("SELECT CURDATE() AS fecha, CURRENT_TIME() AS hora ");
 
 		$stmt -> execute();
 
 
-		$fecha = $stmt -> fetch();
+		$respuesta = $stmt -> fetchAll();
 
-		return $fecha[0];
+		return $respuesta;
 
 		$stmt -> close();
 

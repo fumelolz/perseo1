@@ -47,13 +47,21 @@ CREATE TABLE IF NOT EXISTS usuarios(
 	CONSTRAINT fk_id_persona_personas_usuarios FOREIGN KEY(id_persona) references personas(id_persona)
 );
 
+CREATE TABLE IF NOT EXISTS categorias_productos(
+	id_categoria int PRIMARY KEY AUTO_INCREMENT,
+	descripcion varchar(45) NOT NULL
+);
+
+
 CREATE TABLE IF NOT EXISTS productos(
 	id_producto int PRIMARY KEY AUTO_INCREMENT,
 	descripcion varchar(45),
 	precio_compra decimal(10,2),
 	precio_venta decimal(10,2),
 	ruta_imagen varchar(45),
-	estado tinyint(1)
+	estado tinyint(1),
+	categoria int,
+	CONSTRAINT fk_id_categoria_categorias FOREIGN KEY(categoria) references categorias_productos(id_categoria)
 );
 
 CREATE TABLE IF NOT EXISTS venta(

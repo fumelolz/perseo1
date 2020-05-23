@@ -6,7 +6,10 @@ class ControladorDB{
 
 		$respuesta = ModeloDB::mdlMostrarFecha();
 
-		return $respuesta;
+		$datos = array('fecha' => $respuesta[0]["fecha"],
+					   'hora' => $respuesta[0]["hora"]);
+
+		return $datos;
 
 	}
 

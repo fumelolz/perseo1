@@ -23,7 +23,8 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Title</h3>
+        <!-- Boton para crear un producto -->
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">Agregar Producto</button>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -75,6 +76,12 @@
                     $stock = "<button class='btn btn-danger'>".$stockRespuesta."</button>";
                   }
 
+                  if ($estado == 0) {
+                    $btn = '<center><button class="btn btn-danger btnActivarProducto" estado="1" idProducto="'.$id_producto.'">Desactivado</button></center>';
+                  }else{
+                    $btn = '<center><button class="btn btn-success btnActivarProducto" estado="0" idProducto="'.$id_producto.'">Activado</button></center>';
+                  }
+
                   echo '
                   <tr>
                   <td>'.$id_producto.'</td>
@@ -83,8 +90,18 @@
                   <td>'.$precio_venta.'</td>
                   <td>'.$stock.'</td>
                   <td>'.$imagen.'</td>
-                  <td>'.$estado.'</td>
-                  <td>botones</td>
+                  <td>'.$btn.'</td>
+                  <td>
+                  <center>
+                  <div class="btn-group-sm">
+
+                  <button class="btn btn-warning btnEditarProducto" data-toggle="modal" data-target="#modalEditarProducto" idProducto="'.$id_producto.'" ><i class="fas fa-pencil-alt"></i></button>
+
+                  <button class="btn btn-danger btnEliminarProducto" idUsuario="'.$id_producto.'"><i class="fas fa-times"></i></button>
+
+                  </div>
+                  </center>
+                  </td>
                   </tr>';
                 }
 
@@ -106,3 +123,9 @@
       <!-- /.content -->
     </div>
   <!-- /.content-wrapper -->
+
+  <?php 
+
+    include "modales/modal-crear-producto.php";
+
+   ?>
