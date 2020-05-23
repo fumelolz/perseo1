@@ -87,4 +87,49 @@
 		return $respuesta;
 	}
 
+	static public function ctrEditarTelefonoProveedor(){
+		if (isset($_POST["idTelefono"])) {
+
+			$tabla = "telefonos_proveedores";
+
+			$datos = array('id_telefono' => $_POST["idTelefono"],
+						   'descripcion' => $_POST["editarDescripcionT"],
+						   'telefono' => $_POST["editarTelefonoT"],
+						   );
+
+		     // Muestra los datos que trae el array 
+			  //echo '<pre>'; print_r($datos); echo '</pre>';
+
+		   $respuesta = ModeloProveedores::mdlEditarTelefonos($tabla,$datos);
+
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("TELEFONO EDITADO","Se edito el telefono correctamente","proveedores");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo Editar","A ocurrido un error al editar telefono","error");
+			}
+
+		}
+	}
+
+	static public function ctrEliminarTelefonoProveedor(){
+
+		if (isset($_GET["idTelefono"])) {
+
+			$tabla = "telefonos_proveedores";
+
+			$id_telefono = $_GET["idTelefono"];
+
+			$respuesta = ModeloProveedores::mdlEliminarTelefonoProveedor($tabla,$id_telefono);
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
+
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("Proveedor eliminado","El proveedor se elimino correctamete","proveedores");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se puede eliminar","A ocurrido un error al editar proveedor","error");
+			}
+
+		}
+
+	}
+
 } 

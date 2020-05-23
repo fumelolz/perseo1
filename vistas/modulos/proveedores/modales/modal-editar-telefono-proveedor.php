@@ -8,7 +8,6 @@
           <h5 class="modal-title">Telefonos del proveedor</h5>
         </div>
         <div class="modal-body">
-        <div id="EditnombreProvedor" class="btn btn-success"></div>
         <br><br>
           <div class="box-body">
 
@@ -34,3 +33,15 @@
     </div>
   </div>
 </div>
+<?php 
+
+        $editarTelefonoProveedor = new ControladorProveedores();
+        $editarTelefonoProveedor -> ctrEditarTelefonoProveedor();
+
+?>
+<?php 
+
+  $eliminarProveedor= new ControladorProveedores();
+  $eliminarProveedor-> ctrEliminarTelefonoProveedor();
+
+?>
