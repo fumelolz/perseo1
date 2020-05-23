@@ -123,12 +123,36 @@
 			// echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta=="ok") {
-				$alerta= AlertasPersonalizadas::alertaExito("Proveedor eliminado","El proveedor se elimino correctamete","proveedores");
+				$alerta= AlertasPersonalizadas::alertaExito("TELEFONO ELIMINADO","El telefono se elimino correctamete","proveedores");
 			}else{
-				$alerta= AlertasPersonalizadas::alertaError("No se puede eliminar","A ocurrido un error al editar proveedor","error");
+				$alerta= AlertasPersonalizadas::alertaError("No se puede eliminar","A ocurrido un error al borrar el telefono","error");
 			}
 
 		}
+
+	}
+
+	static public function ctrAgregarTelefonoProveedor(){
+
+		if (isset($_POST["idProveedor"])) {
+
+			$tabla = "telefonos_proveedores";
+			
+			$datos = array('id_proveedor' => $_POST["idProveedor"],
+							'telefono' => $_POST["inputAgregarTelefono"],
+							'descripcion' => $_POST["inputAgregarDescripcion"],
+							);
+
+			$respuesta = ModeloProveedores::mdlCrearTelefono($tabla,$datos);
+
+			if($respuesta=="ok"){
+				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","proveedores");
+			}
+			else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar proveedor","error");
+			}
+
+			}
 
 	}
 

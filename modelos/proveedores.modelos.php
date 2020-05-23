@@ -175,4 +175,23 @@ class ModeloProveedores{
 
 	}
 
+//Funcion para agregar nuevo telefono
+	static public function mdlCrearTelefono($tabla,$datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_proveedor,telefono,descripcion) VALUES(:id_proveedor,:telefono,:descripcion)");
+
+		$stmt -> bindParam(":id_proveedor",$datos["id_proveedor"],PDO::PARAM_STR);
+		$stmt -> bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
+		$stmt -> bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+
 }

@@ -32,6 +32,7 @@
         </div>
 
         <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalAgregarTelefonosProveedor" data-dismiss="modal">Agregar nuevo telefono</button>
           <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
         </div>
         <!---->

@@ -129,6 +129,10 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 		success: function(respuesta){
 			 $("#idProveedorT").text(respuesta["id_proveedor"]);
 			 $("#nombreProveedorT").text(respuesta["nombre"]);
+
+			 //Mando el id del proveedor al modal agregar telefono
+			 $("#idProveedorinfo").empty();
+			 $("#idProveedorinfo").append('<input class="form-control" type="hidden" id="idProveedor" name="idProveedor" value='+respuesta["id_proveedor"]+'>');
 			// console.log(respuesta["id_proveedor"]);
 		}
 	});
@@ -154,7 +158,7 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 										'<div class="btn-group-sm">'+
 										'<button class="btn btn-warning btnEditarTelefonoProveedor" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
 										'<i class="fas fa-pencil-alt"></i></button>'+
-										'<button class="btn btn-danger btnEliminarTelefonoProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" >'+
+										'<button class="btn btn-danger btnEliminarTelefonoProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
 										'<i class="fas fa-times"></i>'+
 										'</button>'+
 										'</div>'+
@@ -222,11 +226,10 @@ $(document).on('click', '.btnEliminarTelefonoProveedor', function(event) {
 
 		if(result.value){
 
-			// window.location = "index.php?ruta=proveedores&idProveedorEliminar="+idProveedor;
+			 window.location = "index.php?ruta=proveedores&idTelefono="+idTelefono;
 
 		}
 
 	});
 
 });
-
