@@ -1,11 +1,11 @@
-<!-- Modal crear Cliente -->
-<div class="modal fade" id="modalAgregarProducto" tabindex="-1" role="dialog" aria-labelledby="modalAgregarProducto" aria-hidden="true">
+<!-- Modal editar producto -->
+<div class="modal fade" id="modalEditarProducto" tabindex="-1" role="dialog" aria-labelledby="modalEditarProducto" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
       <form role="form" method="Post" enctype="multipart/form-data">
         <div class="modal-header bg-light" style="color: black;">
-          <h5 class="modal-title" id="modalAgregarProducto">Agregar Producto</h5>
+          <h5 class="modal-title" id="modalEditarProducto">Editar Producto</h5>
         </div>
 
         <div class="modal-body">
@@ -23,7 +23,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="far fa-user"></i></span>
                   </div>
-                  <input type="text"  class="form-control" placeholder="Descripción del producto" id="productoDescripcion" name="productoDescripcion" required>
+                  <input type="hidden" id="editarIdProducto" name="editarIdProducto">
+                  <input type="text"  class="form-control" placeholder="Descripción del producto" id="editarProductoDescripcion" name="editarProductoDescripcion" required>
                 </div>
 
               </div>
@@ -37,8 +38,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="far fa-user"></i></span>
                   </div>
-                  <select class="form-control" id="productoCategoria" name="productoCategoria" required>
-                    <option>Categoria del producto</option>
+                  <select class="form-control" name="editarProductoCategoria" required>
+                    <option id="editarProductoCategoria">Categoria del producto</option>
                     <?php 
 
                     $item = null;
@@ -65,27 +66,27 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="far fa-user"></i></span>
                   </div>
-                  <input type="text"  class="form-control precioCompra" placeholder="Precio de compra" id="productoCompra" name="productoCompra" required>
+                  <input type="text"  class="form-control editarPrecioCompra" placeholder="Precio de compra" id="editarProductoCompra" name="editarProductoCompra" required>
                 </div>
                 <div class="input-group mb-1 col-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="far fa-user"></i></span>
                   </div>
-                  <input type="text"  class="form-control precioVenta" placeholder="Precio de venta" id="productoVenta" name="productoVenta" required>
+                  <input type="text"  class="form-control editarPrecioVenta" placeholder="Precio de venta" id="editarProductoVenta" name="editarProductoVenta" required>
                 </div>
               </div>
 
               <div class="row mt-2 d-flex justify-content-end">
                 <div class="col-5 pt-2">
                   <div class="custom-control custom-checkbox">
-                    <input class="custom-control-input" type="checkbox" id="porcentaje" checked>
-                    <label for="porcentaje" class="custom-control-label">Utilizar porcentaje</label>
+                    <input class="custom-control-input" type="checkbox" id="editarPorcentaje" checked>
+                    <label for="editarPorcentaje" class="custom-control-label">Utilizar porcentaje</label>
                   </div>
                 </div>
 
                 <div class="col-4">
                   <div class="input-group">
-                    <input type="number" class="form-control nuevoPorcentaje" min="0" max="100" value="40" name="utilidad" id="utilidad" required>
+                    <input type="number" class="form-control editarPorcentaje" min="0" max="100" value="40" name="editarUtilidad" id="editarUtilidad" required>
                     <div class="input-group-append">
                       <span class="input-group-text"><i class="fa fa-percent"></i></span>
                     </div>
@@ -96,9 +97,10 @@
 
             <div class="form-group">
               <label for="productoFoto">Foto del producto</label>
-              <input type="file" class="form-control-file" id="productoFoto" name="productoFoto">
+              <input type="hidden" id="actualFoto" name="actualFoto">
+              <input type="file" class="form-control-file" id="editarProductoFoto" name="editarProductoFoto">
               <p class="help-block">Peso maximo de la foto 5Mb</p>
-              <img class="imagenPrevia" src="vistas/img/producto-default.png" class="img-thumbnail" width="100px">
+              <img class="imagenPreviaEditar" src="vistas/img/producto-default.png" class="img-thumbnail" width="100px">
             </div>
 
           </div>

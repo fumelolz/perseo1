@@ -38,6 +38,40 @@ class ModeloProductos{
 
 	}
 
+	// Muestra todas las Categorias
+	static public function mdlMostrarCategorias($tabla,$item,$valor){
+
+		if ($item != null) {
+			$stmt = Conexion::conectar()->prepare("
+				SELECT * 
+				FROM $tabla
+				WHERE $item = :$item
+				");
+
+			$stmt -> bindParam(":".$item,$valor,PDO::PARAM_INT);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+		}else{
+			$stmt = Conexion::conectar()->prepare("
+				SELECT * 
+				FROM $tabla
+				");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+		}
+
+		
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
 	// Consultar el stock del producto por su id
 	static public function mdlMostrarStockProductoEntrada($id_producto){
 
@@ -84,6 +118,29 @@ class ModeloProductos{
 
 		$stmt -> close();
 
+		$stmt = null;
+
+	}
+
+	// Crear Producto
+	static public function mdlCrearProducto($tabla,$datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(descripcion,utilidad,precio_compra,precio_venta,ruta_imagen,categoria) VALUES(:descripcion,:utilidad,:precio_compra,:precio_venta,:ruta_imagen,:categoria)");
+
+		$stmt -> bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
+		$stmt -> bindParam(":utilidad",$datos["utilidad"],PDO::PARAM_STR);
+		$stmt -> bindParam(":precio_compra",$datos["precio_compra"],PDO::PARAM_STR);
+		$stmt -> bindParam(":precio_venta",$datos["precio_venta"],PDO::PARAM_STR);
+		$stmt -> bindParam(":ruta_imagen",$datos["ruta_imagen"],PDO::PARAM_STR);
+		$stmt -> bindParam(":categoria",$datos["categoria"],PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
 		$stmt = null;
 
 	}

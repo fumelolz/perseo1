@@ -82,14 +82,20 @@
                     $btn = '<center><button class="btn btn-success btnActivarProducto" estado="0" idProducto="'.$id_producto.'">Activado</button></center>';
                   }
 
+                  if ($imagen) {
+                    $imagen_producto = '<button class="btn btn-light img" imagen="'.$imagen.'"><img src="'.$imagen.'" class="img-thumbnail" width=50 height=50></button>';
+                  }else{
+                    $imagen_producto = '<img src="vistas/img/producto-not-found.jpg" class="img-thumbnail" width=50 height=50>';
+                  }
+
                   echo '
                   <tr>
                   <td>'.$id_producto.'</td>
                   <td>'.$descripcion.'</td>
-                  <td>'.$precio_compra.'</td>
-                  <td>'.$precio_venta.'</td>
+                  <td>$ '.$precio_compra.'</td>
+                  <td>$ '.$precio_venta.'</td>
                   <td>'.$stock.'</td>
-                  <td>'.$imagen.'</td>
+                  <td>'.$imagen_producto.'</td>
                   <td>'.$btn.'</td>
                   <td>
                   <center>
@@ -127,5 +133,6 @@
   <?php 
 
     include "modales/modal-crear-producto.php";
+    include "modales/modal-editar-producto.php";
 
    ?>

@@ -59,6 +59,13 @@
               echo '<br>';
               echo 'Hora local: '; echo $hora_local; 
 
+
+              $item = null;
+              $valor = null;
+
+              $categorias = ControladorProductos::ctrMostrarCategorias($item,$valor);
+              echo '<pre>'; print_r($categorias); echo '</pre>';
+
               ?>
             </div>
             <!-- /.card-body -->
