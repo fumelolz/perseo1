@@ -145,4 +145,28 @@ class ModeloProductos{
 
 	}
 
+	// Editar Producto
+	static public function mdlEditarProducto($tabla,$datos){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET descripcion=:descripcion, utilidad=:utilidad, precio_compra=:precio_compra, precio_venta=:precio_venta, ruta_imagen=:ruta_imagen, categoria=:categoria WHERE id_producto=:id_producto");
+
+		$stmt -> bindParam(":id_producto",$datos["id_producto"],PDO::PARAM_INT);
+		$stmt -> bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
+		$stmt -> bindParam(":utilidad",$datos["utilidad"],PDO::PARAM_STR);
+		$stmt -> bindParam(":precio_compra",$datos["precio_compra"],PDO::PARAM_STR);
+		$stmt -> bindParam(":precio_venta",$datos["precio_venta"],PDO::PARAM_STR);
+		$stmt -> bindParam(":ruta_imagen",$datos["ruta_imagen"],PDO::PARAM_STR);
+		$stmt -> bindParam(":categoria",$datos["categoria"],PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
 }

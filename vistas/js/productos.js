@@ -87,42 +87,42 @@ $("#productoFoto").change(function(event) {
 // Porcentaje(utilidad) del producto
 function editarPrecioVenta(){
 
-	var porcentaje = $(".nuevoPorcentaje").val();
-	var precioCompra = $(".precioCompra").val();
+	var porcentaje = $(".editarPorcentaje").val();
+	var precioCompra = $(".editarPrecioCompra").val();
 
 	var precioVenta = Number((precioCompra*porcentaje)/100)+Number(precioCompra);
-	$(".precioVenta").attr('value', precioVenta);
+	$(".editarPrecioVenta").attr('value', precioVenta);
 
 }
 
 // Cuando se cambia el porcentaje
-$(document).on('change', '.nuevoPorcentaje', function(event) {
+$(document).on('change', '.editarPorcentaje', function(event) {
 
-	if ($("#porcentaje").prop('checked')) {
-		precioVenta();
+	if ($("#editarPorcentaje").prop('checked')) {
+		editarPrecioVenta();
 	}
 
 });
 
 // Cuando el precio de compra es cambiado
-$(document).on('keyup', '.precioCompra', function(event) {
+$(document).on('keyup', '.editarPrecioCompra', function(event) {
 	
-	if ($("#porcentaje").prop('checked')) {
-		precioVenta();
+	if ($("#editarPorcentaje").prop('checked')) {
+		editarPrecioVenta();
 	}else{
-		$(".precioVenta").attr('value', $(this).val());
+		$(".editarPrecioVenta").attr('value', $(this).val());
 	}
 
 });
 
 
 // Cuando el Checkbox de porcentaje es activado o viceversa
-$(document).on('change', '#porcentaje', function(event) {
+$(document).on('change', '#editarPorcentaje', function(event) {
 	
-	if ($("#porcentaje").prop('checked')) {
-		precioVenta();
+	if ($("#editarPorcentaje").prop('checked')) {
+		editarPrecioVenta();
 	}else{
-		$(".precioVenta").attr('value', $(".precioCompra").val());
+		$(".editarPrecioVenta").attr('value', $(".editarPrecioCompra").val());
 	}
 
 });
@@ -153,13 +153,32 @@ $(document).on('click', '.btnEditarProducto', function(event) {
 		processData: false,
 		dataType: "json",
 		success: function(reply){
+
+			var data2 = new FormData();
+			data2.append('idCategoriaEditar',reply["categoria"]);
+
+			$.ajax({
+				url:"ajax/productos.ajax.php",
+				method:"POST",
+				data: data2,
+				cache: false,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function(reply){
+					$("#editarProductoCategoria").html(reply["descripcion"]);
+				}
+			});
+
+
+
 			$("#editarIdProducto").attr('value', idProducto);
 			$("#editarProductoDescripcion").attr('value', reply["descripcion"]);
 			$("#editarProductoCategoria").attr('value', reply["categoria"]);
 			$("#editarProductoCompra").attr('value', reply["precio_compra"]);
 			$("#editarProductoVenta").attr('value', reply["precio_venta"]);
 			$("#editarUtilidad").attr('value', reply["utilidad"]);
-			$("#actualFoto").attr('value', reply["ruta_imagen"]);
+			$("#fotoActual").attr('value', reply["ruta_imagen"]);
 
 			if (reply["ruta_imagen"] != "") {
 				$(".imagenPreviaEditar").attr('src',reply["ruta_imagen"]);

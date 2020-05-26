@@ -23,16 +23,7 @@ class ControladorProductos{
 
 		$respuesta = ModeloProductos::mdlMostrarCategorias($tabla,$item,$valor);
 
-		$listaCategorias = array();
-
-		$arrayName = array(1,2);
-
-		for ($i=0; $i < count($respuesta); $i++) { 
-			$listaCategorias[$i]["id_categoria"] = $respuesta[$i]["id_categoria"];
-			$listaCategorias[$i]["descripcion"] = ucfirst(strtolower($respuesta[$i]["descripcion"])); 
-		} 
-
-		return $listaCategorias;
+		return $respuesta;
 
 	}
 
@@ -133,11 +124,46 @@ class ControladorProductos{
 				'ruta_imagen' => $ruta_imagen,
 				'categoria' => $categoria);
 
+			// Muestra los datos del array
 			echo '<pre>'; print_r($datos); echo '</pre>';
+
 			$respuesta = ModeloProductos::mdlCrearProducto($tabla,$datos);
+
+			// Muestra la respeusta
 			echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 		}
+	}
+
+	// Editar productos
+	static public function ctrEditarProducto(){
+
+		if (isset($_POST["editarIdProducto"])) {
+			
+			$id_producto = $_POST["editarIdProducto"];
+			$descripcion = $_POST["editarProductoDescripcion"];
+			$precio_compra = $_POST["editarProductoCompra"];
+			$precio_venta = $_POST["editarProductoVenta"];
+			$categoria = $_POST["editarProductoCategoria"];
+			$utilidad = $_POST["editarUtilidad"];
+			$tabla = "productos";
+			$ruta_imagen = $_POST["fotoActual"];
+
+			$datos = array(
+				'id_producto' => $id_producto,
+				'descripcion' => $descripcion,
+				'utilidad' => $utilidad,
+				'precio_compra' => $precio_compra,
+				'precio_venta' => $precio_venta,
+				'ruta_imagen' => $ruta_imagen,
+				'categoria' => $categoria);
+
+			echo '<pre>'; print_r($datos); echo '</pre>';
+			$respuesta = ModeloProductos::mdlEditarProducto($tabla,$datos);
+			echo '<pre>'; print_r($respuesta); echo '</pre>';
+
+		}
+
 	}
 
 }

@@ -97,7 +97,7 @@
 
             <div class="form-group">
               <label for="productoFoto">Foto del producto</label>
-              <input type="hidden" id="actualFoto" name="actualFoto">
+              <input type="hidden" id="fotoActual" name="fotoActual">
               <input type="file" class="form-control-file" id="editarProductoFoto" name="editarProductoFoto">
               <p class="help-block">Peso maximo de la foto 5Mb</p>
               <img class="imagenPreviaEditar" src="vistas/img/producto-default.png" class="img-thumbnail" width="100px">
@@ -113,8 +113,8 @@
         </div>
         <?php 
 
-        $crearProducto = new ControladorProductos();
-        $crearProducto -> ctrCrearProducto();
+        $editarProducto = new ControladorProductos();
+        $editarProducto -> ctrEditarProducto();
 
         ?>
       </form>
