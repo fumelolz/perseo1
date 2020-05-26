@@ -37,7 +37,6 @@
               <tr>
                 <th style="width: 10px;">#</th>
                 <th>Nombre</th>
-                <th>Email</th>
                 <th>RFC</th>
                 <th>INE</th>
                 <th>Dirección</th>
@@ -69,7 +68,6 @@
                 <tr>
                 <td>'.$id_persona.'</td>
                 <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
-                <td>'.$value["email"].'</td>
                 <td>'.$value["rfc"].'</td>
                 <td>'.$value["ine"].'</td>
                 <td>'.$value["direccion"].'</td>
@@ -150,16 +148,6 @@
                   <span class="input-group-text"><i class="far fa-user"></i></span>
                 </div>
                 <input type="text"  class="form-control" placeholder="Apellido materno del cliente" id="clienteApMaterno" name="clienteApMaterno" required>
-              </div>
-            </div>
-
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Email del cliente" id="clienteEmail" name="clienteEmail" required>
               </div>
             </div>
 
@@ -297,15 +285,6 @@
               </div>
             </div>
 
-            <!-- Entrada para el nombre del cliente -->
-            <div class="form-group">
-              <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text"  class="form-control" placeholder="Email del cliente" id="editarClienteEmail" name="editarClienteEmail" required>
-              </div>
-            </div>
 
             <!-- Entrada para el nombre del cliente -->
             <div class="form-group">

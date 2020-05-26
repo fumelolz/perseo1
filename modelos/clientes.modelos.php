@@ -44,7 +44,7 @@ class ModeloClientes{
 	// Función parar crear un cliente
 	static public function mdlCrearCliente($tabla1,$tabla2,$datos){
 		
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla1(nombre,ap_Paterno,ap_Materno,email,rfc,ine,direccion,pais,estado,ciudad,fecha_nacimiento) VALUES(:nombre,:ap_Paterno,:ap_Materno,:email,:rfc,:ine,:direccion,:pais,:estado,:ciudad,:fecha_nacimiento)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla1(nombre,ap_Paterno,ap_Materno,rfc,ine,direccion,pais,estado,ciudad,fecha_nacimiento) VALUES(:nombre,:ap_Paterno,:ap_Materno,:rfc,:ine,:direccion,:pais,:estado,:ciudad,:fecha_nacimiento)");
 		$stmt2 = Conexion::conectar()->prepare("INSERT INTO $tabla2(id_persona) VALUES(:id_persona)");
 
 		$stmt3 = Conexion::conectar()->prepare("SELECT id_persona FROM personas ORDER BY id_persona DESC LIMIT 1");
@@ -52,7 +52,6 @@ class ModeloClientes{
 		$stmt -> bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
 		$stmt -> bindParam(":ap_Paterno",$datos["ap_Paterno"],PDO::PARAM_STR);
 		$stmt -> bindParam(":ap_Materno",$datos["ap_Materno"],PDO::PARAM_STR);
-		$stmt -> bindParam(":email",$datos["email"],PDO::PARAM_STR);
 		$stmt -> bindParam(":rfc",$datos["rfc"],PDO::PARAM_STR);
 		$stmt -> bindParam(":ine",$datos["ine"],PDO::PARAM_STR);
 		$stmt -> bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);
@@ -88,13 +87,12 @@ class ModeloClientes{
 	// Funcion para editar un cliente por su id
 	static public function mdlEditarCliente($tabla,$datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, ap_Paterno=:ap_Paterno, ap_Materno=:ap_Materno, email=:email, rfc=:rfc, ine=:ine, direccion=:direccion, pais=:pais, estado=:estado, ciudad=:ciudad, fecha_nacimiento=:fecha_nacimiento WHERE id_persona=:id_persona");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, ap_Paterno=:ap_Paterno, ap_Materno=:ap_Materno, rfc=:rfc, ine=:ine, direccion=:direccion, pais=:pais, estado=:estado, ciudad=:ciudad, fecha_nacimiento=:fecha_nacimiento WHERE id_persona=:id_persona");
 
 		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_INT);
 		$stmt -> bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
 		$stmt -> bindParam(":ap_Paterno",$datos["ap_Paterno"],PDO::PARAM_STR);
 		$stmt -> bindParam(":ap_Materno",$datos["ap_Materno"],PDO::PARAM_STR);
-		$stmt -> bindParam(":email",$datos["email"],PDO::PARAM_STR);
 		$stmt -> bindParam(":rfc",$datos["rfc"],PDO::PARAM_STR);
 		$stmt -> bindParam(":ine",$datos["ine"],PDO::PARAM_STR);
 		$stmt -> bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);
