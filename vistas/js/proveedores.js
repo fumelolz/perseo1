@@ -127,7 +127,7 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-			 $("#idProveedorT").text(respuesta["id_proveedor"]);
+			 // $("#idProveedorT").text(respuesta["id_proveedor"]);
 			 $("#nombreProveedorT").text(respuesta["nombre"]);
 
 			 //Mando el id del proveedor al modal agregar telefono
@@ -149,12 +149,32 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 			//console.log("respuesta", respuesta);
 			$(".addTelefonos").empty();
 
-			for (var i = 0; i < respuesta.length; i++) {
-				$(".addTelefonos").append('<tr><td>'+
-										respuesta[i]["descripcion"]+
-										'</td><td>'+respuesta[i]["telefono"]+
-										'</td><td>'+
-										'<center>'+
+			// for (var i = 0; i < respuesta.length; i++) {
+			// 	$(".addTelefonos").append('<tr><td>'+
+			// 							respuesta[i]["descripcion"]+
+			// 							'</td><td>'+respuesta[i]["telefono"]+
+			// 							'</td><td>'+
+			// 							'<center>'+
+			// 							'<div class="btn-group-sm">'+
+			// 							'<button class="btn btn-warning btnEditarTelefonoProveedor" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
+			// 							'<i class="fas fa-pencil-alt"></i></button>'+
+			// 							'<button class="btn btn-danger btnEliminarTelefonoProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
+			// 							'<i class="fas fa-times"></i>'+
+			// 							'</button>'+
+			// 							'</div>'+
+			// 							'</center>'+
+			// 							'</td></tr>')
+			// }
+			for (var i = 0; i < respuesta.length; i++){
+				//Se crea la descripcion  del telefono con una columna de 6 y la descripcion de correo de 6 columnas
+				$("#divMostrarContacto").append('<div class="col-6"><p class="text-secondary">'+respuesta[i]["descripcion"]+'</p></div>'+
+										'<div class="col-6"><p class="text-secondary">Correo '+(i+1)+'</p></div>');
+				//Se crea el icono de telefono con una columa de 1
+				$("#divMostrarContacto").append('<div class="col-1"><i class="fas fa-phone-square-alt fa-2x text-secondary"></i></div>');
+				//Se crea el numero del proveedor con una columna de 3
+				$("#divMostrarContacto").append('<div class="col-3"><p class="text-secondary" style="font-size: 20px;">'+respuesta[i]["telefono"]+'</p></div>');
+				//Se crea los botones para editar o eliminar el numero de proveedor con una columna de 2
+				$("#divMostrarContacto").append('<div class="col-2"><center>'+
 										'<div class="btn-group-sm">'+
 										'<button class="btn btn-warning btnEditarTelefonoProveedor" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
 										'<i class="fas fa-pencil-alt"></i></button>'+
@@ -162,8 +182,22 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 										'<i class="fas fa-times"></i>'+
 										'</button>'+
 										'</div>'+
-										'</center>'+
-										'</td></tr>')
+										'</center></div>');
+				//Se crea el icono de correo con una columna de 1
+				$("#divMostrarContacto").append('<div class="col-1"><i class="fas fa-envelope fa-2x text-secondary"></i></div>');
+				//Se crea el correo con una columna de 3
+				$("#divMostrarContacto").append('<div class="col-3"><p class="text-secondary" style="font-size: 20px;">'+respuesta[i]["telefono"]+'</p></div>');
+				//Se los botnes de acciones con una columna de 2
+				$("#divMostrarContacto").append('<div class="col-2"><center>'+
+										'<div class="btn-group-sm">'+
+										'<button class="btn btn-warning btnEditarTelefonoProveedor" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
+										'<i class="fas fa-pencil-alt"></i></button>'+
+										'<button class="btn btn-danger btnEliminarTelefonoProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal">'+
+										'<i class="fas fa-times"></i>'+
+										'</button>'+
+										'</div>'+
+										'</center></div>');
+
 			}
 
 		}
