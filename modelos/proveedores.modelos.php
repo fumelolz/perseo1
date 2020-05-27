@@ -174,8 +174,6 @@ class ModeloProveedores{
 		$stmt = null;
 
 	}
-
-//Funcion para agregar nuevo telefono
 	static public function mdlCrearTelefono($tabla,$datos){
 
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_proveedor,telefono,descripcion) VALUES(:id_proveedor,:telefono,:descripcion)");
@@ -192,6 +190,54 @@ class ModeloProveedores{
 
 		$stmt -> close();
 		$stmt = null;
+	}
+
+//Funcion para agregar nuevo telefono
+	static public function mdlCrearCorreo($tabla,$datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_proveedor,email) VALUES(:id_proveedor,:email)");
+
+		$stmt -> bindParam(":id_proveedor",$datos["id_proveedor"],PDO::PARAM_STR);
+		$stmt -> bindParam(":email",$datos["email"],PDO::PARAM_STR);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+
+//Funcion para mostrar a los correos del proveedor
+	static public function mdlMostrarCorreos($tabla, $item, $valor){
+			if($item != null){ 
+				$stmt = Conexion::conectar()->prepare("
+				SELECT * 
+				FROM $tabla
+				WHERE $item = :$item
+				");
+
+				$stmt -> bindParam(":".$item,$valor,PDO::PARAM_INT);
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+			else{
+				$stmt = Conexion::conectar()->prepare("
+				SELECT * 
+				FROM $tabla
+				");
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+
+			$stmt -> close();
+			$stmt = null;
 	}
 
 }

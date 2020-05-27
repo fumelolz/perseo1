@@ -134,11 +134,11 @@
 
 	static public function ctrAgregarTelefonoProveedor(){
 
-		if (isset($_POST["idProveedor"])) {
+		if (isset($_POST["crearTelefono"])) {
 
 			$tabla = "telefonos_proveedores";
 			
-			$datos = array('id_proveedor' => $_POST["idProveedor"],
+			$datos = array('id_proveedor' => $_POST["crearTelefono"],
 							'telefono' => $_POST["inputAgregarTelefono"],
 							'descripcion' => $_POST["inputAgregarDescripcion"],
 							);
@@ -158,16 +158,15 @@
 
 	static public function ctrAgregarCorreoProveedor(){
 
-		if (isset($_POST["idProveedor"])) {
+		if (isset($_POST["crearCorreo"])) {
 
-			$tabla = "telefonos_proveedores";
+			$tabla = "email_proveedores";
 			
-			$datos = array('id_proveedor' => $_POST["idProveedor"],
-							'telefono' => $_POST["inputAgregarTelefono"],
-							'descripcion' => $_POST["inputAgregarDescripcion"],
+			$datos = array('id_proveedor' => $_POST["crearCorreo"],
+							'email' => $_POST["inputAgregarCorreo"],
 							);
 
-			$respuesta = ModeloProveedores::mdlCrearTelefono($tabla,$datos);
+			$respuesta = ModeloProveedores::mdlCrearCorreo($tabla,$datos);
 
 			if($respuesta=="ok"){
 				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","proveedores");
@@ -178,6 +177,12 @@
 
 			}
 
+	}
+
+	static public function ctrMostrarCorreos($item,$valor){
+		$tabla = "email_proveedores";
+		$respuesta = ModeloProveedores::mdlMostrarCorreos($tabla, $item, $valor);
+		return $respuesta;
 	}
 
 } 

@@ -115,8 +115,11 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	var data = new FormData();
 	data.append('mostrarProveedor',idProveedor);
 
-	var data1 = new FormData();
-	data1.append('mostrarTelefonos',idProveedor);
+	var datosTelefonos = new FormData();
+	datosTelefonos.append('mostrarTelefonos',idProveedor);
+
+	var datosCorreos= new FormData();
+	datosCorreos.append('mostrarCorreos',idProveedor);
 
 	$.ajax({
 		url:"ajax/proveedores.ajax.php",
@@ -132,10 +135,10 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 
 			 //Mando el id del proveedor al modal agregar telefono
 			 $("#idProveedorinfo").empty();
-			 $("#idProveedorinfo").append('<input class="form-control" type="hidden" id="idProveedor" name="idProveedor" value='+respuesta["id_proveedor"]+'>');
+			 $("#idProveedorinfo").append('<input class="form-control" type="hidden" id="crearTelefono" name="crearTelefono" value='+respuesta["id_proveedor"]+'>');
 			 //Mando el id del proveedor al modal agregar correo
 			 $("#idProveedorinfo2").empty();
-			 $("#idProveedorinfo2").append('<input class="form-control" type="hidden" id="idProveedor" name="idProveedor" value='+respuesta["id_proveedor"]+'>');
+			 $("#idProveedorinfo2").append('<input class="form-control" type="hidden" id="crearCorreo" name="crearCorreo" value='+respuesta["id_proveedor"]+'>');
 
 			// console.log(respuesta["id_proveedor"]);
 		}
@@ -144,43 +147,69 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	$.ajax({
 		url:"ajax/proveedores.ajax.php",
 		method:"POST",
-		data: data1,
+		data: datosTelefonos,
 		cache: false,
 		contentType: false,
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-			$("#divMostrarContacto").empty();
+			$("#MostrarTelefonosCI").empty();
+			if(respuesta.length==0){
+				$("#MostrarTelefonosCI").append('<div class="col-12 text-secondary"> <i class="fas fa-info-circle mr-2"></i>No se encontraron telefonos de este proveedor</div>');
+			}
 
-			
 			for (var i = 0; i < respuesta.length; i++){
-				//Se crea la descripcion  del telefono con una columna de 6 y la descripcion de correo de 6 columnas
-				$("#divMostrarContacto").append('<div class="col-6"><div class="text-secondary">'+respuesta[i]["descripcion"]+'</div></div>'+
-										'<div class="col-6"><div class="text-secondary">Correo '+(i+1)+'</div></div>');
-				//Se crea el icono de telefono con una columa de 1
-				$("#divMostrarContacto").append('<div class="col-1"><i class="fas fa-phone-square-alt fa-2x text-secondary"></i></div>');
-				//Se crea el numero del proveedor con una columna de 3
-				$("#divMostrarContacto").append('<div class="col-3"><p class="text-secondary" style="font-size: 20px;">'+respuesta[i]["telefono"]+'</p></div>');
-				//Se crea el boton para editar de 1 columna
-				$("#divMostrarContacto").append('<div class="col-1"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
-				//Se crea el boton´para eliminar telefono
-				$("#divMostrarContacto").append('<div class="col-1"><i class="far fa-trash-alt btnEliminarTelefonoProveedor text-danger" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				//Se crea la descripcion  del telefono con una columna de 12 columnas
+				$("#MostrarTelefonosCI").append('<div class="col-12"><div class="text-secondary">'+respuesta[i]["descripcion"]+'</div></div>');
+
+				//Se crea el icono de telefono con una columa de 2
+				$("#MostrarTelefonosCI").append('<div class="col-2"><i class="fas fa-phone-square-alt fa-2x text-secondary"></i></div>');
+				//Se crea el numero del proveedor con una columna de 6
+				$("#MostrarTelefonosCI").append('<div class="col-6"><p class="text-secondary" style="font-size: 20px;">'+respuesta[i]["telefono"]+'</p></div>');
+				//Se crea el boton para editar de 2 columna
+				$("#MostrarTelefonosCI").append('<div class="col-2"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				//Se crea el boton´para eliminar telefono de 2 columnas
+				$("#MostrarTelefonosCI").append('<div class="col-2"><i class="far fa-trash-alt btnEliminarTelefonoProveedor text-danger" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				
-
-				//Se crea el icono de correo con una columna de 1
-				$("#divMostrarContacto").append('<div class="col-1"><i class="fas fa-envelope fa-2x text-secondary"></i></div>');
-				//Se crea el correo con una columna de 3
-				$("#divMostrarContacto").append('<div class="col-3"><p class="text-secondary" style="font-size: 20px;">'+respuesta[i]["telefono"]+'</p></div>');
-				//Se crea el boton para editar de 1 columna
-				$("#divMostrarContacto").append('<div class="col-1"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
-				//Se crea el boton´para eliminar telefono
-				$("#divMostrarContacto").append('<div class="col-1"><i class="far fa-trash-alt btnEliminarTelefonoProveedor text-danger" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
-
 			}
 
 		}
 	});
 	
+	$.ajax({
+		url:"ajax/proveedores.ajax.php",
+		method:"POST",
+		data: datosCorreos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			console.log(respuesta);
+
+			$("#MostrarCorreosCD").empty();
+
+			if(respuesta.length==0){
+				$("#MostrarCorreosCD").append('<div class="col-12 text-secondary"> <i class="fas fa-info-circle mr-2"></i>No se  encontraron correos de este proveedor</div>');
+			}
+
+			for (var i = 0; i < respuesta.length; i++){
+				//Se crea la descripcion  del telefono con una columna de 12 columnas
+				$("#MostrarCorreosCD").append('<div class="col-12"><div class="text-secondary">Correo no.'+(i+1)+'</div></div>');
+
+				//Se crea el icono de correo con una columna de 1
+				$("#MostrarCorreosCD").append('<div class="col-2"><i class="fas fa-envelope fa-2x text-secondary"></i></div>');
+				//Se crea el correo con una columna de 3
+				$("#MostrarCorreosCD").append('<div class="col-6"><p class="text-secondary" style="font-size: 20px;">'+respuesta[i]["email"]+'</p></div>');
+				//Se crea el boton para editar de 1 columna
+				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				//Se crea el boton´para eliminar telefono
+				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-trash-alt btnEliminarTelefonoProveedor text-danger" idTelefono="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				
+			}
+
+		}
+	});
 });
 
 //Funcion para ver los telefonos por id

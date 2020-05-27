@@ -48,6 +48,6 @@
   </div>
 </div>
 <?php
-$agregarTelefono= new ControladorProveedores();
-$agregarTelefono -> ctrAgregarTelefonoProveedor();
+$agregarCorreo= new ControladorProveedores();
+$agregarCorreo -> ctrAgregarCorreoProveedor();
 ?>

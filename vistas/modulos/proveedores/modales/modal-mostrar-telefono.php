@@ -21,21 +21,6 @@
 
           <div class="box-body">
 
-            <!-- Entrada para el nombre del Proveedor -->
-            <!-- <table class="table table-bordered table-striped" width=100%>
-                <thead>
-                  <tr>
-                    <th>Descripcion</th>
-                    <th>Telefono</th>
-                    <th>Acciónes</th>
-                  </tr>
-                </thead>
-                <tbody class="addTelefonos">
-                  
-                </tbody>
-            </table>
- -->
-
               <div class="container">
                 <div class="row">
 
@@ -60,6 +45,15 @@
                 </div>
                 <br>
                 <div class="row" id="divMostrarContacto">
+                  <!--Colunma izquierda para los telefonos-->
+                  <div class="col-6">
+                    <div class="row" id="MostrarTelefonosCI"></div>
+                  </div>
+                  
+                  <!--Colunma izquierda para los telefonos-->
+                  <div class="col-6">
+                    <div class="row" id="MostrarCorreosCD"></div>
+                  </div>
 
                 </div>
 
