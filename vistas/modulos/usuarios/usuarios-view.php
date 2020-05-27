@@ -40,7 +40,6 @@
                   <th>Usuario</th>
                   <th>Estado_Usuario</th>
                   <th>Nivel</th>
-                  <th>Email</th>
                   <th>RFC</th>
                   <th>INE</th>
                   <th>Dirección</th>
@@ -86,7 +85,6 @@
                   <td>'.$value["username"].'</td>
                   <td>'.$btn.'</td>
                   <td>'.$nivel.'</td>
-                  <td>'.$value["email"].'</td>
                   <td>'.$value["rfc"].'</td>
                   <td>'.$value["ine"].'</td>
                   <td>'.$value["direccion"].'</td>
