@@ -70,7 +70,7 @@
                       <td>'.$nombre.'</td>
                       <td>'.$fechaAlianza.'</td>
                       <td>'.$ultimaFechaCompra.'</td>
-                      <td><div class="btn btn-info btnTelefonoProveedor" data-toggle="modal" data-target="#modalTelefonosProveedor" idProveedor="'.$id_proveedor.'"><i class="fas fa-id-card mr-1"></i><span>Contactar</span></div>
+                      <td><div class="btn btn-info btnTelefonoProveedor" data-toggle="modal" data-target="#modalTelefonosProveedor" idProveedor="'.$id_proveedor.'" style="cursor: pointer"><i class="fas fa-id-card mr-1"></i><span>Contactar</span></div>
                         </td>
                       <td>
                           <center>
