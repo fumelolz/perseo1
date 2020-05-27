@@ -122,6 +122,25 @@ class ModeloProductos{
 
 	}
 
+	static public function mdlActivarProducto($tabla,$item1,$valor1,$item2,$valor2){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item2=:estado WHERE $item1=:id_producto");
+
+		$stmt -> bindParam(":id_producto",$valor1,PDO::PARAM_INT);
+		$stmt -> bindParam(":estado",$valor2,PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
 	// Crear Producto
 	static public function mdlCrearProducto($tabla,$datos){
 
@@ -157,6 +176,24 @@ class ModeloProductos{
 		$stmt -> bindParam(":precio_venta",$datos["precio_venta"],PDO::PARAM_STR);
 		$stmt -> bindParam(":ruta_imagen",$datos["ruta_imagen"],PDO::PARAM_STR);
 		$stmt -> bindParam(":categoria",$datos["categoria"],PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	// Eliminar producto
+	static public function mdlEliminarProducto($tabla,$id_producto){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_producto=:id_producto");
+
+		$stmt -> bindParam(":id_producto",$id_producto,PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 			return "ok";

@@ -103,7 +103,7 @@
 
                   <button class="btn btn-warning btnEditarProducto" data-toggle="modal" data-target="#modalEditarProducto" idProducto="'.$id_producto.'" ><i class="fas fa-pencil-alt"></i></button>
 
-                  <button class="btn btn-danger btnEliminarProducto" idUsuario="'.$id_producto.'"><i class="fas fa-times"></i></button>
+                  <button class="btn btn-danger btnEliminarProducto" idProducto="'.$id_producto.'" foto="'.$imagen.'"><i class="fas fa-times"></i></button>
 
                   </div>
                   </center>
@@ -135,4 +135,7 @@
     include "modales/modal-crear-producto.php";
     include "modales/modal-editar-producto.php";
 
-   ?>
+    $eliminarProducto = new ControladorProductos();
+    $eliminarProducto -> ctrEliminarProducto();
+
+  ?>

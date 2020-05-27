@@ -6,7 +6,8 @@ require_once '../modelos/productos.modelos.php';
 class AjaxProductos{
 
 	public $idProducto;
-	public $idCategoria;
+	
+	
 
 	public function ajaxMostrarProductos(){
 
@@ -19,6 +20,8 @@ class AjaxProductos{
 
 	}
 
+	public $idCategoria;
+
 	public function ajaxMostrarCategorias(){
 
 		$item = "id_categoria";
@@ -28,6 +31,19 @@ class AjaxProductos{
 
 		echo json_encode($respuesta);
 
+	}
+
+	public $estado;
+
+	public function ajaxActivarProducto(){
+
+		$item1 = "id_producto";
+		$valor1 = $this->idProducto;
+		$item2 = "estado";
+		$valor2 = $this->estado;
+
+		$respuesta = ControladorProductos::ctrActivarProducto($item1,$valor1,$item2,$valor2);
+		
 	}
 
 
@@ -44,4 +60,11 @@ if (isset($_POST["idCategoriaEditar"])) {
 	$mostrar = new AjaxProductos();
 	$mostrar -> idCategoria = $_POST["idCategoriaEditar"];
 	$mostrar -> ajaxMostrarCategorias();
+}
+
+if (isset($_POST["idProductoEstado"])) {
+	$activar = new AjaxProductos();
+	$activar -> idProducto = $_POST["idProductoEstado"];
+	$activar -> estado = $_POST["estado"];
+	$activar -> ajaxActivarProducto();
 }

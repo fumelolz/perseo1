@@ -37,6 +37,17 @@ class ControladorProductos{
 
 	}
 
+	// Activar el producto
+	static public function ctrActivarProducto($item1,$valor1,$item2,$valor2){
+
+		$tabla = "productos";
+
+		$respuesta = ModeloProductos::mdlActivarProducto($tabla,$item1,$valor1,$item2,$valor2);
+
+		return $respuesta;
+
+	}
+
 	// Esta función crea los Productos !!!
 	static public function ctrCrearProducto(){
 
@@ -221,6 +232,30 @@ class ControladorProductos{
 				$alerta = AlertasPersonalizadas::alertaExito("Producto actualizado correctamente", "El producto ha sido actualizado con exito","productos");
 			}
 
+		}
+
+	}
+
+	static public function ctrEliminarProducto(){
+
+		if (isset($_GET["idProductoEliminar"])) {
+				
+			$id_producto = $_GET["idProductoEliminar"];
+			$ruta_imagen = $_GET["foto"];
+			$tabla = "productos";
+
+			if ($ruta_imagen != "") {
+				
+				unlink($ruta_imagen);
+				rmdir("vistas/img/productos/".$id_producto);
+
+			}
+
+			$respuesta = ModeloProductos::mdlEliminarProducto($tabla,$id_producto);
+
+			if ($respuesta == "ok") {
+				$alerta = AlertasPersonalizadas::alertaExito("Producto eliminado correctamente", "El producto ha sido eliminado con exito","productos");
+			}
 		}
 
 	}

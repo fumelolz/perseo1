@@ -232,7 +232,8 @@ $(document).on('click', '.btnEditarProducto', function(event) {
 $(document).on('click', '.btnEliminarProducto', function(event) {
 	
 	var idProducto = $(this).attr('idProducto');
-	
+	var foto = $(this).attr('foto');
+
 	Swal.fire({
 		type: 'warning',
 		title: 'Estas seguro de eliminar al Producto?',
@@ -246,10 +247,65 @@ $(document).on('click', '.btnEliminarProducto', function(event) {
 
 		if(result.value){
 
-			window.location = "index.php?ruta=productos&idProductoEliminar="+idProducto;
+			window.location = "index.php?ruta=productos&idProductoEliminar="+idProducto+"&foto="+foto;
 
 		}
 
 	});
 
+});
+
+
+// Activar o desactivar producto
+$(document).on('click', '.btnActivarProducto', function(event) {
+	
+	var idProducto = $(this).attr('idProducto');
+	var estado = $(this).attr('estado');
+
+	var data = new FormData();
+	data.append('idProductoEstado', idProducto);
+	data.append('estado', estado);
+
+	$.ajax({
+		url:"ajax/productos.ajax.php",
+		method:"POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(reply){
+
+			if (window.matchMedia("(max-width:767px)").matches) {
+
+				Swal.fire({
+					type: 'success',
+					title: 'El producto ha sido actualizado',
+					showConfirmButton:true,
+					confirmButtonText: 'Cerrar',
+					closeOnConfirm: false
+				}).then(function(result){
+
+					if(result.value){
+
+						window.location = 'productos';
+
+					}
+
+				});
+			}
+		}
+	});
+
+	if (estado == 0) {
+		$(this).removeClass('btn-success');
+		$(this).addClass('btn-danger');
+		$(this).html('Desactivado');
+		$(this).attr('estado', '1');
+	}else{
+		$(this).removeClass('btn-danger');
+		$(this).addClass('btn-success');
+		$(this).html('Activado');
+		$(this).attr('estado', '0');
+	}
+	
 });
