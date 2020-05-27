@@ -133,6 +133,10 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 			 //Mando el id del proveedor al modal agregar telefono
 			 $("#idProveedorinfo").empty();
 			 $("#idProveedorinfo").append('<input class="form-control" type="hidden" id="idProveedor" name="idProveedor" value='+respuesta["id_proveedor"]+'>');
+			 //Mando el id del proveedor al modal agregar correo
+			 $("#idProveedorinfo2").empty();
+			 $("#idProveedorinfo2").append('<input class="form-control" type="hidden" id="idProveedor" name="idProveedor" value='+respuesta["id_proveedor"]+'>');
+
 			// console.log(respuesta["id_proveedor"]);
 		}
 	});
@@ -151,8 +155,8 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 			
 			for (var i = 0; i < respuesta.length; i++){
 				//Se crea la descripcion  del telefono con una columna de 6 y la descripcion de correo de 6 columnas
-				$("#divMostrarContacto").append('<div class="col-6"><p class="text-secondary">'+respuesta[i]["descripcion"]+'</p></div>'+
-										'<div class="col-6"><p class="text-secondary">Correo '+(i+1)+'</p></div>');
+				$("#divMostrarContacto").append('<div class="col-6"><div class="text-secondary">'+respuesta[i]["descripcion"]+'</div></div>'+
+										'<div class="col-6"><div class="text-secondary">Correo '+(i+1)+'</div></div>');
 				//Se crea el icono de telefono con una columa de 1
 				$("#divMostrarContacto").append('<div class="col-1"><i class="fas fa-phone-square-alt fa-2x text-secondary"></i></div>');
 				//Se crea el numero del proveedor con una columna de 3
@@ -203,7 +207,7 @@ $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
 			for(var i = 0; i < respuesta.length; i++){
 				$("#editarDescripcion").append('<input type="hidden" id="idTelefono" name="idTelefono" value='+respuesta[i]["id_telefono"]+'>'+
 					'Descripcion: '+
-					'<input type="text"  class="form-control" placeholder="Descripcion" id="editarDescripcionT" name="editarDescripcionT" value='+respuesta[i]["descripcion"]+' required>'
+					'<input type="text"  class="form-control" placeholder="Descripcion" id="editarDescripcionT" name="editarDescripcionT" value="'+respuesta[i]["descripcion"]+'"" required>'
 					);
 				$("#editaTelefonos").append('No. Telefono'+
 			  	'<input type="text"  class="form-control" placeholder="Telefono" id="editarTelefonoT" name="editarTelefonoT" value='+respuesta[i]["telefono"]+' required>');

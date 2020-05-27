@@ -43,16 +43,18 @@
                     <div class="btn btn-info" width="10px"><i class="fas fa-tty fa-2x"></i></div>
                   </div>
 
-                  <div class="col-4 align-self-center">
-                    <p class="text-left text-secondary" style="font-size: 20px;">Telefonos</p>
+                  <div class="col-4">
+                    <div class="text-left text-secondary" style="font-size: 15px;">Telefonos</div>
+                    <button class="btn btn-primary" style="font-size: 10px;" data-toggle="modal" data-target="#modalAgregarTelefonosProveedor" data-dismiss="modal">Agregar nuevo telefono</button>
                   </div>
 
                   <div class="col-2">
                     <div class="btn btn-info" width="10px"><i class="fas fa-envelope-open-text fa-2x"></i></div>
                   </div>
 
-                  <div class="col-4 align-self-center">
-                    <p class="text-left text-secondary" style="font-size: 20px;">Emails</p>
+                  <div class="col-4">
+                    <div class="text-left text-secondary" style="font-size: 15px;">Emails</div>
+                    <button class="btn btn-primary" style="font-size: 10px;" data-toggle="modal" data-target="#modalAgregarCorreosProveedor" data-dismiss="modal">Agregar nuevo correo</button>
                   </div>
 
                 </div>
@@ -67,7 +69,6 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalAgregarTelefonosProveedor" data-dismiss="modal">Agregar nuevo telefono</button>
           <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
         </div>
         <!---->

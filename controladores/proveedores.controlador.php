@@ -156,4 +156,28 @@
 
 	}
 
+	static public function ctrAgregarCorreoProveedor(){
+
+		if (isset($_POST["idProveedor"])) {
+
+			$tabla = "telefonos_proveedores";
+			
+			$datos = array('id_proveedor' => $_POST["idProveedor"],
+							'telefono' => $_POST["inputAgregarTelefono"],
+							'descripcion' => $_POST["inputAgregarDescripcion"],
+							);
+
+			$respuesta = ModeloProveedores::mdlCrearTelefono($tabla,$datos);
+
+			if($respuesta=="ok"){
+				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","proveedores");
+			}
+			else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar proveedor","error");
+			}
+
+			}
+
+	}
+
 } 

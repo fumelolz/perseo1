@@ -43,7 +43,6 @@
                     <th>Fecha de Alianza</th>
                     <th>Ultima fecha de compra</th>
                     <th>Contacto</th>
-                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -70,11 +69,11 @@
                       <td>'.$nombre.'</td>
                       <td>'.$fechaAlianza.'</td>
                       <td>'.$ultimaFechaCompra.'</td>
-                      <td><div class="btn btn-info btnTelefonoProveedor" data-toggle="modal" data-target="#modalTelefonosProveedor" idProveedor="'.$id_proveedor.'" style="cursor: pointer"><i class="fas fa-id-card mr-1"></i><span>Contactar</span></div>
-                        </td>
                       <td>
                           <center>
                           <div class="btn-group-sm">
+                          
+                          <div class="btn btn-info btnTelefonoProveedor" data-toggle="modal" data-target="#modalTelefonosProveedor" idProveedor="'.$id_proveedor.'" style="cursor: pointer"><i class="fas fa-address-book"></i><span></span></div>
 
                           <button class="btn btn-warning btnEditarProveedor" data-toggle="modal" data-target="#modalEditarProveedor" idProveedor="'.$id_proveedor.'" ><i class="fas fa-pencil-alt"></i></button>
 
@@ -112,6 +111,7 @@ include "modales/modal-editar-telefono.php";
 include "modales/modal-agregar-telefono.php";
 include "modales/modal-crear-proveedor.php";
 include "modales/modal-editar-proveedor.php";
+include "modales/modal-agregar-correo.php";
 ?>
 <?php 
 
