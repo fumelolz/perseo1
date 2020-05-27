@@ -125,12 +125,16 @@ class ControladorProductos{
 				'categoria' => $categoria);
 
 			// Muestra los datos del array
-			echo '<pre>'; print_r($datos); echo '</pre>';
+			//echo '<pre>'; print_r($datos); echo '</pre>';
 
 			$respuesta = ModeloProductos::mdlCrearProducto($tabla,$datos);
 
 			// Muestra la respeusta
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
+			//echo '<pre>'; print_r($respuesta); echo '</pre>';
+
+			if ($respuesta == "ok") {
+				$alerta = AlertasPersonalizadas::alertaExito("Producto agregado correctamente", "El producto ha sido agregado con exito","productos");
+			}
 
 		}
 	}
@@ -147,7 +151,58 @@ class ControladorProductos{
 			$categoria = $_POST["editarProductoCategoria"];
 			$utilidad = $_POST["editarUtilidad"];
 			$tabla = "productos";
-			$ruta_imagen = $_POST["fotoActual"];
+			$ruta_imagen = $_POST["fotoActual"]; 
+
+			if (isset($_FILES["editarProductoFoto"]["tmp_name"]) && !empty($_FILES["editarProductoFoto"]["tmp_name"])) {
+					
+				list($ancho,$alto) = getimagesize($_FILES["editarProductoFoto"]["tmp_name"]);
+
+				/* Crear El directorio donde vamos a guardar la foto del proucto */
+				$directorio = "vistas/img/productos/".$id_producto;
+
+				if (!empty($_POST["fotoActual"])) {
+					unlink($_POST["fotoActual"]);
+				}else{
+					mkdir($directorio,0755);
+				}
+
+				/* De acuerdo al tipo de imagen jpeg */
+				if ($_FILES["editarProductoFoto"]["type"] == "image/jpeg") {
+
+					/* Guardamos en el directorio */
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta_imagen = "vistas/img/productos/".$id_producto."/".$aleatorio.".jpg";
+
+					$origen = imagecreatefromjpeg($_FILES["editarProductoFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($ancho, $alto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+					imagejpeg($destino,$ruta_imagen);
+				}
+
+				/* De acuerdo al tipo de imagen png */
+				if ($_FILES["editarProductoFoto"]["type"] == "image/png") {
+
+					/* Guardamos en el directorio */
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta_imagen = "vistas/img/productos/".$id_producto."/".$aleatorio.".png";
+
+					$origen = imagecreatefrompng($_FILES["editarProductoFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($ancho, $alto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+					imagepng($destino,$ruta_imagen);
+				}
+
+			}
 
 			$datos = array(
 				'id_producto' => $id_producto,
@@ -158,9 +213,13 @@ class ControladorProductos{
 				'ruta_imagen' => $ruta_imagen,
 				'categoria' => $categoria);
 
-			echo '<pre>'; print_r($datos); echo '</pre>';
+			// echo '<pre>'; print_r($datos); echo '</pre>';
 			$respuesta = ModeloProductos::mdlEditarProducto($tabla,$datos);
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
+
+			if ($respuesta == "ok") {
+				$alerta = AlertasPersonalizadas::alertaExito("Producto actualizado correctamente", "El producto ha sido actualizado con exito","productos");
+			}
 
 		}
 

@@ -81,6 +81,46 @@ $("#productoFoto").change(function(event) {
 
 });
 
+/*Editar foto de producto*/
+
+$("#editarProductoFoto").change(function(event) {
+	$(".imagenPreviaEditar").attr('src', '');
+
+	var imagen = this.files[0];
+	
+	if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+		$("#editarProductoFoto").attr('value', '');
+		Swal.fire({
+			type: 'error',
+			title: 'Error al subir la imagen',
+			text: "La imagen debe estar en formato JPG o PNG",
+			showConfirmButton:true,
+			confirmButtonText: 'Cerrar',
+			closeOnConfirm: false
+		})
+	}else if(imagen["size"]>500000){
+		$("#editarProductoFoto").attr('value', '');
+		Swal.fire({
+			type: 'error',
+			title: 'Error al subir la imagen',
+			text: "La imagen debe pesar menos de 5Mb",
+			showConfirmButton:true,
+			confirmButtonText: 'Cerrar',
+			closeOnConfirm: false
+		})
+	}else{
+		var imageData = new FileReader;
+		imageData.readAsDataURL(imagen);
+		$(imageData).on('load', function(event) {
+			
+			var imageUrl = event.target.result;
+			$(".imagenPreviaEditar").attr('src', imageUrl);
+			
+		});
+	}
+
+});
+
 // **********************************************************************
 // Editar Procentaje
 
@@ -184,6 +224,32 @@ $(document).on('click', '.btnEditarProducto', function(event) {
 				$(".imagenPreviaEditar").attr('src',reply["ruta_imagen"]);
 			}
 		}
+	});
+
+});
+
+// Boton para elminar un producto
+$(document).on('click', '.btnEliminarProducto', function(event) {
+	
+	var idProducto = $(this).attr('idProducto');
+	
+	Swal.fire({
+		type: 'warning',
+		title: 'Estas seguro de eliminar al Producto?',
+		text:'Puedes cancelar, usando el boton Cancelar',
+		showCancelButton:true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor:'d33',
+		cancelButtonText:'Cancelar',
+		confirmButtonText: 'Si, eliminar Producto!',
+	}).then(function(result){
+
+		if(result.value){
+
+			window.location = "index.php?ruta=productos&idProductoEliminar="+idProducto;
+
+		}
+
 	});
 
 });
