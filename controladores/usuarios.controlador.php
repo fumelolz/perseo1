@@ -32,7 +32,7 @@ class ControladorUsuarios{
 			$estado = $_POST["usuarioEstado"];
 			$ciudad = $_POST["usuarioCiudad"];
 			$fecha_nacimiento = $_POST["usuarioFechaNacimiento"];
-			$username = $_POST["usuarioUsername"];
+			$username = strtolower($_POST["usuarioUsername"]);
 			$password = crypt($_POST["usuarioPassword"], '$2a$07$hayvcesawdquesnwoasusdos$');
 			$nivel = $_POST["usuarioNivel"];
 			$fecha_alta  = ControladorDB::ctrMostrarFecha();
@@ -150,6 +150,58 @@ class ControladorUsuarios{
 		$respuesta = ModeloUsuarios::mdlActivarUsuario($tabla,$item1,$valor1,$item2,$valor2);
 
 		return $respuesta;
+
+	}
+
+	static public function ctrLoginUsuario(){
+
+		if (isset($_POST["username"])) {
+
+			$username = strtolower($_POST["username"]);
+			$password = crypt($_POST["password"], '$2a$07$hayvcesawdquesnwoasusdos$');
+			
+			$tabla = "usuarios";
+
+			$item = "usuario";
+			$valor = $username;
+
+			$respuesta = ModeloUsuarios::mdlMostrarUsuarioDatos($tabla,$item,$valor);
+			
+			if ($username == $respuesta["username"]) {
+				
+				if (hash_equals($password,$respuesta["password"])) {
+					
+					if ($respuesta["state"] == 1) {
+
+						$_SESSION["logged"]= "ok";
+						$_SESSION["id_usuario"] = $respuesta["id_usuario"];
+						$_SESSION["username"] = $respuesta["username"];
+						$_SESSION["nivel"] = $respuesta["nivel"];
+
+						$fecha_servidor = ControladorDB::ctrMostrarFecha();
+
+						$item1 = "id_usuario";
+						$valor1 = $respuesta["id_usuario"];
+						$item2 = "ultimo_login";
+						$valor2 = $fecha_servidor["fecha"].' '.$fecha_servidor["hora"];
+
+
+						$respuesta = ModeloUsuarios::mdlActivarUsuario($tabla,$item1,$valor1,$item2,$valor2);
+						
+						if ($respuesta == "ok") {
+							echo '<script> 
+							var url = window.location.pathname;
+							window.location = url; 
+							</script>';
+						}
+
+					}
+
+				}
+
+			}
+
+		}
 
 	}
 
