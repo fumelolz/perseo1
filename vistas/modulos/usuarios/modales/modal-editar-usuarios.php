@@ -38,7 +38,7 @@
         </div>
 
         <!-- Entrada para el nombre del usuario -->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <div class="row">
             <div class="input-group mb-1 col-6">
               <div class="input-group-prepend">
@@ -47,7 +47,7 @@
               <input type="text"  class="form-control" placeholder="Email del usuario" id="editarUsuarioEmail" name="editarUsuarioEmail" required>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Entrada para el nombre del usuario -->
         <div class="form-group">

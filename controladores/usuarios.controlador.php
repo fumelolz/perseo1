@@ -24,7 +24,6 @@ class ControladorUsuarios{
 			$nombre = $_POST["usuarioNombre"];
 			$ap_Paterno = $_POST["usuarioApPaterno"];
 			$ap_Materno = $_POST["usuarioApMaterno"];
-			$email = $_POST["usuarioEmail"];
 			$rfc = $_POST["usuarioRfc"];
 			$ine = $_POST["usuarioIne"];
 			$direccion = $_POST["usuarioDireccion"];
@@ -40,7 +39,6 @@ class ControladorUsuarios{
 			$datos = array('nombre' => $nombre,
 						   'ap_Paterno' => $ap_Paterno,
 						   'ap_Materno' => $ap_Materno,
-						   'email' => $email,
 						   'rfc' => $rfc,
 						   'ine' => $ine,
 						   'direccion' => $direccion,
@@ -51,12 +49,13 @@ class ControladorUsuarios{
 						   'username' => $username,
 						   'password' => $password,
 						   'nivel' => $nivel,
-						   'fecha_alta' => $fecha_alta);
+						   'fecha_alta' => $fecha_alta["fecha"]);
 
 			// Mostrar los datos del array
-			// echo '<pre>'; print_r($datos); echo '</pre>';
+		    // echo '<pre>'; print_r($datos); echo '</pre>';
 
 			$respuesta = ModeloUsuarios::mdlCrearUsuario($tabla1,$tabla2,$datos);
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta = "ok") {
 				$alerta = AlertasPersonalizadas::alertaExito("Usuario Creado", "El usuario ha sido creado correctamente","usuarios");
@@ -79,7 +78,6 @@ class ControladorUsuarios{
 			$nombre = $_POST["editarUsuarioNombre"];
 			$ap_Paterno = $_POST["editarUsuarioApPaterno"];
 			$ap_Materno = $_POST["editarUsuarioApMaterno"];
-			$email = $_POST["editarUsuarioEmail"];
 			$rfc = $_POST["editarUsuarioRfc"];
 			$ine = $_POST["editarUsuarioIne"];
 			$direccion = $_POST["editarUsuarioDireccion"];
@@ -117,13 +115,13 @@ class ControladorUsuarios{
 						   'username' => $username,
 						   'password' => $password,
 						   'nivel' => $nivel,
-						   'fecha_alta' => $fecha_alta);
+						   'fecha_alta' => $fecha_alta["fecha"]);
 
 			// Mostrar los datos del array
-			echo '<pre>'; print_r($datos); echo '</pre>';
+			// echo '<pre>'; print_r($datos); echo '</pre>';
 
 		    $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla1,$tabla2,$datos);
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta = "ok") {
 				$alerta = AlertasPersonalizadas::alertaExito("Usuario Actualizado", "El usuario ha sido actualizado correctamente","usuarios");

@@ -72,9 +72,9 @@
                     $btn = '<center><button class="btn btn-success btnActivarUsuario" estado="0" idUsuario="'.$id_usuario.'">Activado</button></center>';
                   }
 
-                  if ($value["nivel"]==1) {
+                  if ($value["nivel"]==0) {
                     $nivel = "Administrador";
-                  }else if($value["nivel"]==0){
+                  }else if($value["nivel"]==1){
                     $nivel = "Vendedor";
                   }        
 

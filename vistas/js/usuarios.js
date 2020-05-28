@@ -20,7 +20,6 @@ $(document).on('click', '.btnEditarUsuario', function(event) {
 			$("#editarUsuarioNombre").attr('value', reply["nombre"]);
 			$("#editarUsuarioApPaterno").attr('value', reply["ap_Paterno"]);
 			$("#editarUsuarioApMaterno").attr('value', reply["ap_Materno"]);
-			$("#editarUsuarioEmail").attr('value', reply["email"]);
 			$("#editarUsuarioRfc").attr('value', reply["rfc"]);
 			$("#editarUsuarioIne").attr('value', reply["ine"]);
 			$("#editarUsuarioDireccion").attr('value', reply["direccion"]);
