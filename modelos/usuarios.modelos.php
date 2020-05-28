@@ -45,7 +45,7 @@ class ModeloUsuarios{
 		if ($item != null) {
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE username = :$item ");
 
-			$stmt -> bindParam(":".$item,$valor,PDO::PARAM_INT);
+			$stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
 
 			$stmt -> execute();
 

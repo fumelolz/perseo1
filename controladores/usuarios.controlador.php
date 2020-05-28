@@ -37,19 +37,19 @@ class ControladorUsuarios{
 			$fecha_alta  = ControladorDB::ctrMostrarFecha();
 
 			$datos = array('nombre' => $nombre,
-						   'ap_Paterno' => $ap_Paterno,
-						   'ap_Materno' => $ap_Materno,
-						   'rfc' => $rfc,
-						   'ine' => $ine,
-						   'direccion' => $direccion,
-						   'pais' => $pais,
-						   'estado' => $estado,
-						   'ciudad' => $ciudad,
-						   'fecha_nacimiento' => $fecha_nacimiento,
-						   'username' => $username,
-						   'password' => $password,
-						   'nivel' => $nivel,
-						   'fecha_alta' => $fecha_alta["fecha"]);
+				'ap_Paterno' => $ap_Paterno,
+				'ap_Materno' => $ap_Materno,
+				'rfc' => $rfc,
+				'ine' => $ine,
+				'direccion' => $direccion,
+				'pais' => $pais,
+				'estado' => $estado,
+				'ciudad' => $ciudad,
+				'fecha_nacimiento' => $fecha_nacimiento,
+				'username' => $username,
+				'password' => $password,
+				'nivel' => $nivel,
+				'fecha_alta' => $fecha_alta["fecha"]);
 
 			// Mostrar los datos del array
 		    // echo '<pre>'; print_r($datos); echo '</pre>';
@@ -101,26 +101,26 @@ class ControladorUsuarios{
 			
 
 			$datos = array('id_persona' => $id_persona,
-						   'nombre' => $nombre,
-						   'ap_Paterno' => $ap_Paterno,
-						   'ap_Materno' => $ap_Materno,
-						   'email' => $email,
-						   'rfc' => $rfc,
-						   'ine' => $ine,
-						   'direccion' => $direccion,
-						   'pais' => $pais,
-						   'estado' => $estado,
-						   'ciudad' => $ciudad,
-						   'fecha_nacimiento' => $fecha_nacimiento,
-						   'username' => $username,
-						   'password' => $password,
-						   'nivel' => $nivel,
-						   'fecha_alta' => $fecha_alta["fecha"]);
+				'nombre' => $nombre,
+				'ap_Paterno' => $ap_Paterno,
+				'ap_Materno' => $ap_Materno,
+				'email' => $email,
+				'rfc' => $rfc,
+				'ine' => $ine,
+				'direccion' => $direccion,
+				'pais' => $pais,
+				'estado' => $estado,
+				'ciudad' => $ciudad,
+				'fecha_nacimiento' => $fecha_nacimiento,
+				'username' => $username,
+				'password' => $password,
+				'nivel' => $nivel,
+				'fecha_alta' => $fecha_alta["fecha"]);
 
 			// Mostrar los datos del array
 			// echo '<pre>'; print_r($datos); echo '</pre>';
 
-		    $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla1,$tabla2,$datos);
+			$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla1,$tabla2,$datos);
 			// echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta = "ok") {
@@ -197,10 +197,16 @@ class ControladorUsuarios{
 							</script>';
 						}
 
+					}else{
+						echo 'El usuario esta desactivado';
 					}
 
+				}else{
+					echo 'La contraseña no coincide';
 				}
 
+			}else{
+				echo 'Hubo un error en el usuario';
 			}
 
 		}
