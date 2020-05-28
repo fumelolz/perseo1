@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +30,14 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-transition <?php if(isset($_SESSION["logged"]) && $_SESSION["logged"] == "ok"){ echo 'sidebar-mini sidebar-collapse'; }else{ echo 'login-page';} ?>">
 
-  <!-- Site wrapper -->
-  <div class="wrapper">
+<?php 
 
-    <?php 
+if (isset($_SESSION["logged"]) && $_SESSION["logged"] == "ok") {
+
+  echo ' <!-- Site wrapper -->
+    <div class="wrapper">';
 
     include "modulos/navbar.php";
     include "modulos/sidebar.php";
@@ -51,20 +54,29 @@
 
       }elseif($_GET["ruta"]=="proveedores-eliminados"){
         include "modulos/proveedores/".$_GET["ruta"]."-view.php";
+      }elseif($_GET["ruta"]=="logout"){
+        include "modulos/login/".$_GET["ruta"].".php";
       }
 
 
-  }else{
-    include "modulos/home/home-view.php";
-  }
+    }else{
+      include "modulos/home/home-view.php";
+    }
 
-  include "modulos/footer.php";
+    include "modulos/footer.php";
 
 
-  ?> 
+    echo '
+    </div>
+    <!-- ./wrapper -->';
 
-</div>
-<!-- ./wrapper -->
+}else{
+  include "modulos/login/login-view.php";
+}
+
+    
+
+?> 
 
 <!-- jQuery -->
 <script src="vistas/plugins/jquery/jquery.min.js"></script>
