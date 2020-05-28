@@ -26,7 +26,7 @@
 
             <p>
               <?php
-              if ($_SESSION["nivel"] == 1 ) {
+              if ($_SESSION["nivel"] == 0 ) {
                 $nivel = "Administrador";
               }else{
                 $nivel = "Vendedor";
