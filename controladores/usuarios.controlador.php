@@ -171,10 +171,14 @@ class ControladorUsuarios{
 					
 					if ($respuesta["state"] == 1) {
 
+						$datos_usuario = ControladorUsuarios::ctrMostrarUsuarios("id_persona",$respuesta["id_persona"]);
+
 						$_SESSION["logged"]= "ok";
 						$_SESSION["id_usuario"] = $respuesta["id_usuario"];
 						$_SESSION["username"] = $respuesta["username"];
+						$_SESSION["nombre_usuario"] = $datos_usuario["nombre"].' '.$datos_usuario["ap_Paterno"];
 						$_SESSION["nivel"] = $respuesta["nivel"];
+						$_SESSION["fecha_alta"] = $respuesta["fecha_alta"];
 
 						$fecha_servidor = ControladorDB::ctrMostrarFecha();
 

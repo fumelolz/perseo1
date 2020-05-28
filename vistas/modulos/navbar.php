@@ -17,7 +17,7 @@
     <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
           <img src="vistas/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
-          <span class="d-none d-md-inline">Alexander Pierce</span>
+          <span class="d-none d-md-inline"><?php echo ucfirst($_SESSION["nombre_usuario"]); ?></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <!-- User image -->
@@ -25,8 +25,15 @@
             <img src="vistas/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 
             <p>
-              Alexander Pierce - Web Developer
-              <small>Member since Nov. 2012</small>
+              <?php
+              if ($_SESSION["nivel"] == 1 ) {
+                $nivel = "Administrador";
+              }else{
+                $nivel = "Vendedor";
+              }
+              echo ucfirst($_SESSION["username"]).' - '.$nivel; 
+              ?>
+              <small>Miembro desde <?php echo $_SESSION["fecha_alta"]; ?></small>
             </p>
           </li>
           <!-- Menu Body -->
