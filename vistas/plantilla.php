@@ -45,7 +45,8 @@
           $_GET["ruta"]=="clientes" ||
           $_GET["ruta"]=="productos" ||
           $_GET["ruta"]=="proveedores" ||
-          $_GET["ruta"]=="usuarios") {
+          $_GET["ruta"]=="usuarios" ||
+          $_GET["ruta"]=="login") {
 
         include "modulos/".$_GET["ruta"]."/".$_GET["ruta"]."-view.php";
 
