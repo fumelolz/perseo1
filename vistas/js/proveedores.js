@@ -227,7 +227,7 @@ $(document).on('click', '.telefonoPortapapeles', function(event) {
 	$portapapeles.val($(this).html()).select();
 	document.execCommand("copy");
 	$portapapeles.remove();
-	Swal.fire('Correo telefono copiado');
+	Swal.fire('Numero de telefono copiado');
 });
 //Funcion para ver los telefonos por id
 $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
