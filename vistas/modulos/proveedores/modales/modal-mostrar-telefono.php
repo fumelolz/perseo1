@@ -63,6 +63,11 @@
         </div>
 
         <div class="modal-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-6"><p class="text-primary"><i class="fas fa-info-circle mr-2"></i>Si das click sobre el telefono o correo se copiara al portapapeles.</p></div>
+            </div>
+          </div>
           <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
         </div>
         <!---->
