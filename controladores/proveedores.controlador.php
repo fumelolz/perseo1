@@ -185,4 +185,47 @@
 		return $respuesta;
 	}
 
+	static public function ctrEditarCorreosProveedor(){
+		if (isset($_POST["idCorreo"])) {
+
+			$tabla = "email_proveedores";
+
+			$datos = array('id_email' => $_POST["idCorreo"],
+						   'email' => $_POST["editarCorreo"],
+						   );
+
+		     // Muestra los datos que trae el array 
+			  //echo '<pre>'; print_r($datos); echo '</pre>';
+
+		   $respuesta = ModeloProveedores::mdlEditarCorreos($tabla,$datos);
+
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("CORREO EDITADO","Se edito el correo correctamente","proveedores");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo Editar","A ocurrido un error al editar correo","error");
+			}
+
+		}
+	}
+
+	static public function ctrEliminarCorreoProveedor(){
+
+		if (isset($_GET["idCorreo"])) {
+
+			$tabla = "email_proveedores";
+
+			$id_email = $_GET["idCorreo"];
+
+			$respuesta = ModeloProveedores::mdlEliminarCorreoProveedor($tabla,$id_email);
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("CORREO ELIMINADO","El correo se elimino correctamete","proveedores");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se puede eliminar","A ocurrido un error al borrar el corrreo","error");
+			}
+
+		}
+
+	}
+
 } 

@@ -56,6 +56,15 @@ class AjaxProveedores{
 
 		echo json_encode($respuesta);
 	}
+	public function ajaxMostrarIdCorreoProveedor(){
+
+		$item = "id_email";
+		$valor = $this->idCorreo;
+
+		$respuesta = ControladorProveedores::ctrMostrarCorreos($item,$valor);
+
+		echo json_encode($respuesta);
+	}
 
 }
 
@@ -86,4 +95,9 @@ if (isset($_POST["mostrarCorreos"])) {
 	$mostrar = new AjaxProveedores();
 	$mostrar -> idProveedor = $_POST["mostrarCorreos"];
 	$mostrar -> ajaxMostrarCorreosProveedor();
+}
+if(isset($_POST["mostrarIdCorreo"])){
+	$mostrar = new AjaxProveedores();
+	$mostrar -> idCorreo = $_POST["mostrarIdCorreo"];
+	$mostrar -> ajaxMostrarIdCorreoProveedor();
 }

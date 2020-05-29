@@ -194,7 +194,7 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 			}
 
 			for (var i = 0; i < respuesta.length; i++){
-				//Se crea la descripcion  del telefono con una columna de 12 columnas
+				//Se crea la descripcion  del correo con una columna de 12 columnas
 				$("#MostrarCorreosCD").append('<div class="col-12"><div class="text-secondary">Correo no.'+(i+1)+'</div></div>');
 
 				//Se crea el icono de correo con una columna de 2
@@ -202,9 +202,9 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 				//Se crea el correo con una columna de 6
 				$("#MostrarCorreosCD").append('<div class="col-6"><p class="text-secondary" style="font-size: 20px; overflow:auto;">'+respuesta[i]["email"]+'</p></div>');
 				//Se crea el boton para editar de 2 columna
-				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
-				//Se crea el boton´para eliminar telefono
-				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-trash-alt btnEliminarTelefonoProveedor text-danger" idTelefono="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-edit btnEditarCorreoProveedor text-warning" data-toggle="modal" data-target="#modalEditarCorreosProveedor" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				//Se crea el boton´para eliminar correo
+				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-trash-alt btnEliminarCorreoProveedor text-danger" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				
 			}
 
@@ -268,6 +268,64 @@ $(document).on('click', '.btnEliminarTelefonoProveedor', function(event) {
 		if(result.value){
 
 			 window.location = "index.php?ruta=proveedores&idTelefono="+idTelefono;
+
+		}
+
+	});
+
+});
+
+//Funcion para editar el correo
+$(document).on('click', '.btnEditarCorreoProveedor', function(event) {
+	
+	var idCorreo = $(this).attr('idCorreo');
+
+	var dataCorreo = new FormData();
+	dataCorreo.append('mostrarIdCorreo',idCorreo);
+
+
+	$.ajax({
+		url:"ajax/proveedores.ajax.php",
+		method:"POST",
+		data: dataCorreo,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			$("#editarCorreo").empty();
+
+			for(var i = 0; i < respuesta.length; i++){
+				$("#editarCorreo").append('<input type="hidden" id="idCorreo" name="idCorreo" value='+respuesta[i]["id_email"]+'>'+
+					'Correo: '+
+					'<input type="text"  class="form-control" placeholder="Correo" id="editarCorreo" name="editarCorreo" value="'+respuesta[i]["email"]+'"" required>'
+					);
+			}
+	
+		}
+	});
+
+	
+});
+//Boton para eliminar telefono
+$(document).on('click', '.btnEliminarCorreoProveedor', function(event) {
+	
+	var idCorreo = $(this).attr('idCorreo');
+	
+	Swal.fire({
+		type: 'warning',
+		title: '¿Estas seguro de eliminar este correo?',
+		text:'Se eliminara el correo y no podras revertir el cambio.',
+		showCancelButton:true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor:'d33',
+		cancelButtonText:'Cancelar',
+		confirmButtonText: 'Si, eliminar Correo!',
+	}).then(function(result){
+
+		if(result.value){
+
+			 window.location = "index.php?ruta=proveedores&idCorreo="+idCorreo;
 
 		}
 

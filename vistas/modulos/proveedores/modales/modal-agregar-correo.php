@@ -15,6 +15,13 @@
 
               <div class="container">
                 <div class="row">
+                  <div class="col-12 text-secondary">
+                    <i class="fas fa-info-circle mr-2"></i>Ingrese el correo electronico del proveedor.
+                    <br>
+                  </div>
+                </div>
+
+                <div class="row">
                   <div id="editarDescripcion" class="col-12">Nuevo correo electronico:</div>
                 </div>
                 <div class="row">

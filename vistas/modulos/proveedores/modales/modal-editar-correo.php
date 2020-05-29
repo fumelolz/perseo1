@@ -1,11 +1,11 @@
 <!-- Modal editar telefonos proveedor -->
-<div class="modal fade" id="modalEditarTelefonosProveedor" tabindex="-1" role="dialog" aria-labelledby="modalEditarTelefonosProveedor" aria-hidden="true">
+<div class="modal fade" id="modalEditarCorreosProveedor" tabindex="-1" role="dialog" aria-labelledby="modalEditarTelefonosProveedor" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
       <form role="form" method="Post" enctype="multipart/form-data">
         <div class="modal-header bg-info" style="color: white;">
-          <h5 class="modal-title">Telefonos del proveedor</h5>
+          <h5 class="modal-title">Correos del proveedor</h5>
         </div>
         <div class="modal-body">
           <div class="box-body">
@@ -13,16 +13,9 @@
             <!-- Entrada para el nombre del Proveedor -->
 
               <div class="container">
-
                 <div class="row">
-                  <div class="col-12 text-secondary">
-                    <i class="fas fa-info-circle"></i> Edita la descripcion y telefono de abajo, para editar el numero existente.
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div id="editarDescripcion" class="col-6"></div>
-                  <div id="editaTelefonos"class="col-6"></div>
+                  <div id="editarCorreo"class="col-6"></div>
+                  <div class="col-6 text-secondary"><i class="fas fa-info-circle"></i> Edita el correo de la izquierda, para editar el correo existente.</div>
                 </div>
               </div>
 
@@ -41,13 +34,13 @@
 </div>
 <?php 
 
-        $editarTelefonoProveedor = new ControladorProveedores();
-        $editarTelefonoProveedor -> ctrEditarTelefonoProveedor();
+         $editarCorreoProveedor = new ControladorProveedores();
+         $editarCorreoProveedor -> ctrEditarCorreosProveedor();
 
 ?>
 <?php 
 
-  $eliminarProveedor= new ControladorProveedores();
-  $eliminarProveedor-> ctrEliminarTelefonoProveedor();
+   $eliminarCorreoProveedor= new ControladorProveedores();
+   $eliminarCorreoProveedor-> ctrEliminarCorreoProveedor();
 
 ?>
