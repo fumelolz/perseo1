@@ -165,7 +165,7 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 				//Se crea el icono de telefono con una columa de 2
 				$("#MostrarTelefonosCI").append('<div class="col-2"><i class="fas fa-phone-square-alt fa-2x text-secondary"></i></div>');
 				//Se crea el numero del proveedor con una columna de 6
-				$("#MostrarTelefonosCI").append('<div class="col-6"><p class="text-secondary telefonoPortapapeles" style="font-size: 20px;" data-toggle="tooltip" data-placement="top" title="Da clic para copiarlo al portapapeles.">'+respuesta[i]["telefono"]+'</p></div>');
+				$("#MostrarTelefonosCI").append('<div class="col-6"><p class="text-secondary overflow-auto telefonoPortapapeles" style="font-size: 20px;" data-toggle="tooltip" data-placement="top" title="Da clic para copiarlo al portapapeles.">'+respuesta[i]["telefono"]+'</p></div>');
 				//Se crea el boton para editar de 2 columna
 				$("#MostrarTelefonosCI").append('<div class="col-1"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				//Se crea el boton´para eliminar telefono de 2 columnas
