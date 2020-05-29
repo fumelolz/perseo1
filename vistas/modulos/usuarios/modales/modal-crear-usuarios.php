@@ -146,6 +146,16 @@
               <input type="radio" id="usuarioNivel1" name="usuarioNivel" class="custom-control-input" value="1">
               <label class="custom-control-label" for="usuarioNivel1">Vendedor</label>
             </div>
+
+            <hr>
+            
+            <div class="form-group mt-3">
+              <label for="productoFoto">Foto del usuario</label>
+              <input type="file" class="form-control-file" id="usuarioFoto" name="usuarioFoto">
+              <p class="help-block">Peso maximo de la foto 5Mb</p>
+              <img class="imagenPrevia" src="vistas/img/producto-default.png" class="img-thumbnail" width="100px">
+            </div>
+
             <hr>
 
           </div>

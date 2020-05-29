@@ -16,13 +16,32 @@
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown user-menu">
       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-        <img src="vistas/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
+        <?php 
+
+        if ($_SESSION["ruta_imagen"] != "") {
+          echo '<img src="'.$_SESSION["ruta_imagen"].'" class="user-image img-circle elevation-2" alt="User Image">';
+        }else{
+          echo '<img src="vistas/img/no-picture.png" class="user-image img-circle elevation-2" alt="User Image">';
+        }
+
+        ?>
         <span class="d-none d-md-inline"><?php echo ucfirst($_SESSION["nombre_usuario"]); ?></span>
       </a>
       <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <!-- User image -->
         <li class="user-header bg-primary">
-          <img src="vistas/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+
+          <?php 
+
+          if ($_SESSION["ruta_imagen"] != "") {
+            echo '<img src="'.$_SESSION["ruta_imagen"].'" class="img-circle elevation-2" alt="User Image">';
+          }else{
+            echo '<img src="vistas/img/no-picture.png" class="img-circle elevation-2" alt="User Image">';
+          }
+
+          ?>
+
+          
 
           <p>
             <?php

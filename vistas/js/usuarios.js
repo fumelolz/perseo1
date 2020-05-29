@@ -1,5 +1,7 @@
 // Editar un usuario
 $(document).on('click', '.btnEditarUsuario', function(event) {
+
+	$("#editarUsuarioFoto").val("");
 	
 	var idUsuario = $(this).attr('idUsuario');
 	
@@ -28,6 +30,7 @@ $(document).on('click', '.btnEditarUsuario', function(event) {
 			$("#editarUsuarioCiudad").attr('value', reply["ciudad"]);
 			$("#editarUsuarioFechaNacimiento").attr('value', reply["fecha_nacimiento"]);
 			$("#passActual").attr('value', reply["password"]);
+			$("#fotoActual").attr('value', reply["ruta_imagen"]);
 			$("#editarUsuarioUsername").attr('value', reply["username"]);
 
 			if (reply["nivel"] == 0) {
@@ -36,8 +39,94 @@ $(document).on('click', '.btnEditarUsuario', function(event) {
 				$("#editarUsuarioNivel1").attr('checked', true);
 			}
 
+			if (reply["ruta_imagen"] != "") {
+				$(".imagenPreviaEditar").attr('src',reply["ruta_imagen"]);
+			}else if(reply["ruta_imagen"] == ""){
+				$(".imagenPreviaEditar").attr('src', 'vistas/img/producto-default.png');
+			}
+
 		}
 	});
+
+});
+
+/*Subir foto de usuario*/
+
+$("#usuarioFoto").change(function(event) {
+	$(".imagenPrevia").attr('src', '');
+
+	var imagen = this.files[0];
+	
+	if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+		$("#usuarioFoto").attr('value', '');
+		Swal.fire({
+			type: 'error',
+			title: 'Error al subir la imagen',
+			text: "La imagen debe estar en formato JPG o PNG",
+			showConfirmButton:true,
+			confirmButtonText: 'Cerrar',
+			closeOnConfirm: false
+		})
+	}else if(imagen["size"]>500000){
+		$("#usuarioFoto").attr('value', '');
+		Swal.fire({
+			type: 'error',
+			title: 'Error al subir la imagen',
+			text: "La imagen debe pesar menos de 5Mb",
+			showConfirmButton:true,
+			confirmButtonText: 'Cerrar',
+			closeOnConfirm: false
+		})
+	}else{
+		var imageData = new FileReader;
+		imageData.readAsDataURL(imagen);
+		$(imageData).on('load', function(event) {
+			
+			var imageUrl = event.target.result;
+			$(".imagenPrevia").attr('src', imageUrl);
+			
+		});
+	}
+
+});
+
+/*Editar foto de usuario*/
+
+$("#editarUsuarioFoto").change(function(event) {
+	$(".imagenPreviaEditar").attr('src', '');
+
+	var imagen = this.files[0];
+	
+	if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+		$("#editarUsuarioFoto").attr('value', '');
+		Swal.fire({
+			type: 'error',
+			title: 'Error al subir la imagen',
+			text: "La imagen debe estar en formato JPG o PNG",
+			showConfirmButton:true,
+			confirmButtonText: 'Cerrar',
+			closeOnConfirm: false
+		})
+	}else if(imagen["size"]>500000){
+		$("#editarUsuarioFoto").attr('value', '');
+		Swal.fire({
+			type: 'error',
+			title: 'Error al subir la imagen',
+			text: "La imagen debe pesar menos de 5Mb",
+			showConfirmButton:true,
+			confirmButtonText: 'Cerrar',
+			closeOnConfirm: false
+		})
+	}else{
+		var imageData = new FileReader;
+		imageData.readAsDataURL(imagen);
+		$(imageData).on('load', function(event) {
+			
+			var imageUrl = event.target.result;
+			$(".imagenPreviaEditar").attr('src', imageUrl);
+			
+		});
+	}
 
 });
 

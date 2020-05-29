@@ -35,6 +35,53 @@ class ControladorUsuarios{
 			$password = crypt($_POST["usuarioPassword"], '$2a$07$hayvcesawdquesnwoasusdos$');
 			$nivel = $_POST["usuarioNivel"];
 			$fecha_alta  = ControladorDB::ctrMostrarFecha();
+			$ruta_imagen = "";
+
+			if (isset($_FILES["usuarioFoto"]["tmp_name"]) && !empty($_FILES["usuarioFoto"]["tmp_name"])) {	
+				
+				list($ancho,$alto) = getimagesize($_FILES["usuarioFoto"]["tmp_name"]);
+
+				/* Crear El directorio donde vamos a guardar la foto del usuario */
+				$directorio = "vistas/img/usuarios/".$username;
+				mkdir($directorio,0755);
+
+				/* De acuerdo al tipo de imagen jpeg */
+				if ($_FILES["usuarioFoto"]["type"] == "image/jpeg") {
+
+					/* Guardamos en el directorio */
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta_imagen = "vistas/img/usuarios/".$username."/".$aleatorio.".jpg";
+
+					$origen = imagecreatefromjpeg($_FILES["usuarioFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($ancho, $alto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+					imagejpeg($destino,$ruta_imagen);
+				}
+
+				/* De acuerdo al tipo de imagen png */
+				if ($_FILES["usuarioFoto"]["type"] == "image/png") {
+
+					/* Guardamos en el directorio */
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta_imagen = "vistas/img/usuarios/".$username."/".$aleatorio.".png";
+
+					$origen = imagecreatefrompng($_FILES["usuarioFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($ancho, $alto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+					imagepng($destino,$ruta_imagen);
+				}
+
+			}
 
 			$datos = array('nombre' => $nombre,
 				'ap_Paterno' => $ap_Paterno,
@@ -49,13 +96,14 @@ class ControladorUsuarios{
 				'username' => $username,
 				'password' => $password,
 				'nivel' => $nivel,
-				'fecha_alta' => $fecha_alta["fecha"]);
+				'fecha_alta' => $fecha_alta["fecha"],
+				'ruta_imagen' => $ruta_imagen);
 
 			// Mostrar los datos del array
-		    // echo '<pre>'; print_r($datos); echo '</pre>';
+		    //echo '<pre>'; print_r($datos); echo '</pre>';
 
 			$respuesta = ModeloUsuarios::mdlCrearUsuario($tabla1,$tabla2,$datos);
-			// echo '<pre>'; print_r($respuesta); echo '</pre>';
+			echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta = "ok") {
 				$alerta = AlertasPersonalizadas::alertaExito("Usuario Creado", "El usuario ha sido creado correctamente","usuarios");
@@ -91,6 +139,7 @@ class ControladorUsuarios{
 			$nivel = $_POST["editarUsuarioNivel"];
 			$fecha_alta  = ControladorDB::ctrMostrarFecha();
 			$password = "";
+			$ruta_imagen = $_POST["fotoActual"];
 
 			if (isset($_POST["editarUsuarioPassword"]) && !empty($_POST["editarUsuarioPassword"])) {
 				$password = crypt($passwordNuevo, '$2a$07$hayvcesawdquesnwoasusdos$');
@@ -98,13 +147,61 @@ class ControladorUsuarios{
 				$password = $passwordActual;
 			}
 
-			
+			if (isset($_FILES["editarUsuarioFoto"]["tmp_name"]) && !empty($_FILES["editarUsuarioFoto"]["tmp_name"])) {
+					
+				list($ancho,$alto) = getimagesize($_FILES["editarUsuarioFoto"]["tmp_name"]);
+
+				/* Crear El directorio donde vamos a guardar la foto del proucto */
+				$directorio = "vistas/img/usuarios/".$username;
+
+				if (!empty($_POST["fotoActual"])) {
+					unlink($_POST["fotoActual"]);
+				}else{
+					mkdir($directorio,0755);
+				}
+
+				/* De acuerdo al tipo de imagen jpeg */
+				if ($_FILES["editarUsuarioFoto"]["type"] == "image/jpeg") {
+
+					/* Guardamos en el directorio */
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta_imagen = "vistas/img/usuarios/".$username."/".$aleatorio.".jpg";
+
+					$origen = imagecreatefromjpeg($_FILES["editarUsuarioFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($ancho, $alto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+					imagejpeg($destino,$ruta_imagen);
+				}
+
+				/* De acuerdo al tipo de imagen png */
+				if ($_FILES["editarUsuarioFoto"]["type"] == "image/png") {
+
+					/* Guardamos en el directorio */
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta_imagen = "vistas/img/usuarios/".$username."/".$aleatorio.".png";
+
+					$origen = imagecreatefrompng($_FILES["editarUsuarioFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($ancho, $alto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+					imagepng($destino,$ruta_imagen);
+				}
+
+			}
 
 			$datos = array('id_persona' => $id_persona,
 				'nombre' => $nombre,
 				'ap_Paterno' => $ap_Paterno,
 				'ap_Materno' => $ap_Materno,
-				'email' => $email,
 				'rfc' => $rfc,
 				'ine' => $ine,
 				'direccion' => $direccion,
@@ -115,7 +212,8 @@ class ControladorUsuarios{
 				'username' => $username,
 				'password' => $password,
 				'nivel' => $nivel,
-				'fecha_alta' => $fecha_alta["fecha"]);
+				'fecha_alta' => $fecha_alta["fecha"],
+				'ruta_imagen' => $ruta_imagen);
 
 			// Mostrar los datos del array
 			// echo '<pre>'; print_r($datos); echo '</pre>';
@@ -179,6 +277,7 @@ class ControladorUsuarios{
 						$_SESSION["nombre_usuario"] = $datos_usuario["nombre"].' '.$datos_usuario["ap_Paterno"];
 						$_SESSION["nivel"] = $respuesta["nivel"];
 						$_SESSION["fecha_alta"] = $respuesta["fecha_alta"];
+						$_SESSION["ruta_imagen"] = $respuesta["ruta_imagen"];
 						$_SESSION["token"] = md5(uniqid(mt_rand(), true));
 
 						$fecha_servidor = ControladorDB::ctrMostrarFecha();

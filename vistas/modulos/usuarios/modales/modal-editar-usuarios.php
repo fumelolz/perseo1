@@ -1,43 +1,43 @@
 <!-- Modal editar Cliente -->
 <div class="modal fade" id="modalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="modalEditarUsuario" aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-<div class="modal-content">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
 
-  <form role="form" method="Post" enctype="multipart/form-data">
-    <div class="modal-header bg-light" style="color: black;">
-      <h5 class="modal-title" id="modalEditarUsuario">Editar Usuario</h5>
-    </div>
-
-    <div class="modal-body">
-
-      <div class="box-body">
-
-        <h3 class="text-muted mb-3">Informacion Personal</h3>
-        <hr>
-        <!-- Entrada para el nombre del cliente -->
-        <div class="form-group">
-          <div class="row">
-
-            <div class="input-group mb-1 col-4">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="far fa-user"></i></span>
-              </div>
-              <input type="hidden" id="editarIdUsuario" name="editarIdUsuario">
-              <input type="text"  class="form-control" placeholder="Nombre del usuario" id="editarUsuarioNombre" name="editarUsuarioNombre" required>
-            </div>
-
-            <div class="input-group mb-1 col-4">
-              <input type="text"  class="form-control" placeholder="Apellido paterno del usuario" id="editarUsuarioApPaterno" name="editarUsuarioApPaterno" required>
-            </div>
-
-            <div class="input-group mb-1 col-4">
-              <input type="text"  class="form-control" placeholder="Apellido materno del usuario" id="editarUsuarioApMaterno" name="editarUsuarioApMaterno" required>
-            </div>
-
-          </div>
+      <form role="form" method="Post" enctype="multipart/form-data">
+        <div class="modal-header bg-light" style="color: black;">
+          <h5 class="modal-title" id="modalEditarUsuario">Editar Usuario</h5>
         </div>
 
-        <!-- Entrada para el nombre del usuario -->
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <h3 class="text-muted mb-3">Informacion Personal</h3>
+            <hr>
+            <!-- Entrada para el nombre del cliente -->
+            <div class="form-group">
+              <div class="row">
+
+                <div class="input-group mb-1 col-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-user"></i></span>
+                  </div>
+                  <input type="hidden" id="editarIdUsuario" name="editarIdUsuario">
+                  <input type="text"  class="form-control" placeholder="Nombre del usuario" id="editarUsuarioNombre" name="editarUsuarioNombre" required>
+                </div>
+
+                <div class="input-group mb-1 col-4">
+                  <input type="text"  class="form-control" placeholder="Apellido paterno del usuario" id="editarUsuarioApPaterno" name="editarUsuarioApPaterno" required>
+                </div>
+
+                <div class="input-group mb-1 col-4">
+                  <input type="text"  class="form-control" placeholder="Apellido materno del usuario" id="editarUsuarioApMaterno" name="editarUsuarioApMaterno" required>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Entrada para el nombre del usuario -->
         <!-- <div class="form-group">
           <div class="row">
             <div class="input-group mb-1 col-6">
@@ -146,6 +146,16 @@
         <div class="custom-control custom-radio custom-control-inline">
           <input type="radio" id="editarUsuarioNivel1" name="editarUsuarioNivel" class="custom-control-input" value="1">
           <label class="custom-control-label" for="editarUsuarioNivel1">Vendedor</label>
+        </div>
+
+        <hr>
+
+        <div class="form-group mt-3">
+          <label for="productoFoto">Foto del usuario</label>
+          <input type="hidden" id="fotoActual" name="fotoActual">
+          <input type="file" class="form-control-file" id="editarUsuarioFoto" name="editarUsuarioFoto">
+          <p class="help-block">Peso maximo de la foto 5Mb</p>
+          <img class="imagenPreviaEditar" src="vistas/img/producto-default.png" class="img-thumbnail" width="100px">
         </div>
 
         <hr>

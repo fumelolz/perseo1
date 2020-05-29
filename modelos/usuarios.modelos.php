@@ -70,7 +70,7 @@ class ModeloUsuarios{
 	static public function mdlCrearUsuario($tabla1,$tabla2,$datos){
 		
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla1(nombre,ap_Paterno,ap_Materno,rfc,ine,direccion,pais,estado,ciudad,fecha_nacimiento) VALUES(:nombre,:ap_Paterno,:ap_Materno,:rfc,:ine,:direccion,:pais,:estado,:ciudad,:fecha_nacimiento)");
-		$stmt2 = Conexion::conectar()->prepare("INSERT INTO $tabla2(id_persona,username,password,fecha_alta,nivel) VALUES(:id_persona,:username,:password,:fecha_alta,:nivel)");
+		$stmt2 = Conexion::conectar()->prepare("INSERT INTO $tabla2(id_persona,username,password,ruta_imagen,fecha_alta,nivel) VALUES(:id_persona,:username,:password,:ruta_imagen,:fecha_alta,:nivel)");
 
 		$stmt3 = Conexion::conectar()->prepare("SELECT id_persona FROM personas ORDER BY id_persona DESC LIMIT 1");
 
@@ -94,6 +94,7 @@ class ModeloUsuarios{
 		$stmt2 -> bindParam(":id_persona",$u_p_r,PDO::PARAM_INT);
 		$stmt2 -> bindParam(":username",$datos["username"],PDO::PARAM_STR);
 		$stmt2 -> bindParam(":password",$datos["password"],PDO::PARAM_STR);
+		$stmt2 -> bindParam(":ruta_imagen",$datos["ruta_imagen"],PDO::PARAM_STR);
 		$stmt2 -> bindParam(":fecha_alta",$datos["fecha_alta"],PDO::PARAM_STR);
 		$stmt2 -> bindParam(":nivel",$datos["nivel"],PDO::PARAM_INT);
 
@@ -117,7 +118,7 @@ class ModeloUsuarios{
 	static public function mdlEditarUsuario($tabla1,$tabla2,$datos){
 		
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla1 SET nombre=:nombre, ap_Paterno=:ap_Paterno, ap_Materno=:ap_Materno, rfc=:rfc, ine=:ine, direccion=:direccion, pais=:pais, estado=:estado, ciudad=:ciudad, fecha_nacimiento=:fecha_nacimiento WHERE id_persona=:id_persona");
-		$stmt2 = Conexion::conectar()->prepare("UPDATE $tabla2 SET password=:password, nivel=:nivel WHERE id_persona=:id_persona");
+		$stmt2 = Conexion::conectar()->prepare("UPDATE $tabla2 SET password=:password, ruta_imagen=:ruta_imagen, nivel=:nivel WHERE id_persona=:id_persona");
 
 		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_INT);
 		$stmt -> bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
@@ -133,6 +134,7 @@ class ModeloUsuarios{
 
 		$stmt2 -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_INT);
 		$stmt2 -> bindParam(":password",$datos["password"],PDO::PARAM_STR);
+		$stmt2 -> bindParam(":ruta_imagen",$datos["ruta_imagen"],PDO::PARAM_STR);
 		$stmt2 -> bindParam(":nivel",$datos["nivel"],PDO::PARAM_INT);
 
 		if($stmt -> execute() && $stmt2 -> execute()){
