@@ -240,4 +240,40 @@ class ModeloProveedores{
 			$stmt = null;
 	}
 
+	//metodo para editar los correo de proveedores
+	static public function mdlEditarCorreos($tabla,$datos){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET email=:email WHERE id_email=:id_email");
+
+		$stmt -> bindParam(":id_email",$datos["id_email"],PDO::PARAM_INT);
+		$stmt -> bindParam(":email",$datos["email"],PDO::PARAM_STR);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+
+	//Metodo para eliminar correo de proveedores
+	static public function mdlEliminarCorreoProveedor($tabla,$id_email){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM  $tabla WHERE id_email=:id_email");
+
+		$stmt -> bindParam(":id_email",$id_email,PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
 }

@@ -112,6 +112,7 @@ include "modales/modal-agregar-telefono.php";
 include "modales/modal-crear-proveedor.php";
 include "modales/modal-editar-proveedor.php";
 include "modales/modal-agregar-correo.php";
+include "modales/modal-editar-correo.php";
 ?>
 <?php 
 

@@ -14,6 +14,14 @@
               <div id="idProveedorinfo"></div>
 
               <div class="container">
+
+                <div class="row">
+                  <div class="col-12 text-secondary">
+                    <i class="fas fa-info-circle mr-2"></i>Ingrese la descripcion y el correo electronico del proveedor.
+                    <br>
+                  </div>
+                </div>
+
                 <div class="row">
                   <div id="editarDescripcion" class="col-6">Descripcion del telefono:</div>
                   <div id="editaTelefonos"class="col-6">No. Telefono</div>
