@@ -179,6 +179,7 @@ class ControladorUsuarios{
 						$_SESSION["nombre_usuario"] = $datos_usuario["nombre"].' '.$datos_usuario["ap_Paterno"];
 						$_SESSION["nivel"] = $respuesta["nivel"];
 						$_SESSION["fecha_alta"] = $respuesta["fecha_alta"];
+						$_SESSION["token"] = md5(uniqid(mt_rand(), true));
 
 						$fecha_servidor = ControladorDB::ctrMostrarFecha();
 
@@ -209,6 +210,26 @@ class ControladorUsuarios{
 				echo 'Hubo un error en el usuario';
 			}
 
+		}
+
+	}
+
+	static public function cerrarSesion(){
+
+		if (isset($_GET["csrf"]) && $_GET["csrf"] == $_SESSION["token"]) {
+
+			session_destroy();
+
+			echo "
+			<script>
+			window.location = 'home'
+			</script>";
+
+		}else{
+			echo "
+			<script>
+			window.location = 'esto-noexiste'
+			</script>";
 		}
 
 	}

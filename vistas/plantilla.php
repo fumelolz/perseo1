@@ -56,6 +56,8 @@ if (isset($_SESSION["logged"]) && $_SESSION["logged"] == "ok") {
         include "modulos/proveedores/".$_GET["ruta"]."-view.php";
       }elseif($_GET["ruta"]=="logout"){
         include "modulos/login/".$_GET["ruta"].".php";
+      }else{
+        include "modulos/404.php";
       }
 
 

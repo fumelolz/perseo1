@@ -32,3 +32,28 @@ $(".tablas").DataTable({
 var dateVar = new Date()
 var offset = dateVar.getTimezoneOffset();
 console.log("offset", offset);
+
+$(document).on('click', '.btnCerrarSesion', function(event) {
+	
+	var token = $(this).attr('token');
+	
+	Swal.fire({
+		type: 'warning',
+		title: 'Estas seguro de cerrar sesión?',
+		text:'Puedes cancelar, usando el boton Cancelar',
+		showCancelButton:true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor:'d33',
+		cancelButtonText:'Cancelar',
+		confirmButtonText: 'Si, cerrar sesión!',
+	}).then(function(result){
+
+		if(result.value){
+
+			window.location = "index.php?ruta=logout&csrf="+token;
+
+		}
+
+	});
+	
+});
