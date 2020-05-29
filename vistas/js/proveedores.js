@@ -165,11 +165,11 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 				//Se crea el icono de telefono con una columa de 2
 				$("#MostrarTelefonosCI").append('<div class="col-2"><i class="fas fa-phone-square-alt fa-2x text-secondary"></i></div>');
 				//Se crea el numero del proveedor con una columna de 6
-				$("#MostrarTelefonosCI").append('<div class="col-6"><p class="text-secondary" style="font-size: 20px;">'+respuesta[i]["telefono"]+'</p></div>');
+				$("#MostrarTelefonosCI").append('<div class="col-6"><p class="text-secondary telefonoPortapapeles" style="font-size: 20px;" data-toggle="tooltip" data-placement="top" title="Da clic para copiarlo al portapapeles.">'+respuesta[i]["telefono"]+'</p></div>');
 				//Se crea el boton para editar de 2 columna
-				$("#MostrarTelefonosCI").append('<div class="col-2"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				$("#MostrarTelefonosCI").append('<div class="col-1"><i class="far fa-edit btnEditarTelefonoProveedor text-warning" data-toggle="modal" data-target="#modalEditarTelefonosProveedor" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				//Se crea el boton´para eliminar telefono de 2 columnas
-				$("#MostrarTelefonosCI").append('<div class="col-2"><i class="far fa-trash-alt btnEliminarTelefonoProveedor text-danger" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				$("#MostrarTelefonosCI").append('<div class="col-1"><i class="far fa-trash-alt btnEliminarTelefonoProveedor text-danger" idTelefono="'+respuesta[i]["id_telefono"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				
 			}
 
@@ -200,11 +200,11 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 				//Se crea el icono de correo con una columna de 2
 				$("#MostrarCorreosCD").append('<div class="col-2"><i class="fas fa-envelope fa-2x text-secondary"></i></div>');
 				//Se crea el correo con una columna de 6
-				$("#MostrarCorreosCD").append('<div class="col-6"><p class="text-secondary" style="font-size: 20px; overflow:auto;">'+respuesta[i]["email"]+'</p></div>');
+				$("#MostrarCorreosCD").append('<div class="col-6"><div class="text-secondary overflow-auto emailPortapapeles" data-toggle="tooltip" data-placement="top" title="Da clic para copiarlo al portapapeles.">'+respuesta[i]["email"]+'</div></div>');
 				//Se crea el boton para editar de 2 columna
-				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-edit btnEditarCorreoProveedor text-warning" data-toggle="modal" data-target="#modalEditarCorreosProveedor" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				$("#MostrarCorreosCD").append('<div class="col-1"><i class="far fa-edit btnEditarCorreoProveedor text-warning" data-toggle="modal" data-target="#modalEditarCorreosProveedor" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				//Se crea el boton´para eliminar correo
-				$("#MostrarCorreosCD").append('<div class="col-2"><i class="far fa-trash-alt btnEliminarCorreoProveedor text-danger" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				$("#MostrarCorreosCD").append('<div class="col-1"><i class="far fa-trash-alt btnEliminarCorreoProveedor text-danger" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				
 			}
 
@@ -212,6 +212,23 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	});
 });
 
+$(document).on('click', '.emailPortapapeles', function(event) {
+	$portapapeles = $("<input>");
+	$(this).parent().append($portapapeles);
+	$portapapeles.val($(this).html()).select();
+	document.execCommand("copy");
+	$portapapeles.remove();
+	Swal.fire('Correo electronico copiado');
+});
+
+$(document).on('click', '.telefonoPortapapeles', function(event) {
+	$portapapeles = $("<input>");
+	$(this).parent().append($portapapeles);
+	$portapapeles.val($(this).html()).select();
+	document.execCommand("copy");
+	$portapapeles.remove();
+	Swal.fire('Correo telefono copiado');
+});
 //Funcion para ver los telefonos por id
 $(document).on('click', '.btnEditarTelefonoProveedor', function(event) {
 	
@@ -307,7 +324,7 @@ $(document).on('click', '.btnEditarCorreoProveedor', function(event) {
 
 	
 });
-//Boton para eliminar telefono
+//Boton para eliminar un correo del proveedor
 $(document).on('click', '.btnEliminarCorreoProveedor', function(event) {
 	
 	var idCorreo = $(this).attr('idCorreo');

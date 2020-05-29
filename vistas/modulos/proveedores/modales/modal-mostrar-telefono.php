@@ -1,6 +1,6 @@
 <!-- Modal ver telefonos proveedor -->
 <div class="modal fade" id="modalTelefonosProveedor" tabindex="-1" role="dialog" aria-labelledby="modalTelefonosProveedor" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <form role="form" method="Post" enctype="multipart/form-data">
