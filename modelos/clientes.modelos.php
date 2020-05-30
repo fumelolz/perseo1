@@ -130,4 +130,82 @@ class ModeloClientes{
 
 	}
 
+	//Funcion para Mostrar los telefonos
+	static public function mdlMostrarTelefonos($tabla, $item, $valor){
+			if($item != null){ 
+				$stmt = Conexion::conectar()->prepare(" SELECT * FROM $tabla WHERE $item = :$item");
+
+				$stmt -> bindParam(":".$item,$valor,PDO::PARAM_INT);
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+			else{
+				$stmt = Conexion::conectar()->prepare(" SELECT * FROM $tabla");
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+
+			$stmt -> close();
+			$stmt = null;
+	}
+
+	//Funcion para editar Telefonos
+	static public function mdlEditarTelefonos($tabla,$datos){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET telefono=:telefono, descripcion=:descripcion WHERE id_telefono=:id_telefono");
+
+		$stmt -> bindParam(":id_telefono",$datos["id_telefono"],PDO::PARAM_INT);
+		$stmt -> bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
+		$stmt -> bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+
+	//Funcion para eliminar telefonos clientes
+	static public function mdlEliminarTelefonoCliente($tabla,$id_telefono){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM  $tabla WHERE id_telefono=:id_telefono");
+
+		$stmt -> bindParam(":id_telefono",$id_telefono,PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+	//Funcion para agregar telefono clientes
+	static public function mdlCrearTelefono($tabla,$datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_persona,telefono,descripcion) VALUES(:id_persona,:telefono,:descripcion)");
+
+		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_STR);
+		$stmt -> bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
+		$stmt -> bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+
 }

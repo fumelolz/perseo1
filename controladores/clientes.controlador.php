@@ -92,4 +92,81 @@ class ControladorClientes{
 
 	}
 
+	//Funcion para mostrar los telefonos
+	static public function ctrMostrarTelefonos($item,$valor){
+
+		$tabla = "telefonos_personas";
+		$respuesta = ModeloClientes::mdlMostrarTelefonos($tabla, $item, $valor);
+		return $respuesta;
+	}
+
+	//Funcion para editar telefono
+	static public function ctrEditarTelefonoClientes(){
+
+		if (isset($_POST["idTelefono"])) {
+
+			$tabla = "telefonos_personas";
+
+			$datos = array('id_telefono' => $_POST["idTelefono"],
+						   'descripcion' => $_POST["editarDescripcionTC"],
+						   'telefono' => $_POST["editarTelefonoTC"],
+						   );
+
+		   $respuesta = ModeloClientes::mdlEditarTelefonos($tabla,$datos);
+
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("TELEFONO EDITADO","Se edito el telefono correctamente","clientes");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo Editar","A ocurrido un error al editar telefono","error");
+			}
+
+		}
+	}
+	//Funcion para eliminar telefono cliente
+	static public function ctrEliminarTelefonoCliente(){
+
+		if (isset($_GET["idTelefono"])) {
+
+			$tabla = "telefonos_personas";
+
+			$id_telefono = $_GET["idTelefono"];
+
+			$respuesta = ModeloClientes::mdlEliminarTelefonoCliente($tabla,$id_telefono);
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
+
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("TELEFONO ELIMINADO","El telefono se elimino correctamete","clientes");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se puede eliminar","A ocurrido un error al borrar el telefono","error");
+			}
+
+		}
+
+	}
+
+	//Funcion para agregar telefonos clientes
+	static public function ctrAgregarTelefonoCliente(){
+
+		if (isset($_POST["crearTelefonoCliente"])) {
+
+			$tabla = "telefonos_personas";
+			
+			$datos = array('id_persona' => $_POST["crearTelefonoCliente"],
+							'telefono' => $_POST["inputAgregarTelefonoCliente"],
+							'descripcion' => $_POST["inputAgregarDescripcionCliente"],
+							);
+
+			$respuesta = ModeloClientes::mdlCrearTelefono($tabla,$datos);
+
+			if($respuesta=="ok"){
+				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","clientes");
+			}
+			else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar".$_POST["crearTelefonoCliente"]. $_POST["inputAgregarTelefonoCliente"].$_POST["inputAgregarDescripcionCliente"],"A ocurrido un error al agregar proveedor","error");
+			}
+
+			}
+
+	}
+
 }

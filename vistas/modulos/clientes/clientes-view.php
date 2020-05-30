@@ -78,6 +78,8 @@
                   <center>
                   <div class="btn-group-sm">
 
+                  <button class="btn btn-info btnContactoCliente" data-toggle="modal" data-target="#modalContactoCliente" idCliente="'.$id_persona.'" ><i class="far fa-address-book text-white"></i></button>
+
                   <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$id_persona.'" ><i class="fas fa-pencil-alt"></i></button>
 
                   <button class="btn btn-danger btnEliminarCliente" idCliente="'.$id_persona.'"><i class="fas fa-times"></i></button>
@@ -112,6 +114,9 @@
 
     include "modales/modal-crear-cliente.php";
     include "modales/modal-editar-cliente.php";
+    include "modales/modal-mostrar-contacto.php";
+    include "modales/modal-editar-telefono-cliente.php";
+    include "modales/modal-agregar-telefono-cliente.php";
 
     $eliminarCliente = new ControladorClientes();
     $eliminarCliente -> ctrEliminarCliente();
