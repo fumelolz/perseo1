@@ -93,7 +93,7 @@ $("#productoFoto").change(function(event) {
 			confirmButtonText: 'Cerrar',
 			closeOnConfirm: false
 		})
-	}else if(imagen["size"]>500000){
+	}else if(imagen["size"]>5000000){
 		$("#productoFoto").attr('value', '');
 		Swal.fire({
 			type: 'error',
@@ -133,7 +133,7 @@ $("#editarProductoFoto").change(function(event) {
 			confirmButtonText: 'Cerrar',
 			closeOnConfirm: false
 		})
-	}else if(imagen["size"]>500000){
+	}else if(imagen["size"]>5000000){
 		$("#editarProductoFoto").attr('value', '');
 		Swal.fire({
 			type: 'error',

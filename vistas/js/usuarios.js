@@ -67,7 +67,7 @@ $("#usuarioFoto").change(function(event) {
 			confirmButtonText: 'Cerrar',
 			closeOnConfirm: false
 		})
-	}else if(imagen["size"]>500000){
+	}else if(imagen["size"]>5000000){
 		$("#usuarioFoto").attr('value', '');
 		Swal.fire({
 			type: 'error',
@@ -107,7 +107,7 @@ $("#editarUsuarioFoto").change(function(event) {
 			confirmButtonText: 'Cerrar',
 			closeOnConfirm: false
 		})
-	}else if(imagen["size"]>500000){
+	}else if(imagen["size"]>5000000){
 		$("#editarUsuarioFoto").attr('value', '');
 		Swal.fire({
 			type: 'error',

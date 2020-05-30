@@ -73,23 +73,13 @@
         <!-- Menu Footer-->
         <li class="user-footer">
           <a href="#" class="btn btn-default btn-flat">Profile</a>
-          <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+          <?php 
+
+          echo "<a href='#' class='btn btn-default btn-flat float-right btnCerrarSesion' token=".$_SESSION["token"].">Cerrar Sesión</a>";
+
+          ?>
         </li>
       </ul>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="fas fa-ellipsis-v"></i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right p-0">
-        <?php 
-
-        echo "<button class='dropdown-item btnCerrarSesion' token=".$_SESSION["token"]."><i class='fas fa-sign-out-alt mr-2'></i> Cerrar Sesión</button>"
-
-        ?>
-        
-        
-      </div>
     </li>
   </ul>
 </nav>
