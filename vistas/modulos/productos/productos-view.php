@@ -21,7 +21,7 @@
   <section class="content">
 
     <!-- Default box -->
-    <div class="card">
+    <div class="card card-outline card-primary">
       <div class="card-header">
         <!-- Boton para crear un producto -->
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">Agregar Producto</button>

@@ -20,7 +20,7 @@
   <!-- Main content -->
   <section class="content">
     <!-- Default box -->
-    <div class="card">
+    <div class="card card-outline card-primary">
       <div class="card-header">
         <!-- Boton para crear un usuario -->
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">Agregar Usuario</button>
