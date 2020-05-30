@@ -212,6 +212,26 @@ $(document).on('click', '.btnTelefonoProveedor', function(event) {
 	});
 });
 
+$(document).on("mouseleave", '.telefonoPortapapeles', function (event) {
+   $(this).parent().removeClass("bg bg-info rounded");
+   $(this).removeClass("text-white").addClass("text-secondary");
+});
+
+$(document).on("mouseover", '.telefonoPortapapeles', function (event) {
+   $(this).parent().addClass("bg bg-info rounded");
+   $(this).removeClass("text-secondary").addClass("text-white");
+});
+
+$(document).on("mouseleave", '.emailPortapapeles', function (event) {
+   $(this).parent().removeClass("bg bg-info rounded");
+   $(this).removeClass("text-white").addClass("text-secondary");
+});
+
+$(document).on("mouseover", '.emailPortapapeles', function (event) {
+   $(this).parent().addClass("bg bg-info rounded");
+   $(this).removeClass("text-secondary").addClass("text-white");
+});
+
 $(document).on('click', '.emailPortapapeles', function(event) {
 	$portapapeles = $("<input>");
 	$(this).parent().append($portapapeles);

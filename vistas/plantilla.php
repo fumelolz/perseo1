@@ -82,6 +82,10 @@ if (isset($_SESSION["logged"]) && $_SESSION["logged"] == "ok") {
 
 <!-- jQuery -->
 <script src="vistas/plugins/jquery/jquery.min.js"></script>
+
+<!--jQuery1.12.1-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
+
 <!-- Bootstrap 4 -->
 <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
