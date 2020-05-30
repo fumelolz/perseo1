@@ -40,12 +40,7 @@
                   <th>Usuario</th>
                   <th>Estado_Usuario</th>
                   <th>Nivel</th>
-                  <th>RFC</th>
-                  <th>INE</th>
-                  <th>Dirección</th>
-                  <th>Pais</th>
-                  <th>Estado</th>
-                  <th>Ciudad</th>
+                  <th>Ultimo Login</th>
                   <th>Acciónes</th>
                 </tr>
               </thead>
@@ -65,6 +60,7 @@
                   $nombre = $value["nombre"];
                   $ap_Paterno = $value["ap_Paterno"];
                   $ap_Materno = $value["ap_Materno"];
+                  $ultimo_login =$value["ultimo_login"];
 
                   if ($value["state"] == 0) {
                     $btn = '<center><button class="btn btn-danger btnActivarUsuario" estado="1" idUsuario="'.$id_usuario.'">Desactivado</button></center>';
@@ -85,12 +81,7 @@
                   <td>'.$value["username"].'</td>
                   <td>'.$btn.'</td>
                   <td>'.$nivel.'</td>
-                  <td>'.$value["rfc"].'</td>
-                  <td>'.$value["ine"].'</td>
-                  <td>'.$value["direccion"].'</td>
-                  <td>'.$value["pais"].'</td>
-                  <td>'.$value["estado"].'</td>
-                  <td>'.$value["ciudad"].'</td>
+                  <td>'.$ultimo_login.'</td>
                   <td>
                   <center>
                   <div class="btn-group-sm">
