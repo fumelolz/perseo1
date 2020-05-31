@@ -169,4 +169,76 @@ class ControladorClientes{
 
 	}
 
+	//Funcion mostrar a todos los correo
+	static public function ctrMostrarCorreos($item,$valor){
+		$tabla = "email_personas";
+		$respuesta = ModeloClientes::mdlMostrarCorreos($tabla, $item, $valor);
+		return $respuesta;
+	}
+
+	//Funcion editar Correo
+	static public function ctrEditarCorreosCliente(){
+		
+		if (isset($_POST["idCorreo"])) {
+
+			$tabla = "email_personas";
+
+			$datos = array('id_email' => $_POST["idCorreo"],
+						   'email' => $_POST["inputEditarCorreoCliente"],
+						   );
+
+		   $respuesta = ModeloClientes::mdlEditarCorreos($tabla,$datos);
+
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("CORREO EDITADO","Se edito el correo correctamente","clientes");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo Editar","A ocurrido un error al editar correo","error");
+			}
+
+		}
+	}
+
+	static public function ctrEliminarCorreoCliente(){
+
+		if (isset($_GET["idCorreo"])) {
+
+			$tabla = "email_personas";
+
+			$id_email = $_GET["idCorreo"];
+
+			$respuesta = ModeloClientes::mdlEliminarCorreoCliente($tabla,$id_email);
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
+			if ($respuesta=="ok") {
+				$alerta= AlertasPersonalizadas::alertaExito("CORREO ELIMINADO","El correo se elimino correctamete","clientes");
+			}else{
+				$alerta= AlertasPersonalizadas::alertaError("No se puede eliminar","A ocurrido un error al borrar el corrreo","error");
+			}
+
+		}
+
+	}
+
+	static public function ctrAgregarCorreoCliente(){
+
+		if (isset($_POST["crearCorreoCliente"])) {
+
+			$tabla = "email_personas";
+			
+			$datos = array('id_persona' => $_POST["crearCorreoCliente"],
+							'email' => $_POST["inputAgregarCorreoCliente"],
+							);
+
+			$respuesta = ModeloClientes::mdlCrearCorreo($tabla,$datos);
+
+			if($respuesta=="ok"){
+				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","clientes");
+			}
+			else{
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar","error");
+			}
+
+			}
+
+	}
+
 }

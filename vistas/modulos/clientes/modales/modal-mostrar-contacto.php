@@ -39,7 +39,7 @@
 
                   <div class="col-4">
                     <div class="text-left text-secondary" style="font-size: 15px;">Emails</div>
-                    <button class="btn btn-primary" style="font-size: 10px;" data-toggle="modal" data-target="#" data-dismiss="modal">Agregar nuevo correo</button>
+                    <button class="btn btn-primary" style="font-size: 10px;" data-toggle="modal" data-target="#modalAgregarCorreosCliente" data-dismiss="modal">Agregar nuevo correo</button>
                   </div>
 
                 </div>

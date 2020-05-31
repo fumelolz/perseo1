@@ -207,5 +207,81 @@ class ModeloClientes{
 		$stmt -> close();
 		$stmt = null;
 	}
+	//Funcion para mostrar todos los correo
+	static public function mdlMostrarCorreos($tabla, $item, $valor){
+			if($item != null){ 
+				
+				$stmt = Conexion::conectar()->prepare(" SELECT * FROM $tabla WHERE $item = :$item ");
+
+				$stmt -> bindParam(":".$item,$valor,PDO::PARAM_INT);
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+			else{
+				$stmt = Conexion::conectar()->prepare(" SELECT * FROM $tabla ");
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+			}
+
+			$stmt -> close();
+			$stmt = null;
+	}
+	//Funcion apara editar correo
+	static public function mdlEditarCorreos($tabla,$datos){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET email=:email WHERE id_email=:id_email");
+
+		$stmt -> bindParam(":id_email",$datos["id_email"],PDO::PARAM_INT);
+		$stmt -> bindParam(":email",$datos["email"],PDO::PARAM_STR);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+
+	//Funcion para eliminar Correo
+	static public function mdlEliminarCorreoCliente($tabla,$id_email){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM  $tabla WHERE id_email=:id_email");
+
+		$stmt -> bindParam(":id_email",$id_email,PDO::PARAM_INT);
+
+		if ($stmt -> execute()) {
+			return "ok";
+		}else{
+			return "error";
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	//Funcion para Agregar Correos
+	static public function mdlCrearCorreo($tabla,$datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_persona,email) VALUES(:id_persona,:email)");
+
+		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_STR);
+		$stmt -> bindParam(":email",$datos["email"],PDO::PARAM_STR);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
 
 }

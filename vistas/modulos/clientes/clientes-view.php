@@ -117,6 +117,8 @@
     include "modales/modal-mostrar-contacto.php";
     include "modales/modal-editar-telefono-cliente.php";
     include "modales/modal-agregar-telefono-cliente.php";
+    include "modales/modal-editar-correo-cliente.php";
+    include "modales/modal-agregar-correo-cliente.php";
 
     $eliminarCliente = new ControladorClientes();
     $eliminarCliente -> ctrEliminarCliente();

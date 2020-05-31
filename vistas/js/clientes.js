@@ -89,8 +89,8 @@ $(document).on('click', '.btnContactoCliente', function(event) {
 	var datosTelefonos = new FormData();
 	datosTelefonos.append('mostrarTelefonos',idCliente);
 
-	// var datosCorreos= new FormData();
-	// datosCorreos.append('mostrarCorreos',idCliente);
+    var datosCorreos= new FormData();
+	datosCorreos.append('mostrarCorreos',idCliente);
 
 	$.ajax({
 		url:"ajax/clientes.ajax.php",
@@ -108,8 +108,8 @@ $(document).on('click', '.btnContactoCliente', function(event) {
 			 $("#idClienteinfo").empty();
 			 $("#idClienteinfo").append('<input class="form-control" type="hidden" id="crearTelefonoCliente" name="crearTelefonoCliente" value='+respuesta["id_cliente"]+'>');
 			 //Mando el id del proveedor al modal agregar correo
-			 // $("#idProveedorinfo2").empty();
-			 // $("#idProveedorinfo2").append('<input class="form-control" type="hidden" id="crearCorreo" name="crearCorreo" value='+respuesta["id_proveedor"]+'>');
+			  $("#idClienteInfoCorreo").empty();
+			  $("#idClienteInfoCorreo").append('<input class="form-control" type="hidden" id="crearCorreoCliente" name="crearCorreoCliente" value='+respuesta["id_cliente"]+'>');
 
 		}
 	});
@@ -147,40 +147,41 @@ $(document).on('click', '.btnContactoCliente', function(event) {
 		}
 	});
 	
-	// $.ajax({
-	// 	url:"ajax/proveedores.ajax.php",
-	// 	method:"POST",
-	// 	data: datosCorreos,
-	// 	cache: false,
-	// 	contentType: false,
-	// 	processData: false,
-	// 	dataType: "json",
-	// 	success: function(respuesta){
-	// 		console.log(respuesta);
+	$.ajax({
+		url:"ajax/clientes.ajax.php",
+		method:"POST",
+		data: datosCorreos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			console.log(respuesta);
 
-	// 		$("#MostrarCorreosCD").empty();
+			$("#MostrarCorreosCD2").empty();
 
-	// 		if(respuesta.length==0){
-	// 			$("#MostrarCorreosCD").append('<div class="col-12 text-secondary"> <i class="fas fa-info-circle mr-2"></i>No se  encontraron correos de este proveedor</div>');
-	// 		}
+			if(respuesta.length==0){
+				$("#MostrarCorreosCD2").append('<div class="col-12 text-secondary"> <i class="fas fa-info-circle mr-2"></i>No se  encontraron correos de este cliente.</div>');
+			}
 
-	// 		for (var i = 0; i < respuesta.length; i++){
-	// 			//Se crea la descripcion  del correo con una columna de 12 columnas
-	// 			$("#MostrarCorreosCD").append('<div class="col-12"><div class="text-secondary">Correo no.'+(i+1)+'</div></div>');
+			for (var i = 0; i < respuesta.length; i++){
 
-	// 			//Se crea el icono de correo con una columna de 2
-	// 			$("#MostrarCorreosCD").append('<div class="col-2"><i class="fas fa-envelope fa-2x text-secondary"></i></div>');
-	// 			//Se crea el correo con una columna de 6
-	// 			$("#MostrarCorreosCD").append('<div class="col-6"><div class="text-secondary overflow-auto emailPortapapeles" data-toggle="tooltip" data-placement="top" title="Da clic para copiarlo al portapapeles.">'+respuesta[i]["email"]+'</div></div>');
-	// 			//Se crea el boton para editar de 2 columna
-	// 			$("#MostrarCorreosCD").append('<div class="col-1"><i class="far fa-edit btnEditarCorreoProveedor text-warning" data-toggle="modal" data-target="#modalEditarCorreosProveedor" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
-	// 			//Se crea el boton´para eliminar correo
-	// 			$("#MostrarCorreosCD").append('<div class="col-1"><i class="far fa-trash-alt btnEliminarCorreoProveedor text-danger" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				//Se crea la descripcion  del correo con una columna de 12 columnas
+				$("#MostrarCorreosCD2").append('<div class="col-12"><div class="text-secondary">Correo no.'+(i+1)+'</div></div>');
+
+				//Se crea el icono de correo con una columna de 2
+				$("#MostrarCorreosCD2").append('<div class="col-2"><i class="fas fa-envelope fa-2x text-secondary"></i></div>');
+				//Se crea el correo con una columna de 6
+				$("#MostrarCorreosCD2").append('<div class="col-6"><div class="text-secondary overflow-auto emailPortapapeles" data-toggle="tooltip" data-placement="top" title="Da clic para copiarlo al portapapeles.">'+respuesta[i]["email"]+'</div></div>');
+				//Se crea el boton para editar de 2 columna
+				$("#MostrarCorreosCD2").append('<div class="col-1"><i class="far fa-edit btnEditarCorreoCliente text-warning" data-toggle="modal" data-target="#modalEditarCorreosCliente" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
+				//Se crea el boton´para eliminar correo
+				$("#MostrarCorreosCD2").append('<div class="col-1"><i class="far fa-trash-alt btnEliminarCorreoCliente text-danger" idCorreo="'+respuesta[i]["id_email"]+'" data-dismiss="modal" style="cursor: pointer"></i></div>');
 				
-	// 		}
+			}
 
-	// 	}
-	// });
+		}
+	});
 });
 
 //Funcion para ver los telefonos por id
@@ -241,6 +242,65 @@ $(document).on('click', '.btnEliminarTelefonoCliente', function(event) {
 		if(result.value){
 
 			 window.location = "index.php?ruta=clientes&idTelefono="+idTelefono;
+
+		}
+
+	});
+
+});
+
+//Funcion para editar el correo
+$(document).on('click', '.btnEditarCorreoCliente', function(event) {
+	
+	var idCorreo = $(this).attr('idCorreo');
+
+	var dataCorreo = new FormData();
+	dataCorreo.append('mostrarIdCorreo',idCorreo);
+
+
+	$.ajax({
+		url:"ajax/clientes.ajax.php",
+		method:"POST",
+		data: dataCorreo,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			$("#editarCorreoCliente").empty();
+
+			for(var i = 0; i < respuesta.length; i++){
+				$("#editarCorreoCliente").append('<input type="hidden" id="idCorreo" name="idCorreo" value='+respuesta[i]["id_email"]+'>'+
+					'Correo: '+
+					'<input type="text"  class="form-control" placeholder="Correo" id="inputEditarCorreoCliente" name="inputEditarCorreoCliente" value="'+respuesta[i]["email"]+'"" required>'
+					);
+			}
+	
+		}
+	});
+
+	
+});
+
+//Boton para eliminar un correo del cliente
+$(document).on('click', '.btnEliminarCorreoCliente', function(event) {
+	
+	var idCorreo = $(this).attr('idCorreo');
+	
+	Swal.fire({
+		type: 'warning',
+		title: '¿Estas seguro de eliminar este correo?',
+		text:'Se eliminara el correo y no podras revertir el cambio.',
+		showCancelButton:true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor:'d33',
+		cancelButtonText:'Cancelar',
+		confirmButtonText: 'Si, eliminar Correo!',
+	}).then(function(result){
+
+		if(result.value){
+
+			 window.location = "index.php?ruta=clientes&idCorreo="+idCorreo;
 
 		}
 
