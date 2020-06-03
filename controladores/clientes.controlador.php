@@ -70,7 +70,7 @@ class ControladorClientes{
 			echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta=="ok") {
-				$alerta = AlertasPersonalizadas::alertaExito("EDITADO","SE EDITO CORRECTAMENTE");
+				$alerta = AlertasPersonalizadas::alertaExito("EDITADO","SE EDITO CORRECTAMENTE","clientes");
 			}
 
 		}
@@ -86,7 +86,10 @@ class ControladorClientes{
 			$id_persona = $_GET["idClienteEliminar"];
 
 			$respuesta = ModeloClientes::mdlEliminarCliente($tabla,$id_persona);
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
+			
+			if ($respuesta=="ok") {
+				$alerta = AlertasPersonalizadas::alertaExito("Eliminado","Se elimino correctamente","clientes");
+			}
 
 		}
 

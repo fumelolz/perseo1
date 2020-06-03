@@ -105,6 +105,10 @@
             </div>
 
           </div>
+          
+          <br>
+          <h3 class="text-muted mb-3">Contacto</h3>
+          <hr>
 
         </div>
 
