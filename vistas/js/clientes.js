@@ -56,6 +56,7 @@ $(document).on('click', '.btnEditarCliente', function(event) {
 $(document).on('click', '.btnEliminarCliente', function(event) {
 	
 	var idCliente = $(this).attr('idCliente');
+	console.log(idCliente);
 	
 	Swal.fire({
 		type: 'warning',
@@ -71,6 +72,7 @@ $(document).on('click', '.btnEliminarCliente', function(event) {
 		if(result.value){
 
 			window.location = "index.php?ruta=clientes&idClienteEliminar="+idCliente;
+			console.log("Borrado");
 
 		}
 
@@ -304,6 +306,52 @@ $(document).on('click', '.btnEliminarCorreoCliente', function(event) {
 
 		}
 
+	});
+
+});
+
+//Funcion para mostrarlos datos de un cliente
+$(document).on('click', '.btnInspeccionarCliente', function(event) {
+	
+	var idCliente = $(this).attr('idCliente');
+	
+	var datosClientes = new FormData();
+	datosClientes.append('mostrarCliente',idCliente);
+
+
+	$.ajax({
+		url:"ajax/clientes.ajax.php",
+		method:"POST",
+		data: datosClientes,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+
+			$("#m_i_c-botonModificar").empty();
+			$("#m_i_c-botonEliminar").empty();
+
+
+			// $("#m_i_c-IdCliente").empty();
+			// $("#m_i_c-IdCliente").append('<input type="hidden" id="idPersona" name="idPerosona" value='+respuesta["id_persona"]+'>');
+
+			$("#m_i_c-nombre").text(respuesta["nombre"]);
+			$("#m_i_c-apellidos").text(respuesta["ap_Paterno"]+" "+respuesta["ap_Materno"]);
+			$("#m_i_c-rfc").text(respuesta["rfc"]);
+			$("#m_i_c-ine").text(respuesta["ine"]);
+			$("#m_i_c-direccion").text(respuesta["direccion"]);
+			$("#m_i_c-pais").text(respuesta["pais"]);
+			$("#m_i_c-estado").text(respuesta["estado"]);
+			$("#m_i_c-ciudad").text(respuesta["ciudad"]);
+			$("#m_i_c-fechaNacimiento").text(respuesta["fecha_nacimiento"]);
+
+			$("#m_i_c-botonModificar").append('<button class="btn btn-warning btnEditarCliente float-left" data-toggle="modal" data-target="#modalEditarCliente" data-dismiss="modal" idCliente="'+respuesta["id_persona"]+'" ><i class="fas fa-pencil-alt"></i></button>');
+
+			$("#m_i_c-botonEliminar").append('<button class="btn btn-danger btnEliminarCliente float-left ml-2" idCliente="'+respuesta["id_persona"]+'"><i class="fas fa-times"></i></button>');
+
+			$("#m_i_c-botonContactar").append('<button class="btn btn-info btnContactoCliente" data-toggle="modal" data-target="#modalContactoCliente" idCliente="'+respuesta["id_persona"]+'" ><i class="far fa-address-book text-white"></i></button>');
+		}
 	});
 
 });
