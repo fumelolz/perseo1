@@ -162,10 +162,10 @@ class ControladorClientes{
 			$respuesta = ModeloClientes::mdlCrearTelefono($tabla,$datos);
 
 			if($respuesta=="ok"){
-				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","clientes");
+				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","clientes"); 
 			}
 			else{
-				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar".$_POST["crearTelefonoCliente"]. $_POST["inputAgregarTelefonoCliente"].$_POST["inputAgregarDescripcionCliente"],"A ocurrido un error al agregar proveedor","error");
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar proveedor","error");
 			}
 
 			}

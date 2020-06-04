@@ -4,7 +4,7 @@
     <div class="modal-content">
 
       <form role="form" method="Post" enctype="multipart/form-data">
-        <div class="modal-header bg-info" style="color: white;">
+        <div class="modal-header bg-dark" style="color: white;">
           
         <div class="container">
           <div class="row justify-content-center align-self-center">
@@ -24,23 +24,16 @@
               <div class="container">
                 <div class="row">
 
-                  <div class="col-2">
-                    <div class="btn btn-info" width="10px"><i class="fas fa-tty fa-2x"></i></div>
+                  <div class="col-6">
+                    <i class="fas fa-tty fa-3x text-dark"></i>
+                    <div class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modalAgregarTelefonosCliente" data-dismiss="modal"><i class="fas fa-plus"></i></div>
                   </div>
 
-                  <div class="col-4">
-                    <div class="text-left text-secondary" style="font-size: 15px;">Telefonos</div>
-                    <button class="btn btn-primary" style="font-size: 10px;" data-toggle="modal" data-target="#modalAgregarTelefonosCliente" data-dismiss="modal">Agregar nuevo telefono</button>
+                  <div class="col-6">
+                    <i class="fas fa-envelope-open-text fa-3x text-dark"></i>
+                    <div class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modalAgregarCorreosCliente" data-dismiss="modal"><i class="fas fa-plus"></i></div>
                   </div>
 
-                  <div class="col-2">
-                    <div class="btn btn-info" width="10px"><i class="fas fa-envelope-open-text fa-2x"></i></div>
-                  </div>
-
-                  <div class="col-4">
-                    <div class="text-left text-secondary" style="font-size: 15px;">Emails</div>
-                    <button class="btn btn-primary" style="font-size: 10px;" data-toggle="modal" data-target="#modalAgregarCorreosCliente" data-dismiss="modal">Agregar nuevo correo</button>
-                  </div>
 
                 </div>
                 <br>

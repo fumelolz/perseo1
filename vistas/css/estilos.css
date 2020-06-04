@@ -38,7 +38,14 @@ background: -webkit-linear-gradient(to top, #4389A2, #5C258D);  /* Chrome 10-25,
 background: linear-gradient(to top, #4389A2, #5C258D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-.subtitulo-cliente{
-	font-weight: 900;
-	font-style: oblique;
+.quitar-desbordamiento{
+	word-wrap: break-word;
+}
+.btn-purple{
+	background-color:#605ca8;
+	color:#ffffff;
+}
+.btn-purple:hover{
+	background-color:#4f4c8a;
+	color:#ffffff;
 }

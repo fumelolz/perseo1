@@ -98,7 +98,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+            <div class="btn btn-outline-danger" data-toggle="modal" data-target="#modalClientesEliminados">Mostrar clientes eliminados</div>
           </div>
           <!-- /.card-footer-->
         </div>
@@ -119,4 +119,5 @@
     include "modales/modal-editar-correo-cliente.php";
     include "modales/modal-agregar-correo-cliente.php";
     include "modales/modal-inspeccionar-cliente.php";
+    include "modales/modal-clientes-eliminados.php";
     ?>

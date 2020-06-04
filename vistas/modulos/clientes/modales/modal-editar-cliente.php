@@ -4,7 +4,7 @@
     <div class="modal-content">
 
       <form role="form" method="Post" enctype="multipart/form-data">
-        <div class="modal-header bg-secondary" style="color: white;">
+        <div class="modal-header bg-dark" style="color: white;">
           <h5 class="modal-title" id="modalAgregarCliente">Editar Cliente</h5>
         </div>
 

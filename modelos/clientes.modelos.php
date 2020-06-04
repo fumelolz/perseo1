@@ -194,7 +194,7 @@ class ModeloClientes{
 
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_persona,telefono,descripcion) VALUES(:id_persona,:telefono,:descripcion)");
 
-		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_STR);
+		$stmt -> bindParam(":id_persona",$datos["id_persona"],PDO::PARAM_INT);
 		$stmt -> bindParam(":telefono",$datos["telefono"],PDO::PARAM_STR);
 		$stmt -> bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
 

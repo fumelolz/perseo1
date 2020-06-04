@@ -1,18 +1,12 @@
 <!-- Modal inspeccionr cliente -->
 <div class="modal fade" id="modalInspeccionarCliente" tabindex="-1" role="dialog" aria-labelledby="modalInspeccionarCliente" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
        <!--Titulo del modal-->
       <div class="modal-header text-white personal-colorfondo-colorprimario">
 
-          <div class="col-3">
-
-            <img src="vistas/dist/img/modulos/ClientesInspeccionar.png" alt="Clientes" class="personal-img-modulo-tamaño-inspeccionar">
-
-          </div>
-
-          <div class="col-8 text-center">
+          <div class="col-11 text-left">
 
             <div class="display-4" id="m_i_c-nombre"> NombreCliente </div>
 
@@ -21,8 +15,11 @@
           </div>
 
           <div class="col-1">
+
             <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+               <span aria-hidden="true">&times;</span>
+            </button>
+
           </div>
 
       </div>
@@ -30,54 +27,84 @@
       <!--Cuerpo del modal-->
       <div class="modal-body">
 
-        <div class="row">
+        <div class="container">
 
-          <div class="col-5">
-            <div class="row">
+          <div class="row d-flex justify-content-between">
 
-              <div class="col-12 bg bg-secondary rounded subtitulo-cliente">RFC</div>
-              <div class="col-12 text-info" id="m_i_c-rfc" style="word-wrap: break-word;font-size: 25px;">DescripcionRFC</div>
+            <div class="col-3 text-center">
+              <i class="fas fa-globe-asia fa-3x text-purple"></i>
+              <br>
+              <div class="text-secondary">PAIS</div>
+              <div class="quitar-desbordamiento font-weight-bold" id="m_i_c-pais">DescripcionPAIS</div>
+            </div>
 
-              <div class="col-12 bg bg-secondary rounded subtitulo-cliente">DIRECCION</div>
-              <div class="col-12 text-info" id="m_i_c-direccion" style="word-wrap: break-word;font-size: 25px;">DescripcionDIRECCION</div>
+            <div class="col-3 text-center">
+              <i class="fas fa-route fa-3x text-purple"></i>
+              <br>
+              <div class="text-secondary">ESTADO</div>
+              <div class="quitar-desbordamiento font-weight-bold" id="m_i_c-estado">DescripcionESTADO</div>
+            </div>
 
-              <div class="col-12 bg bg-secondary rounded subtitulo-cliente">ESTADO</div>
-              <div class="col-12 text-info" id="m_i_c-estado" style="word-wrap: break-word;font-size: 25px;">DescripcionESTADO</div>
+            <div class="col-3 text-center">
+              <i class="far fa-building fa-3x text-purple"></i>
+              <br>
+              <div class="text-secondary">CIUDAD</div>
+              <div class="quitar-desbordamiento font-weight-bold" id="m_i_c-ciudad">DescripcionCIUDAD</div>
+            </div>
 
-              <div class="col-12 bg bg-secondary rounded subtitulo-cliente">FECHA DE NACIMIENTO</div>
-              <div class="col-12 text-info" id="m_i_c-fechaNacimiento" style="word-wrap: break-word;font-size: 25px;">DescripcionFECHADENACIMIENTO</div>
+            <div class="col-3 text-center">
+              <i class="far fa-calendar-alt fa-3x text-purple"></i>
+              <br>
+              <div class="text-secondary">FECHA DE NACIMIENTO</div>
+              <div class="quitar-desbordamiento font-weight-bold" id="m_i_c-fechaNacimiento">DescripcionF</div>
+            </div>
 
+          </div>
+            
+            <br>
+
+          <div class="row d-flex justify-content-between">
+
+            <div class="col-3 text-center">
+              <i class="fas fa-money-check fa-3x text-purple"></i>
+              <br>
+              <div class="text-secondary">RFC</div>
+              <div class="quitar-desbordamiento font-weight-bold" id="m_i_c-rfc">DescripcionRFC</div>
+            </div>
+
+            <div class="col-3 text-center">
+              <i class="far fa-address-card fa-3x text-purple"></i>
+              <br>
+              <div class="text-secondary">INE</div>
+              <div class="quitar-desbordamiento font-weight-bold" id="m_i_c-ine">DescripcionINE</div>
+            </div>
+
+            <div class="col-3 text-center">
+              <i class="fas fa-map-signs fa-3x text-purple"></i>
+              <br>
+              <div class="text-secondary">DIRECCION</div>
+              <div class="quitar-desbordamiento font-weight-bold" id="m_i_c-direccion">DescripcionDIRECCION</div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--FooterModal-->
+      <div class="modal-footer">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <div id="m_i_c-botonModificar" class="float-left"></div>
+              <div id="m_i_c-botonEliminar" class="float-left"></div>
+            </div>
+            <div class="col-6">
+              <div id="m_i_c-botonContactar" class="float-right"></div>
             </div>
           </div>
-        
-          <div class="col-2"></div>
-
-          <div class="col-5">
-            <div class="row">
-
-              <div class="col-12 bg bg-secondary rounded subtitulo-cliente">INE</div>
-              <div class="col-12 text-info" id="m_i_c-ine" style="word-wrap: break-word;font-size: 25px;">DescripcionINE</div>
-
-              <div class="col-12 bg bg-secondary rounded subtitulo-cliente">PAIS</div>
-              <div class="col-12 text-info" id="m_i_c-pais" style="word-wrap: break-word;font-size: 25px;">DescripcionPAIS</div>
-
-              <div class="col-12 bg bg-secondary rounded subtitulo-cliente">CIUDAD</div>
-              <div class="col-12 text-info" id="m_i_c-ciudad" style="word-wrap: break-word;font-size: 25px;">DescripcionCIUDAD</div>
-
-            </div>
-          </div>
-
-          <div class="col-6">
-            <br>
-            <div id="m_i_c-botonModificar"></div>
-            <div id="m_i_c-botonEliminar"></div>
-          </div>
-
-          <div class="col-6">
-            <br>
-           <div  id="m_i_c-botonContactar"></div>
-          </div>
-
         </div>
 
       </div>
