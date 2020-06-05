@@ -31,7 +31,11 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition <?php if(isset($_SESSION["logged"]) && $_SESSION["logged"] == "ok"){ echo 'sidebar-mini sidebar-collapse'; }else{ echo 'login-page';} ?>">
-
+<div class="wrapper-loader">
+  <div class="wrapper-l">
+    <div class="loader"></div>
+  </div>
+</div>
 <?php 
 
 if (isset($_SESSION["logged"]) && $_SESSION["logged"] == "ok") {

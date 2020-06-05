@@ -40,7 +40,9 @@ class ControladorClientes{
 
 
 			$respuesta = ModeloClientes::mdlCrearCliente($tabla1,$tabla2,$datos);
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
+			if ($respuesta=="ok") {
+				$alerta = AlertasPersonalizadas::alertaExito("CLiente agregado","Se ha agregado correctamente","clientes");
+			}
 
 		}
 	}
@@ -67,7 +69,7 @@ class ControladorClientes{
 			// echo '<pre>'; print_r($datos); echo '</pre>';
 
 		    $respuesta = ModeloClientes::mdlEditarCliente($tabla,$datos);
-			echo '<pre>'; print_r($respuesta); echo '</pre>';
+			// echo '<pre>'; print_r($respuesta); echo '</pre>';
 
 			if ($respuesta=="ok") {
 				$alerta = AlertasPersonalizadas::alertaExito("EDITADO","SE EDITO CORRECTAMENTE","clientes");
@@ -169,7 +171,7 @@ class ControladorClientes{
 				$alerta= AlertasPersonalizadas::alertaExito("AGREGADO","Se agrego correctamente","clientes"); 
 			}
 			else{
-				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar proveedor","error");
+				$alerta= AlertasPersonalizadas::alertaError("No se pudo agregar","A ocurrido un error al agregar un telefono","error");
 			}
 
 			}

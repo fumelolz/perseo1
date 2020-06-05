@@ -57,3 +57,7 @@ $(document).on('click', '.btnCerrarSesion', function(event) {
 	});
 	
 });
+
+$(window).on("load",function(){
+	$(".wrapper-loader").fadeOut('6000');
+})
