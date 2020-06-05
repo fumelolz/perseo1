@@ -113,8 +113,8 @@
   </div>
 </div>
 <?php
-    $eliminarCliente = new ControladorClientes();
-    $eliminarCliente -> ctrEliminarCliente();
+    $desactivarCliente = new ControladorClientes();
+    $desactivarCliente -> ctrDesactivarCliente();
 ?>
 
 <!-- <h5 class="modal-title" id="mcliente-nombreCliente">Nombre del cliente</h5>

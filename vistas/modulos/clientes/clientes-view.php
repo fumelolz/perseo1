@@ -40,7 +40,7 @@
 
 
           <div class="card-body">
-            <table class="table table-bordered table-striped tablas" width="100%">
+            <table class="table table-bordered table-striped tablaClientes" width="100%">
               <thead class="thead-dark">
                 <tr>
                   <th style="width: 10px;">#</th>
@@ -49,56 +49,56 @@
                   <th>Acciónes</th>
                 </tr>
               </thead>
-              <tbody>
+              <!-- <tbody>
 
                 <?php 
 
-                $item = null;
-                $valor = null;
+                // $item = null;
+                // $valor = null;
 
-                $mostrarClientes = ControladorClientes::ctrMostrarClientes($item,$valor);
+                // $mostrarClientes = ControladorClientes::ctrMostrarClientes($item,$valor);
 
-                foreach ($mostrarClientes as $key => $value) {
+                // foreach ($mostrarClientes as $key => $value) {
 
-                  $id_persona = $value["id_persona"];
-                  $nombre = $value["nombre"];
-                  $ap_Paterno = $value["ap_Paterno"];
-                  $ap_Materno = $value["ap_Materno"];
+                //   $id_persona = $value["id_persona"];
+                //   $nombre = $value["nombre"];
+                //   $ap_Paterno = $value["ap_Paterno"];
+                //   $ap_Materno = $value["ap_Materno"];
 
 
 
-                  echo '
-                  <tr>
-                  <td>'.$id_persona.'</td>
-                  <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
-                  <td>'.$value["ciudad"].'</td>
-                  <td>
-                  <center>
-                  <div class="btn-group-sm">
+                //   echo '
+                //   <tr>
+                //   <td>'.$id_persona.'</td>
+                //   <td>'.$nombre.' '.$ap_Paterno.' '.$ap_Materno.'</td>
+                //   <td>'.$value["ciudad"].'</td>
+                //   <td>
+                //   <center>
+                //   <div class="btn-group-sm">
 
-                  <button class="btn btn-outline-info btnInspeccionarCliente" data-toggle="modal" data-target="#modalInspeccionarCliente" idCliente="'.$id_persona.'">Inspeccionar</button>
+                //   <button class="btn btn-outline-info btnInspeccionarCliente" data-toggle="modal" data-target="#modalInspeccionarCliente" idCliente="'.$id_persona.'">Inspeccionar</button>
 
-                  <!--<button class="btn btn-info btnContactoCliente" data-toggle="modal" data-target="#modalContactoCliente" idCliente="'.$id_persona.'" ><i class="far fa-address-book text-white"></i></button>
+                //   <!--<button class="btn btn-info btnContactoCliente" data-toggle="modal" data-target="#modalContactoCliente" idCliente="'.$id_persona.'" ><i class="far fa-address-book text-white"></i></button>
 
-                  <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$id_persona.'" ><i class="fas fa-pencil-alt"></i></button>
+                //   <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$id_persona.'" ><i class="fas fa-pencil-alt"></i></button>
 
-                  <button class="btn btn-danger btnEliminarCliente" idCliente="'.$id_persona.'"><i class="fas fa-times"></i></button>-->
+                //   <button class="btn btn-danger btnEliminarCliente" idCliente="'.$id_persona.'"><i class="fas fa-times"></i></button>-->
 
-                  </div>
-                  </center>
-                  </td>
-                  </tr>';
-                }
+                //   </div>
+                //   </center>
+                //   </td>
+                //   </tr>';
+                // }
 
 
                 ?>
 
-              </tbody>
+              </tbody> -->
             </table>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <div class="btn btn-outline-danger" data-toggle="modal" data-target="#modalClientesEliminados">Mostrar clientes eliminados</div>
+            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#modalClientesDesactivados">Mostrar clientes desactivados</button>
           </div>
           <!-- /.card-footer-->
         </div>
@@ -119,5 +119,5 @@
     include "modales/modal-editar-correo-cliente.php";
     include "modales/modal-agregar-correo-cliente.php";
     include "modales/modal-inspeccionar-cliente.php";
-    include "modales/modal-clientes-eliminados.php";
+    include "modales/modal-clientes-desactivados.php";
     ?>

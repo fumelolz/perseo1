@@ -12,6 +12,40 @@
 // 		}
 // 	});
 
+/*Data Table*/
+var tablaClientes = $(".tablaClientes").DataTable({
+	"ajax": "ajax/tabla-clientes.ajax.php",
+	"responsive":true,
+	"deferRender":true,
+	"retrieve":true,
+	"processing":true,
+	"language": {
+
+		"sProcessing":     "Procesando...",
+		"sLengthMenu":     "Mostrar _MENU_ registros",
+		"sZeroRecords":    "No se encontraron resultados",
+		"sEmptyTable":     "Ningún dato disponible en esta tabla",
+		"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+		"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+		"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+		"sInfoPostFix":    "",
+		"sSearch":         "Buscar:",
+		"sUrl":            "",
+		"sInfoThousands":  ",",
+		"sLoadingRecords": "Cargando...",
+		"oPaginate": {
+			"sFirst":    "Primero",
+			"sLast":     "Último",
+			"sNext":     "Siguiente",
+			"sPrevious": "Anterior"
+		},
+		"oAria": {
+			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+		}
+
+	}
+});
 
 // Se llama la acción al boton editar cliente al momento de hacer click
 
@@ -52,26 +86,26 @@ $(document).on('click', '.btnEditarCliente', function(event) {
 	
 });
 
-// Boton para elminar un cliente
-$(document).on('click', '.btnEliminarCliente', function(event) {
+// Boton para desactivar un cliente
+$(document).on('click', '.btnDesactivarCliente', function(event) {
 	
 	var idCliente = $(this).attr('idCliente');
 	console.log(idCliente);
 	
 	Swal.fire({
 		type: 'warning',
-		title: 'Estas seguro de eliminar al cliente?',
+		title: 'El cliente será desactivado',
 		text:'Puedes cancelar, usando el boton Cancelar',
 		showCancelButton:true,
 		confirmButtonColor:'#3085d6',
 		cancelButtonColor:'d33',
 		cancelButtonText:'Cancelar',
-		confirmButtonText: 'Si, eliminar cliente!',
+		confirmButtonText: 'Si, desactivar cliente!',
 	}).then(function(result){
 
 		if(result.value){
 
-			window.location = "index.php?ruta=clientes&idClienteEliminar="+idCliente;
+			window.location = "index.php?ruta=clientes&idClienteDesactivar="+idCliente;
 			console.log("Borrado");
 
 		}
@@ -349,10 +383,69 @@ $(document).on('click', '.btnInspeccionarCliente', function(event) {
 
 			$("#m_i_c-botonModificar").append('<button class="btn btn-outline-primary btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" data-dismiss="modal" idCliente="'+respuesta["id_persona"]+'" >Editar Cliente</button>');
 
-			$("#m_i_c-botonEliminar").append('<button class="btn btn-outline-danger btnEliminarCliente ml-2" idCliente="'+respuesta["id_persona"]+'">Eliminar Cliente</button>');
+			$("#m_i_c-botonEliminar").append('<button class="btn btn-outline-danger btnDesactivarCliente ml-2" idCliente="'+respuesta["id_persona"]+'">Desactivar Cliente</button>');
 
 			$("#m_i_c-botonContactar").append('<button class="btn btn-info btnContactoCliente" data-toggle="modal" data-dismiss="modal" data-target="#modalContactoCliente" idCliente="'+respuesta["id_persona"]+'" ><i class="far fa-address-book text-white"></i></button>');
 		}
 	});
 
+});
+
+// Activar Cliente
+$(document).on('click', '.btnActivarCliente', function(event) {
+	
+	var idCliente = $(this).attr('idCliente');
+	var estado = $(this).attr('estado');
+
+	var data = new FormData();
+	data.append('idClienteEstado', idCliente);
+	data.append('estado', estado);
+
+	$.ajax({
+		url:"ajax/clientes.ajax.php",
+		method:"POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		type:"html",
+		success: function(reply){
+
+			//console.log("reply", reply);
+			
+			tablaClientes.ajax.reload();
+
+			if (window.matchMedia("(max-width:767px)").matches) {
+
+				Swal.fire({
+					type: 'success',
+					title: 'El cliente ha sido actualizado',
+					showConfirmButton:true,
+					confirmButtonText: 'Cerrar',
+					closeOnConfirm: false
+				}).then(function(result){
+
+					if(result.value){
+
+						window.location = 'clientes';
+
+					}
+
+				});
+			}
+		}
+	});
+
+	if (estado == 0) {
+		$(this).removeClass('btn-outline-success');
+		$(this).addClass('btn-outline-danger');
+		$(this).html('Desactivado');
+		$(this).attr('estado', '1');
+	}else{
+		$(this).removeClass('btn-outline-danger');
+		$(this).addClass('btn-outline-success');
+		$(this).html('Activado');
+		$(this).attr('estado', '0');
+	}
+	
 });

@@ -6,6 +6,7 @@ require_once '../modelos/clientes.modelos.php';
 class AjaxClientes{
 
 	public $idCliente;
+	public $estado;
 
 	public function ajaxMostrarCliente(){
 
@@ -57,6 +58,18 @@ class AjaxClientes{
 		echo json_encode($respuesta);
 	}
 
+	public function ajaxActivarCliente(){
+
+		$item1 = "id_persona";
+		$valor1 = $this->idCliente;
+		$item2 = "estado_cliente";
+		$valor2 = $this->estado;
+
+		$respuesta = ControladorClientes::ctrActivarCliente($item1,$valor1,$item2,$valor2);
+
+		echo $respuesta;
+	}
+
 }
 
 if (isset($_POST["mostrarCliente"])) {
@@ -83,4 +96,11 @@ if(isset($_POST["mostrarIdCorreo"])){
 	$mostrar = new AjaxClientes();
 	$mostrar -> idCorreo = $_POST["mostrarIdCorreo"];
 	$mostrar -> ajaxMostrarIdCorreoCliente();
+}
+
+if (isset($_POST["idClienteEstado"])) {
+	$cambiarEstado = new AjaxClientes();
+	$cambiarEstado -> estado = $_POST["estado"];
+	$cambiarEstado -> idCliente = $_POST["idClienteEstado"];
+	$cambiarEstado -> ajaxActivarCliente();
 }

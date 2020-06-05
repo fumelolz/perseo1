@@ -76,19 +76,23 @@ class ControladorClientes{
 		}
 	}
 
-	// Funcion para borrar cliente
-	static public function ctrEliminarCliente(){
+	/* 
+	Funcion para desactivar un cliente
+	El cliente solo es desactivado para no realizar funciones con el, 
+	puede volver a ser activado con el metodo ctrActivarCliente
+	*/
+	static public function ctrDesactivarCliente(){
 
-		if (isset($_GET["idClienteEliminar"])) {
+		if (isset($_GET["idClienteDesactivar"])) {
 			
 			$tabla = "clientes";
 
-			$id_persona = $_GET["idClienteEliminar"];
+			$id_persona = $_GET["idClienteDesactivar"];
 
-			$respuesta = ModeloClientes::mdlEliminarCliente($tabla,$id_persona);
+			$respuesta = ModeloClientes::mdlDesactivarCliente($tabla,$id_persona);
 			
 			if ($respuesta=="ok") {
-				$alerta = AlertasPersonalizadas::alertaExito("Eliminado","Se elimino correctamente","clientes");
+				$alerta = AlertasPersonalizadas::alertaExito("Desactivado","Se desactivo correctamente","clientes");
 			}
 
 		}
@@ -241,6 +245,19 @@ class ControladorClientes{
 			}
 
 			}
+
+	}
+
+	/*
+		Funcion para activar un cliente 
+	*/
+	static public function ctrActivarCliente($item1,$valor1,$item2,$valor2){
+
+		$tabla = "clientes";
+
+		 $respuesta = ModeloClientes::mdlActivarCliente($tabla,$item1,$valor1,$item2,$valor2);
+
+		return $respuesta;
 
 	}
 
