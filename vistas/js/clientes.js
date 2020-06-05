@@ -142,10 +142,10 @@ $(document).on('click', '.btnContactoCliente', function(event) {
 
 			 //Mando el id del proveedor al modal agregar telefono
 			 $("#idClienteinfo").empty();
-			 $("#idClienteinfo").append('<input class="form-control" type="hidden" id="crearTelefonoCliente" name="crearTelefonoCliente" value='+respuesta["id_cliente"]+'>');
+			 $("#idClienteinfo").append('<input class="form-control" type="hidden" id="crearTelefonoCliente" name="crearTelefonoCliente" value='+respuesta["id_persona"]+'>');
 			 //Mando el id del proveedor al modal agregar correo
 			  $("#idClienteInfoCorreo").empty();
-			  $("#idClienteInfoCorreo").append('<input class="form-control" type="hidden" id="crearCorreoCliente" name="crearCorreoCliente" value='+respuesta["id_cliente"]+'>');
+			  $("#idClienteInfoCorreo").append('<input class="form-control" type="hidden" id="crearCorreoCliente" name="crearCorreoCliente" value='+respuesta["id_persona"]+'>');
 
 		}
 	});
