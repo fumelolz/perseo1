@@ -34,7 +34,6 @@
                     <div class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modalAgregarCorreosCliente" data-dismiss="modal"><i class="fas fa-plus"></i></div>
                   </div>
 
-
                 </div>
                 <br>
                 <div class="row">

@@ -4,7 +4,7 @@
     <div class="modal-content">
 
       <form role="form" method="Post" enctype="multipart/form-data">
-        <div class="modal-header bg-secondary" style="color: white;">
+        <div class="modal-header bg-primary" style="color: white;">
           <h5 class="modal-title" id="modalAgregarProveedor">Agregar Proveedor</h5>
         </div>
 
