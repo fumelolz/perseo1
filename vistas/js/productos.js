@@ -1,5 +1,7 @@
-/*Data Table*/
-$(".tablaProductos").DataTable({
+/*
+Tabla de productos, se muestran los productos activos
+*/
+var tablaProductos = $(".tablaProductos").DataTable({
 	"ajax": "ajax/tabla-productos.ajax.php",
 	"responsive":true,
 	"deferRender":true,
@@ -32,6 +34,53 @@ $(".tablaProductos").DataTable({
 
 	}
 });
+
+/*
+Tabla de productos, se muestran los productos desactivados
+*/
+var tablaProductosDesactivados = $(".tablaProductosDesactivados").DataTable({
+	"ajax": "ajax/tabla-productos-desactivados.ajax.php",
+	"responsive":true,
+	"deferRender":true,
+	"retrieve":true,
+	"processing":true,
+	"language": {
+
+		"sProcessing":     "Procesando...",
+		"sLengthMenu":     "Mostrar _MENU_ registros",
+		"sZeroRecords":    "No se encontraron resultados",
+		"sEmptyTable":     "Ningún dato disponible en esta tabla",
+		"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+		"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+		"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+		"sInfoPostFix":    "",
+		"sSearch":         "Buscar:",
+		"sUrl":            "",
+		"sInfoThousands":  ",",
+		"sLoadingRecords": "Cargando...",
+		"oPaginate": {
+			"sFirst":    "Primero",
+			"sLast":     "Último",
+			"sNext":     "Siguiente",
+			"sPrevious": "Anterior"
+		},
+		"oAria": {
+			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+		}
+
+	}
+});
+
+// $.ajax({
+// 		url:"ajax/tabla-productos-desactivados.ajax.php",
+// 		dataType: "html",
+// 		success: function(respuesta){
+
+// 			// Muestra lo que trae la respuesta
+// 			console.log("respuesta", respuesta);
+// 		}
+// 	});
 
 // Porcentaje(utilidad) del producto
 function precioVenta(){
@@ -310,6 +359,9 @@ $(document).on('click', '.btnActivarProducto', function(event) {
 		processData: false,
 		success: function(reply){
 
+			tablaProductos.ajax.reload();
+			tablaProductosDesactivados.ajax.reload();
+
 			if (window.matchMedia("(max-width:767px)").matches) {
 
 				Swal.fire({
@@ -333,14 +385,59 @@ $(document).on('click', '.btnActivarProducto', function(event) {
 
 	if (estado == 0) {
 		$(this).removeClass('btn-success');
-		$(this).addClass('btn-danger');
+		$(this).addClass('btn-outline-danger');
 		$(this).html('Desactivado');
 		$(this).attr('estado', '1');
 	}else{
 		$(this).removeClass('btn-danger');
-		$(this).addClass('btn-success');
+		$(this).addClass('btn-outline-success');
 		$(this).html('Activado');
 		$(this).attr('estado', '0');
 	}
 	
+});
+
+// Boton inspeccionar producto, muestra a detelle de todos los productos
+$(document).on('click', '.btnInspeccionarProducto', function(event) {
+	
+	var idProducto = $(this).attr('idProducto');
+	
+	var data = new FormData();
+	data.append('idProductoEditar',idProducto);
+
+	$.ajax({
+		url:"ajax/productos.ajax.php",
+		method:"POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(reply){
+			console.log("detalles", reply);
+
+			var data2 = new FormData();
+			data2.append('idCategoriaEditar',reply["categoria"]);
+
+			$.ajax({
+				url:"ajax/productos.ajax.php",
+				method:"POST",
+				data: data2,
+				cache: false,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function(reply){
+					console.log("Categoria", reply);
+
+					
+				}
+			});
+
+			$("#m_i_p-descripcion").html(reply["descripcion"])
+			$("#m_i_p-precioVenta").html("$ "+reply["precio_venta"])
+
+		}
+	});
+
 });

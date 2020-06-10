@@ -10,7 +10,7 @@ class TablaProductos{
 		$item = null;
 		$valor = null;
 
-		$activos = 0;
+		$desactivados = 0;
 
 		$productos = ControladorProductos::ctrMostrarProductos($item,$valor);
 
@@ -41,29 +41,23 @@ class TablaProductos{
 				}
 
 				if ($estado == 0) {
-					$estado_producto = "<center><button class='btn btn-danger btnActivarProducto' estado='1' idProducto='".$id_producto."'>Desactivado</button></center>";
+					$estado_producto = "<center><button class='btn btn-outline-danger btnActivarProducto' estado='1' idProducto='".$id_producto."'>Desactivado</button></center>";
 				}else{
-					$estado_producto = "<center><button class='btn btn-success btnActivarProducto' estado='0' idProducto='".$id_producto."'>Activado</button></center>";
+					$estado_producto = "<center><button class='btn btn-outline-success btnActivarProducto' estado='0' idProducto='".$id_producto."'>Activado</button></center>";
 				}
 
-				// $acciones = "<center><div class='btn-group-sm'><button class='btn btn-warning btnEditarProducto' data-toggle='modal' data-target='#modalEditarProducto' idProducto='".$id_producto."'><i class='fas fa-pencil-alt'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$id_producto."' foto='".$imagen."'><i class='fas fa-times'></i></button></div><center>";
+				$acciones = "<center><div class='btn-group-sm'><button class='btn btn-outline-danger btnEliminarProducto' idProducto='".$id_producto."' foto='".$imagen."'>Eliminar Permanentemente</button></div><center>";
 
-				$acciones = "<center><div class='btn-group-sm'><button class='btn btn-outline-info btnInspeccionarProducto' data-toggle='modal' data-target='#modalInspeccionarProducto' idProducto='".$id_producto."'>Inspeccionar</button></div><center>";
-
-			if ($estado == 1) {
+			if ($estado == 0) {
 
 				$jsonData .='[
 					"'.$id_producto.'",
 					"'.$descripcion.'",
-					"$'.$precio_compra.'",
-					"$'.$precio_venta.'",
-					"'.$stock.'",
-					"'.$imagen_producto.'",
 					"'.$estado_producto.'",
 					"'.$acciones.'"
 				],';
 
-				$activos += 1;
+				$desactivados += 1;
 
 			}
 				 
@@ -77,7 +71,7 @@ class TablaProductos{
 		$jsonDataVacio = '{"data": [';
 		$jsonDataVacio .=']}';
 
-		if ($activos >= 1) {
+		if ($desactivados >= 1) {
 			echo $jsonData;
 		}else{
 			echo $jsonDataVacio;

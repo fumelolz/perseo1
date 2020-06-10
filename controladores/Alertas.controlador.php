@@ -1,4 +1,4 @@
-<?php
+<?php 
 // static public function alertaBasica($mensaje){
 // 		$data='<script></script>';
 // 		echo $data;

@@ -7,7 +7,7 @@ class TablaClientes{
 
 	public function ajaxMostrarTablaClientes(){
 
-		$desactivados = 0;
+		$activos = 0;
 
 		$item = null;
 		$valor = null;
@@ -34,7 +34,7 @@ class TablaClientes{
 						"'.$acciones.'"
 					],';
 
-				$desactivados +=1;	
+				$activos +=1;	
 			}
 
 		}
@@ -46,7 +46,7 @@ class TablaClientes{
 		$jsonDataVacio = '{"data": [';
 		$jsonDataVacio .=']}';
 
-		if ($desactivados >= 1) {
+		if ($activos >= 1) {
 			echo $jsonData;
 		}else{
 			echo $jsonDataVacio;
