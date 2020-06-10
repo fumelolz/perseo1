@@ -3,28 +3,33 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
+        
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Proveedores</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Lista de proveedores</li>
-            </ol>
-          </div>
+        <div class="col-sm-6 text-center text-sm-left">
+          <div class="display-1">Proveedores</div>
+          <p class="text-secondary">En este modulo veras los proveedores, la fecha de alianza, la ultima compra, y su informacion de contacto. </p>
+            <button class="btn btn-primary personal-borde-redondeo"  data-toggle="modal" data-target="#modalAgregarProveedor"><i class="fas fa-plus mr-2"></i>Agregar Proveedor</button>
+            <br><br>
         </div>
+        <div class="col-sm-6 text-center">
+          <img src="vistas/dist/img/modulos/ProveedoresModulo.png" class="personal-img-modulo-tamaño" alt="Clientes">
+          <!--<ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Clientes</li>
+          </ol>-->
+        </div>
+      </div>
+
       </div><!-- /.container-fluid -->
     </section>
-
+ 
     <!-- Main content -->
     <section class="content">
 
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProveedor">Agregar Proveedor</button>
-
+          
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
@@ -36,7 +41,7 @@
               <!--Se empieza a trabajar los proveedores-->
               
               <table class="table table-bordered table-striped tablas">
-                <thead>
+                <thead class="thead-dark">
                   <tr>
                     <th style="width: 10px;">#</th>
                     <th>Nombre</th>

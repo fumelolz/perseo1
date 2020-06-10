@@ -29,6 +29,9 @@ background: linear-gradient(to top, #4389A2, #5C258D); /* W3C, IE 10+/ Edge, Fir
 .personal-img-modulo-tamaño{
   	height: 200px;
 }
+.personal-img-submodulo-tamaño{
+    height: 80px;
+}
 .personal-img-modulo-tamaño-inspeccionar{
   	height: 100px;
 }

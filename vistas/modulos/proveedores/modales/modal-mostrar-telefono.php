@@ -4,11 +4,12 @@
     <div class="modal-content">
 
       <form role="form" method="Post" enctype="multipart/form-data">
-        <div class="modal-header bg-info" style="color: white;">
+        <div class="modal-header bg-dark" style="color: white;">
           
         <div class="container">
           <div class="row justify-content-center align-self-center">
-            <i class="fas fa-id-badge fa-5x"></i>
+            <!-- <i class="fas fa-id-badge fa-5x"></i> -->
+            <img src="vistas/img/modulos/ContactoModulo.png" alt="Contacto" class="personal-img-submodulo-tamaño">
           </div>
           <div class="row justify-content-center align-self-center">
             <p class="display-4" id="nombreProveedorT">Hola</p>
@@ -22,7 +23,10 @@
           <div class="box-body">
 
               <div class="container">
-                <div class="row">
+
+                  
+
+                <!-- <div class="row">
 
                   <div class="col-2">
                     <div class="btn btn-info" width="10px"><i class="fas fa-tty fa-2x"></i></div>
@@ -42,7 +46,22 @@
                     <button class="btn btn-primary" style="font-size: 10px;" data-toggle="modal" data-target="#modalAgregarCorreosProveedor" data-dismiss="modal">Agregar nuevo correo</button>
                   </div>
 
+                </div> -->
+
+                <div class="row">
+
+                  <div class="col-6 text-center">
+                    <i class="fas fa-tty fa-3x text-dark"></i>
+                    <div class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modalAgregarTelefonosProveedor" data-dismiss="modal"><i class="fas fa-plus"></i></div>
+                  </div>
+
+                  <div class="col-6 text-center">
+                    <i class="fas fa-envelope-open-text fa-3x text-dark"></i>
+                    <div class="btn btn-warning rounded-circle" data-toggle="modal" data-target="#modalAgregarCorreosProveedor" data-dismiss="modal"><i class="fas fa-plus"></i></div>
+                  </div>
+
                 </div>
+
                 <br>
                 <div class="row" id="divMostrarContacto">
                   <!--Colunma izquierda para los telefonos-->
